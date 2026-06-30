@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import React from "react";
-import {BrowserRouter, Link, Route, Routes} from "react-router-dom";
+import {BrowserRouter, Link, Route, Routes} from "react-router";
 import Employeelist from "./pages/Employeelist";
 import Customerlist from "./pages/Customerlist";
 
