@@ -1,9 +1,10 @@
 pipeline {
-    agent {
-		docker { image 'node:latest' }
-	}
+    agent none
     stages {
 	    stage('Prep') {
+	        agent {
+        		docker { image 'node:latest' }
+        	}
 			steps {
 				sh "mkdir -p ~/.ssh"
 				sh "ssh-keyscan github.com > ~/.ssh/known_hosts"
@@ -24,6 +25,9 @@ pipeline {
             }
 		}
 		stage('Tag version') {
+		    agent {
+                docker { image 'node:latest' }
+            }
 			when {
 				allOf {
 					anyOf {
@@ -39,7 +43,8 @@ pipeline {
 			steps {
 				script {
 					def tagName = sh(script: "git describe --tags --always HEAD^1 || echo 'no-tag'", returnStdout: true).trim()
-					if (tagName !=~ /\d+\.\d+\.\d+/) {
+                    def tagMatcher = tagName =~ /\d+\.\d+\.\d+/
+					if (!tagMatcher.matches()) {
 						env.TAG_NAME = '1.0.0'
 					} else {
 						env.TAG_NAME = tagName;
@@ -53,24 +58,19 @@ pipeline {
 						env.PATCH_VERSION = env.PATCH_VERSION.toInteger() + 1
 					}
 				}
-				withCredentials([sshUserPrivateKey(credentialsId: "MathiasVE", keyFileVariable: 'key')]) {
-					sh "git config --global user.email 'mathias.ver.elst@gmail.com'"
-					sh "git config --global user.name 'Jenkins'"
-					sh "git tag -a ${env.MAJOR_VERSION}.${env.MINOR_VERSION}.${env.PATCH_VERSION} -m '${env.MAJOR_VERSION}.${env.MINOR_VERSION}.${env.PATCH_VERSION}'"
-					sh "GIT_SSH='ssh -i ~/.ssh/id_rsa'"
-					sh "git push git@github.com:zero-consult/people_frontend.git ${env.MAJOR_VERSION}.${env.MINOR_VERSION}.${env.PATCH_VERSION}"
-				}
+                sh "git config --global user.email 'mathias.ver.elst@gmail.com'"
+                sh "git config --global user.name 'Jenkins'"
+                sh "git tag -a ${env.MAJOR_VERSION}.${env.MINOR_VERSION}.${env.PATCH_VERSION} -m '${env.MAJOR_VERSION}.${env.MINOR_VERSION}.${env.PATCH_VERSION}'"
+                sh "GIT_SSH='ssh -i ~/.ssh/id_rsa'"
+                sh "git push git@github.com:zero-consult/people_frontend.git ${env.MAJOR_VERSION}.${env.MINOR_VERSION}.${env.PATCH_VERSION}"
 			}
 		}
 		stage('Build') {
             steps {
 				script {
-					def versionParts = readCurrentTag().tokenize('.')
-					env.MAJOR_VERSION = versionParts[0].toInteger()
-					env.MINOR_VERSION = versionParts[1].toInteger()
-					env.PATCH_VERSION = versionParts[2].toInteger()
+					def version = readCurrentTag()
 				}
-			    sh "sed -i 's/\"version\": \"0.1.0\"/\"version\": \"${env.MAJOR_VERSION}.${env.MINOR_VERSION}.${env.PATCH_VERSION}\"/' package.json"
+			    sh "sed -i 's/\"version\": \"0.1.0\"/\"version\": \"$version\"/' package.json"
 			    sh 'npm install'
                 sh 'npm run build'
             }
@@ -80,37 +80,20 @@ pipeline {
                 sh 'npm test'
             }
         }
-		stage('Build image') {
-			when {
-				branch "production"
-			}
-			steps {
-				script {
-					app = docker.build("people_frontend/production")
-				}
-			}
-		}
 		stage('Push image') {
-			when {
-				branch "production"
-			}
+		    agent any
 			steps {
 				script {
-					docker.withRegistry('https://registry.hub.docker.com', 'git') {
-					   app.push("${env.BUILD_NUMBER}")
-					   app.push("latest")
-					}
+                    def TAG = readCurrentTag()
+				    echo "pushing image"
+				    docker.withRegistry('http://nexus:8081', 'Nexus') {
+				        def buildName = "docker-releases/people_frontend" + (${env.BRANCH_NAME} != "production" ? "_${env.BRANCH_NAME}" : "")
+                        app = docker.build("docker-releases/people_frontend_$buildName:$TAG")
+                        app.push("$TAG")
+                    }
 				}
 			}
 		}
-        stage('Deploy') {
-			when {
-				branch "production"
-			}
-            steps {
-                sh 'npm start -- --port 80 &'
-            }
-        }
     }
 }
 
