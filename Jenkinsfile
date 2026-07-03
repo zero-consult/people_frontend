@@ -1,29 +1,6 @@
 pipeline {
     agent none
     stages {
-	    stage('Prep') {
-	        agent {
-        		docker { image 'node:latest' }
-        	}
-			steps {
-				sh "mkdir -p ~/.ssh"
-				sh "ssh-keyscan github.com > ~/.ssh/known_hosts"
-                script {
-                    withCredentials([
-                        sshUserPrivateKey(
-                            credentialsId: 'MathiasVE',
-                            keyFileVariable: 'keyFile'
-                        )
-                    ]) {
-                        sshKey = readFile(keyFile).trim()
-                    }
-                }
-				sh 'touch ~/.ssh/id_rsa'
-				sh 'chmod 600 ~/.ssh/id_rsa'
-				sh '#!/bin/sh -e\n' + "echo '${sshKey}' > ~/.ssh/id_rsa"
-				sh 'chmod 400 ~/.ssh/id_rsa'
-            }
-		}
 		stage('Tag version') {
 		    agent {
                 docker { image 'node:latest' }
@@ -41,6 +18,22 @@ pipeline {
 				}
 			}
 			steps {
+			    sh "mkdir -p ~/.ssh"
+                sh "ssh-keyscan github.com > ~/.ssh/known_hosts"
+                script {
+                    withCredentials([
+                        sshUserPrivateKey(
+                            credentialsId: 'MathiasVE',
+                            keyFileVariable: 'keyFile'
+                        )
+                    ]) {
+                        sshKey = readFile(keyFile).trim()
+                    }
+                }
+                sh 'touch ~/.ssh/id_rsa'
+                sh 'chmod 600 ~/.ssh/id_rsa'
+                sh '#!/bin/sh -e\n' + "echo '${sshKey}' > ~/.ssh/id_rsa"
+                sh 'chmod 400 ~/.ssh/id_rsa'
 				script {
 					def tagName = sh(script: "git describe --tags --always HEAD^1 || echo 'no-tag'", returnStdout: true).trim()
                     def tagMatcher = tagName =~ /\d+\.\d+\.\d+/
