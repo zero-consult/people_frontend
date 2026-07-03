@@ -59,6 +59,9 @@ pipeline {
 			}
 		}
 		stage('Build') {
+		    agent {
+                docker { image 'node:latest' }
+            }
             steps {
 				script {
 					def version = readCurrentTag()
@@ -69,6 +72,9 @@ pipeline {
             }
         }
         stage('Test') {
+            agent {
+                 docker { image 'node:latest' }
+            }
             steps {
                 sh 'npm test'
             }
