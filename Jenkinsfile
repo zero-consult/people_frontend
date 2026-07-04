@@ -64,7 +64,7 @@ pipeline {
             }
             steps {
 				script {
-					def version = readCurrentTag()
+					version = readCurrentTag()
 				}
 			    sh "sed -i 's/\"version\": \"0.1.0\"/\"version\": \"$version\"/' package.json"
 			    sh 'npm install'
@@ -86,9 +86,13 @@ pipeline {
                     def TAG = readCurrentTag()
 				    echo "pushing image"
 				    docker.withRegistry('http://nexus:8081', 'Nexus') {
-				        def buildName = "docker-releases/people_frontend" + (${env.BRANCH_NAME} != "production" ? "_${env.BRANCH_NAME}" : "")
-                        app = docker.build("docker-releases/people_frontend_$buildName:$TAG")
-                        app.push("$TAG")
+				        if(env.BRANCH_NAME != "production") {
+				            app = docker.build("docker-releases/people_frontend_${env.BRANCH_NAME}:$TAG")
+                            app.push("$TAG")
+				        } else {
+                            app = docker.build("docker-releases/people_frontend:$TAG")
+                            app.push("$TAG")
+                        }
                     }
 				}
 			}

@@ -1,15 +1,7 @@
 {
-  "compilerOptions": {
-    "target": "es2016",
-    "module": "commonjs",
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    "strict": true,
-    "skipLibCheck": true,
-    "jsx": "react",
-  },
-  "$schema": "https://www.schemastore.org/tsconfig",
-  "include": ["src/**/*"],
-  "exclude": ["**/*.spec.ts"],
-  "types": ["node", "jest", "@testing-library/jest-dom"]
+  "files": [],
+  "references": [
+    { "path": "./tsconfig.app.json" },
+    { "path": "./tsconfig.node.json" }
+  ]
 }
