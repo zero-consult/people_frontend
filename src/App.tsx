@@ -37,7 +37,7 @@ function App() {
       <BrowserRouter>
         <div className="min-h-screen flex" style={{ fontFamily: "'DM Sans', sans-serif" }}>
           {/* Sidebar */}
-          <aside className="w-60 shrink-0 flex flex-col bg-sidebar border-r border-sidebar-border">
+          <aside className="w-60 shrink-0 flex flex-col bg-sidebar border-r border-sidebar-border overflow-y-auto">
             <div className="px-6 py-5 border-b border-sidebar-border">
               <div className="flex items-center gap-2.5">
                 <div className="w-8 h-8 rounded-md bg-primary flex items-center justify-center">
@@ -53,6 +53,7 @@ function App() {
             <nav className="flex-1 px-3 py-4 space-y-0.5">
               <Routes>
                 <Route path="/" element={<NavigationList active="employees"/>} />
+                <Route path="/employees/*" element={<NavigationList active="employees"/>} />
                 <Route path="/employees" element={<NavigationList active="employees"/>} />
                 <Route path="/customers" element={<NavigationList active="customers"/>} />
               </Routes>
@@ -67,13 +68,13 @@ function App() {
                 </div>
               </div>
               <button className="w-full flex items-center gap-3 px-3 py-2 rounded-md text-sm text-sidebar-foreground/40 hover:text-sidebar-foreground hover:bg-sidebar-accent transition-colors">
-                <LogOut className="w-4 h-4" /> Uitloggen
+                <LogOut className="w-4 h-4" /> Log out
               </button>
             </div>
           </aside>
 
           {/* Page content */}
-          <main className="flex-1 flex flex-col min-w-0 bg-background">
+          <main className="flex-1 flex flex-col min-w-0 bg-background overflow-y-auto">
             {/* Routes */}
             <Routes>
               <Route path="/" element={<Employeelist />} />
