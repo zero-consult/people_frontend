@@ -3,6 +3,7 @@ import {Briefcase, Building2, LogOut, Users} from "lucide-react";
 import {BrowserRouter, Link, Route, Routes} from "react-router";
 import Employeelist from "./pages/Employeelist.tsx";
 import Customerlist from "./pages/Customerlist.tsx";
+import SingleEmployee from "./pages/SingleEmployee.tsx";
 
 function NavigationList({active}: {active: string}) {
   return (<><Link
@@ -79,6 +80,8 @@ function App() {
             <Routes>
               <Route path="/" element={<Employeelist />} />
               <Route path="/employees" element={<Employeelist />} />
+              <Route path="/employees/add" element={<SingleEmployee />} />
+              <Route path="/employees/:employeeId/edit" element={<SingleEmployee />} />
               <Route path="/customers" element={<Customerlist />} />
             </Routes>
           </main>
