@@ -2,6 +2,7 @@ pipeline {
     agent none
     stages {
         stage('Build build image') {
+            agent any
             steps {
                 script {
                     docker.build('alpine-npm-jdk:latest', 'docker-images/npm-jdk/')
