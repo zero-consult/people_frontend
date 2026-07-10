@@ -4,7 +4,7 @@ pipeline {
         stage('Build build image') {
             steps {
                 script {
-                    docker.build('alpine-npm-jdk:latest', 'docker-images/npm-jdk')
+                    docker.build('alpine-npm-jdk:latest', 'docker-images/npm-jdk/')
                 }
             }
         }
