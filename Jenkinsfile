@@ -11,7 +11,7 @@ pipeline {
         }
 		stage('Tag version') {
 		    agent {
-                docker { image 'alpine-npm-jdk:latest' }
+                docker { image 'node:latest' }
             }
 			when {
 				allOf {
