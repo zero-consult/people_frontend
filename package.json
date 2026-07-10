@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "generate": "openapi-generator-cli generate -g typescript-axios -i ./idl/employee-api.yaml -o ./src/types/employee --additional-properties=withSeparateModelsAndApi=true,modelPackage=model,apiPackage=api --api-package api --model-package model",
-    "build": "tsc -b && vite build",
+    "build": "npm run generate && tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
     "test": "vitest"
