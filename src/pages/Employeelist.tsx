@@ -11,6 +11,7 @@ import {
 } from "../types/employee/index.ts";
 import axios from "axios";
 import {BACKEND_HOST} from "../Constants.ts";
+import moment from "moment";
 
 
 
@@ -228,7 +229,7 @@ function Employeelist() {
                         <td className="py-3.5 px-3"><span className={`px-2.5 py-0.5 rounded-full text-xs font-medium ${typeof emp.department != "undefined" ? DEPT_COLORS[emp.department] : ""}`}>{emp.department}</span></td>
                         <td className="py-3.5 px-3 text-muted-foreground" style={{ fontFamily: "'DM Mono', monospace", fontSize: "0.8rem" }}>{emp.email}</td>
                         <td className="py-3.5 px-3 text-muted-foreground" style={{ fontFamily: "'DM Mono', monospace", fontSize: "0.8rem" }}>
-                            {new Date(emp.startDate).toLocaleDateString("en-GB", { day: "2-digit", month: "short", year: "numeric" })}
+                            {moment(emp.startDate).format("DD-MM-YYYY")}
                         </td>
                         <td className="py-3.5 px-3"><span className={`px-2.5 py-0.5 rounded-full text-xs font-medium ${EMP_STATUS_COLORS[emp.status]}`}>{emp.status}</span></td>
                         <td className="py-3.5 px-3 text-right">
