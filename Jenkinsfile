@@ -1,9 +1,16 @@
 pipeline {
     agent none
     stages {
+        stage('Build build image') {
+            steps {
+                script {
+                    docker.build('alpine-npm-jdk:latest', 'docker-images/npm-jdk')
+                }
+            }
+        }
 		stage('Tag version') {
 		    agent {
-                docker { image 'node:latest' }
+                docker { image 'alpine-npm-jdk:latest' }
             }
 			when {
 				allOf {
@@ -60,7 +67,7 @@ pipeline {
 		}
 		stage('Build') {
 		    agent {
-                docker { image 'node:latest' }
+                docker { image 'alpine-npm-jdk:latest' }
             }
             steps {
 				script {
@@ -73,7 +80,7 @@ pipeline {
         }
         stage('Test') {
             agent {
-                 docker { image 'node:latest' }
+                 docker { image 'alpine-npm-jdk:latest' }
             }
             steps {
                 sh 'npm test'
