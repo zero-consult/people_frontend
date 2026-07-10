@@ -4,6 +4,7 @@ import {BrowserRouter, Link, Route, Routes} from "react-router";
 import Employeelist from "./pages/Employeelist.tsx";
 import Customerlist from "./pages/Customerlist.tsx";
 import SingleEmployee from "./pages/SingleEmployee.tsx";
+import axios from "axios";
 
 function NavigationList({active}: {active: string}) {
   return (<><Link
@@ -33,7 +34,6 @@ function NavigationList({active}: {active: string}) {
 }
 
 function App() {
-
   return (
       <BrowserRouter>
         <div className="min-h-screen flex" style={{ fontFamily: "'DM Sans', sans-serif" }}>

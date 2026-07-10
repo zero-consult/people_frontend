@@ -1,0 +1,103 @@
+openapi: 3.0.3
+info:
+  title: Zero consult employee - OpenAPI 3.2
+  description: ''
+  version: 1.0.0
+paths:
+  /employees:
+    get:
+      tags:
+        - employee
+      summary: Get the list of employees
+      operationId: employeesList
+      responses:
+        '200':
+          description: A list of employees
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Employee'
+    post:
+      tags:
+        - employee
+      summary: Add a new employee
+      operationId: addEmployee
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Employee'
+      responses:
+        '201':
+          description: Employee created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Employee'
+  /employees/{id}:
+    put:
+      tags:
+        - employee
+      summary: Update an employee
+      operationId: updateEmployee
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Employee'
+      responses:
+        '200':
+          description: Employee updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Employee'
+components:
+  schemas:
+    Department:
+      type: string
+      enum: [ "Engineering", "Design", "Marketing", "HR", "Finance", "Operations" ]
+    Employee:
+      type: object
+      properties:
+        department:
+          $ref: '#/components/schemas/Department'
+        email:
+          type: string
+        firstName:
+          type: string
+        functionTitle:
+          type: string
+        id:
+          type: string
+        lastName:
+          type: string
+        manager:
+          $ref: '#/components/schemas/Employee'
+        phone:
+          type: string
+        startDate:
+          type: integer
+          format: int64
+        status:
+          $ref: '#/components/schemas/EmployeeStatus'
+      required:
+        - email
+        - firstName
+        - lastName
+        - phone
+        - startDate
+        - status
+    EmployeeStatus:
+      type: string
+      enum: [ "Active", "Inactive", "On leave" ]

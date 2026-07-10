@@ -1,9 +1,16 @@
 import {ChevronDown, ChevronUp, Pencil, Plus, Search, SortAscIcon, SortDesc, Trash2} from "lucide-react";
-import {useMemo, useState} from "react";
+import {useEffect, useMemo, useState} from "react";
 import {Link} from "react-router";
-import {type Employee, SEED_EMPLOYEES} from "../types/Employee.ts";
-import {type Department, DEPARTMENTS} from "../types/Department.ts";
-import type {EmployeeStatus} from "../types/EmployeeStatus.ts";
+import {
+    Configuration,
+    Department as DepartmentList,
+    type Department,
+    type Employee,
+    EmployeeApiFp,
+    type EmployeeStatus
+} from "../types/employee/index.ts";
+import axios from "axios";
+import {BACKEND_HOST} from "../Constants.ts";
 
 
 
@@ -100,20 +107,33 @@ function Pagination({ page, total, onChange }: { page: number; total: number; on
 
 
 function Employeelist() {
-    const [employees] = useState<Employee[]>(SEED_EMPLOYEES);
+    const [employees, setEmployees] = useState<Employee[]>([]);
     const [search, setSearch] = useState("");
     const [deptFilter, setDeptFilter] = useState<Department | "All">("All");
-    const [sortKey, setSortKey] = useState<keyof Employee>("name");
+    const [sortKey, setSortKey] = useState<keyof Employee>("firstName");
     const [sortDir, setSortDir] = useState<"asc" | "desc">("asc");
     const [currentPage, setCurrentPage] = useState(1);
+
+    async function fetchEmployees() {
+        const employeeList = await EmployeeApiFp(new Configuration({basePath: BACKEND_HOST})).employeesList();
+        const employeeListResponse = await employeeList(axios);
+        setEmployees(employeeListResponse.data);
+    }
+
+    useEffect(() => {
+        fetchEmployees();
+    }, []);
 
     const filtered = useMemo(() => {
         let list = [...employees];
         if (search.trim()) {
             const q = search.toLowerCase();
             list = list.filter((e) =>
-                e.name.toLowerCase().includes(q) || e.role.toLowerCase().includes(q) ||
-                e.email.toLowerCase().includes(q) || e.department.toLowerCase().includes(q)
+                e.firstName.toLowerCase().includes(q) ||
+                e.lastName.toLowerCase().includes(q) ||
+                e.functionTitle?.toLowerCase().includes(q) ||
+                e.email.toLowerCase().includes(q) ||
+                e.department?.toLowerCase().includes(q)
             );
         }
         if (deptFilter !== "All") list = list.filter((e) => e.department === deptFilter);
@@ -169,7 +189,7 @@ function Employeelist() {
                 <input className="w-full bg-input-background text-foreground placeholder:text-muted-foreground text-sm rounded-md pl-9 pr-3 py-2 border border-border focus:outline-none focus:ring-1 focus:ring-ring" placeholder="Search name, function, e-mail..." value={search} onChange={(e) => setSearch(e.target.value)} />
             </div>
             <div className="flex items-center gap-2 flex-wrap">
-                {(["All", ...DEPARTMENTS] as const).map((d) => (
+                {(["All", DepartmentList.Design, DepartmentList.Hr, DepartmentList.Finance, DepartmentList.Engineering, DepartmentList.Marketing, DepartmentList.Operations] as const).map((d) => (
                     <button key={d} onClick={() => setDeptFilter(d as Department | "All")} className={`px-3 py-1.5 rounded-md text-xs font-medium transition-colors ${deptFilter === d ? "bg-primary text-primary-foreground" : "bg-secondary text-secondary-foreground hover:bg-secondary/80"}`}>{d}</button>
                 ))}
             </div>
@@ -200,12 +220,12 @@ function Employeelist() {
                     <tr key={emp.id} className={`border-b border-border/50 hover:bg-card/60 transition-colors group ${i % 2 !== 0 ? "bg-muted/20" : ""}`}>
                         <td className="py-3.5 px-3">
                             <div className="flex items-center gap-3">
-                                <div className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-semibold text-white flex-shrink-0 ${getAvatarColor(emp.name)}`}>{getInitials(emp.name)}</div>
-                                <span className="font-medium text-foreground">{emp.name}</span>
+                                <div className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-semibold text-white flex-shrink-0 ${getAvatarColor(emp.firstName + ' ' + emp.lastName)}`}>{getInitials(emp.firstName + ' ' + emp.lastName)}</div>
+                                <span className="font-medium text-foreground">{emp.firstName} {emp.lastName}</span>
                             </div>
                         </td>
-                        <td className="py-3.5 px-3 text-muted-foreground">{emp.role}</td>
-                        <td className="py-3.5 px-3"><span className={`px-2.5 py-0.5 rounded-full text-xs font-medium ${DEPT_COLORS[emp.department]}`}>{emp.department}</span></td>
+                        <td className="py-3.5 px-3 text-muted-foreground">{emp.functionTitle}</td>
+                        <td className="py-3.5 px-3"><span className={`px-2.5 py-0.5 rounded-full text-xs font-medium ${typeof emp.department != "undefined" ? DEPT_COLORS[emp.department] : ""}`}>{emp.department}</span></td>
                         <td className="py-3.5 px-3 text-muted-foreground" style={{ fontFamily: "'DM Mono', monospace", fontSize: "0.8rem" }}>{emp.email}</td>
                         <td className="py-3.5 px-3 text-muted-foreground" style={{ fontFamily: "'DM Mono', monospace", fontSize: "0.8rem" }}>
                             {new Date(emp.startDate).toLocaleDateString("en-GB", { day: "2-digit", month: "short", year: "numeric" })}
