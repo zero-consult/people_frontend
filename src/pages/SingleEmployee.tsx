@@ -1,18 +1,40 @@
-import {useEffect} from "react";
+import {useEffect, useMemo, useState} from "react";
 import {Link, useParams} from "react-router";
-import {Save} from "lucide-react";
+import {Save, Search, X} from "lucide-react";
 import {Configuration, type Department, EmployeeApiFp, type EmployeeStatus} from "../types/employee/index.ts";
 import {BACKEND_HOST} from "../Constants.ts";
 import axios from "axios";
 import moment from "moment";
 import {useDispatch, useSelector} from "react-redux";
-import {loadSingleEmployee, resetSingleEmployee, selectSelectedEmployee} from "../redux/employee.slice.ts";
+import {
+    loadEmployees,
+    loadSingleEmployee,
+    resetSingleEmployee,
+    selectEmployees,
+    selectSelectedEmployee
+} from "../redux/employee.slice.ts";
 
 
 function SingleEmployee() {
     const dispatch = useDispatch();
     const {employeeId} = useParams();
     const employee = useSelector(selectSelectedEmployee);
+    const employees = useSelector(selectEmployees);
+    const [search, setSearch] = useState("");
+
+    const managers = useMemo(() => {
+        return employees.filter((e) => (e.firstName + " " + e.lastName).toLowerCase().includes(search.toLowerCase()));
+    }, [search]);
+
+    async function fetchEmployees() {
+        const employeeList = await EmployeeApiFp(new Configuration({basePath: BACKEND_HOST})).employeesList();
+        const employeeListResponse = await employeeList(axios);
+        dispatch(loadEmployees(employeeListResponse.data));
+    }
+
+    useEffect(() => {
+        fetchEmployees();
+    }, []);
 
     async function fetchEmployee(employeeId: string) {
         const employeeFetch = await EmployeeApiFp(new Configuration({basePath: BACKEND_HOST})).getEmployee(employeeId);
@@ -124,6 +146,53 @@ function SingleEmployee() {
                        className="w-full bg-input-background text-foreground text-sm rounded-md px-3 py-2 border border-border focus:outline-none focus:ring-1 focus:ring-ring"
                        value={moment(employee.startDate).format("YYYY-MM-DD")}
                        onChange={(e) => setDate(e.target.value)}/>
+            </div>
+            <div className="col-span-2">
+                <label
+                    className="block text-xs font-medium text-muted-foreground mb-1.5 uppercase tracking-wide">Manager</label>
+                {
+                    typeof employee.manager != "undefined" && employee.manager !== null ?
+                        <div>
+
+                            <div className="flex items-center gap-2">
+                                <div className="flex items-center gap-2">
+                                    <div className="w-full rounded-full flex px-0 py-0">
+                                        <span
+                                            className="text-primary text-2xl">{employee.manager.firstName} {employee.manager.lastName}</span>
+                                        <X size={32} className="absolute right-5 py-1 text-muted-foreground"
+                                           onClick={() => dispatch(loadSingleEmployee({
+                                               ...employee,
+                                               manager: undefined
+                                           }))}/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        :
+                        <>
+                            <div className="relative flex-1">
+                                <Search
+                                    className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground"/>
+                                <input
+                                    className="w-full bg-input-background text-foreground placeholder:text-muted-foreground text-sm rounded-md pl-9 pr-3 py-2 border border-border focus:outline-none focus:ring-1 focus:ring-ring"
+                                    placeholder="Search manager" value={search}
+                                    onChange={(e) => setSearch(e.target.value)}/>
+                            </div>
+                            {search.length > 0 ?
+                                <div id="dropdown"
+                                     className="absolute z-10 bg-input-background bg-neutral-primary-medium border border-default-medium rounded-base shadow-lg w-44">
+                                    <ul className="p-2 text-sm text-body font-medium"
+                                        aria-labelledby="dropdownDefaultButton">
+                                        {managers.map((manager) => <li
+                                            key={manager.id} onClick={() => {
+                                            dispatch(loadSingleEmployee({...employee, manager: manager}))
+                                        }}>{manager.firstName} {manager.lastName}</li>)}
+                                    </ul>
+                                </div>
+                                :
+                                <></>}
+                        </>
+                }
             </div>
             <div className="col-span-2">
                 <Link to={"/employees"} onClick={() => saveEmployee()}
