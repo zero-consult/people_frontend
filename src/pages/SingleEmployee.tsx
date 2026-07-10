@@ -1,67 +1,84 @@
-import {useEffect, useState} from "react";
+import {useEffect} from "react";
 import {Link, useParams} from "react-router";
 import {Save} from "lucide-react";
-import {type EmployeeStatus, type Department, Configuration, type Employee, EmployeeApiFp} from "../types/employee/index.ts";
+import {Configuration, type Department, EmployeeApiFp, type EmployeeStatus} from "../types/employee/index.ts";
 import {BACKEND_HOST} from "../Constants.ts";
 import axios from "axios";
 import moment from "moment";
+import {useDispatch, useSelector} from "react-redux";
+import {loadSingleEmployee, resetSingleEmployee, selectSelectedEmployee} from "../redux/employee.slice.ts";
 
-const EMPTY_EMP: Employee = {
-    firstName: "", lastName: "", functionTitle: "", department: "Engineering" as Department,
-    email: "", phone: "", startDate: moment().valueOf(), status: "Active" as EmployeeStatus, manager: undefined,
-};
 
 function SingleEmployee() {
-    const { employeeId } = useParams();
-    const [form, setForm] = useState(EMPTY_EMP);
+    const dispatch = useDispatch();
+    const {employeeId} = useParams();
+    const employee = useSelector(selectSelectedEmployee);
 
     async function fetchEmployee(employeeId: string) {
         const employeeFetch = await EmployeeApiFp(new Configuration({basePath: BACKEND_HOST})).getEmployee(employeeId);
         const employeeFetchResponse = await employeeFetch(axios);
-        setForm(employeeFetchResponse.data);
+        dispatch(loadSingleEmployee(employeeFetchResponse.data));
     }
 
     useEffect(() => {
         if (typeof employeeId !== "undefined") {
             fetchEmployee(employeeId);
         } else {
-            setForm(EMPTY_EMP);
+            dispatch(resetSingleEmployee())
         }
     }, [employeeId]);
 
     async function saveEmployee() {
         if (typeof employeeId === "undefined") {
-            const employeeAdd = await EmployeeApiFp(new Configuration({basePath: BACKEND_HOST})).addEmployee(form);
+            const employeeAdd = await EmployeeApiFp(new Configuration({basePath: BACKEND_HOST})).addEmployee(employee);
             const employeeAddResponse = await employeeAdd(axios);
-            setForm(employeeAddResponse.data);
+            dispatch(loadSingleEmployee(employeeAddResponse.data));
         } else {
-            const employeeUpdate = await EmployeeApiFp(new Configuration({basePath: BACKEND_HOST})).updateEmployee(employeeId, form);
+            const employeeUpdate = await EmployeeApiFp(new Configuration({basePath: BACKEND_HOST})).updateEmployee(employeeId, employee);
             const employeeUpdateResponse = await employeeUpdate(axios);
-            setForm(employeeUpdateResponse.data);
+            dispatch(loadSingleEmployee(employeeUpdateResponse.data));
         }
     }
 
     function setDate(date: string) {
-        setForm({ ...form, startDate: moment(date, "YYYY-MM-DD").valueOf()})
+        dispatch(loadSingleEmployee({...employee, startDate: moment(date, "YYYY-MM-DD").valueOf()}));
     }
 
     return <>
         <div className="grid grid-cols-2 gap-4 p-5">
             <div>
-                <label className="block text-xs font-medium text-muted-foreground mb-1.5 uppercase tracking-wide">First Name *</label>
-                <input className="w-full bg-input-background text-foreground placeholder:text-muted-foreground text-sm rounded-md px-3 py-2 border border-border focus:outline-none focus:ring-1 focus:ring-ring" placeholder="First name" value={form.firstName} onChange={(e) => setForm({ ...form, firstName: e.target.value })} />
+                <label className="block text-xs font-medium text-muted-foreground mb-1.5 uppercase tracking-wide">First
+                    Name *</label>
+                <input
+                    className="w-full bg-input-background text-foreground placeholder:text-muted-foreground text-sm rounded-md px-3 py-2 border border-border focus:outline-none focus:ring-1 focus:ring-ring"
+                    placeholder="First name" value={employee.firstName}
+                    onChange={(e) => dispatch(loadSingleEmployee({...employee, firstName: e.target.value}))}/>
             </div>
             <div>
-                <label className="block text-xs font-medium text-muted-foreground mb-1.5 uppercase tracking-wide">Last Name *</label>
-                <input className="w-full bg-input-background text-foreground placeholder:text-muted-foreground text-sm rounded-md px-3 py-2 border border-border focus:outline-none focus:ring-1 focus:ring-ring" placeholder="Last name" value={form.lastName} onChange={(e) => setForm({ ...form, lastName: e.target.value })} />
+                <label className="block text-xs font-medium text-muted-foreground mb-1.5 uppercase tracking-wide">Last
+                    Name *</label>
+                <input
+                    className="w-full bg-input-background text-foreground placeholder:text-muted-foreground text-sm rounded-md px-3 py-2 border border-border focus:outline-none focus:ring-1 focus:ring-ring"
+                    placeholder="Last name" value={employee.lastName}
+                    onChange={(e) => dispatch(loadSingleEmployee({...employee, lastName: e.target.value}))}/>
             </div>
             <div className="col-span-2">
-                <label className="block text-xs font-medium text-muted-foreground mb-1.5 uppercase tracking-wide">Function Title</label>
-                <input className="w-full bg-input-background text-foreground placeholder:text-muted-foreground text-sm rounded-md px-3 py-2 border border-border focus:outline-none focus:ring-1 focus:ring-ring" placeholder="eg. Senior Developer" value={form.functionTitle} onChange={(e) => setForm({ ...form, functionTitle: e.target.value })} />
+                <label className="block text-xs font-medium text-muted-foreground mb-1.5 uppercase tracking-wide">Function
+                    Title</label>
+                <input
+                    className="w-full bg-input-background text-foreground placeholder:text-muted-foreground text-sm rounded-md px-3 py-2 border border-border focus:outline-none focus:ring-1 focus:ring-ring"
+                    placeholder="eg. Senior Developer" value={employee.functionTitle}
+                    onChange={(e) => dispatch(loadSingleEmployee({...employee, functionTitle: e.target.value}))}/>
             </div>
             <div>
-                <label className="block text-xs font-medium text-muted-foreground mb-1.5 uppercase tracking-wide">Department</label>
-                <select className="w-full bg-input-background text-foreground text-sm rounded-md px-3 py-2 border border-border focus:outline-none focus:ring-1 focus:ring-ring appearance-none cursor-pointer" value={form.department} onChange={(e) => setForm({ ...form, department: e.target.value as Department })}>
+                <label
+                    className="block text-xs font-medium text-muted-foreground mb-1.5 uppercase tracking-wide">Department</label>
+                <select
+                    className="w-full bg-input-background text-foreground text-sm rounded-md px-3 py-2 border border-border focus:outline-none focus:ring-1 focus:ring-ring appearance-none cursor-pointer"
+                    value={employee.department} onChange={(e) => dispatch(loadSingleEmployee({
+                    ...employee,
+                    department: e.target.value as Department
+                }))}>
                     <option key="Engineering">Engineering</option>
                     <option key="Design">Design</option>
                     <option key="Marketing">Marketing</option>
@@ -71,28 +88,47 @@ function SingleEmployee() {
                 </select>
             </div>
             <div>
-                <label className="block text-xs font-medium text-muted-foreground mb-1.5 uppercase tracking-wide">Status</label>
-                <select className="w-full bg-input-background text-foreground text-sm rounded-md px-3 py-2 border border-border focus:outline-none focus:ring-1 focus:ring-ring appearance-none cursor-pointer" value={form.status} onChange={(e) => setForm({ ...form, status: e.target.value as EmployeeStatus })}>
+                <label
+                    className="block text-xs font-medium text-muted-foreground mb-1.5 uppercase tracking-wide">Status</label>
+                <select
+                    className="w-full bg-input-background text-foreground text-sm rounded-md px-3 py-2 border border-border focus:outline-none focus:ring-1 focus:ring-ring appearance-none cursor-pointer"
+                    value={employee.status} onChange={(e) => dispatch(loadSingleEmployee({
+                    ...employee,
+                    status: e.target.value as EmployeeStatus
+                }))}>
                     <option key="Active">active</option>
                     <option key="Inactive">inactive</option>
                     <option key="On leave">on leave</option>
                 </select>
             </div>
             <div className="col-span-2">
-                <label className="block text-xs font-medium text-muted-foreground mb-1.5 uppercase tracking-wide">E-mail address *</label>
-                <input type="email" className="w-full bg-input-background text-foreground placeholder:text-muted-foreground text-sm rounded-md px-3 py-2 border border-border focus:outline-none focus:ring-1 focus:ring-ring" placeholder="name@company.com" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} />
+                <label className="block text-xs font-medium text-muted-foreground mb-1.5 uppercase tracking-wide">E-mail
+                    address *</label>
+                <input type="email"
+                       className="w-full bg-input-background text-foreground placeholder:text-muted-foreground text-sm rounded-md px-3 py-2 border border-border focus:outline-none focus:ring-1 focus:ring-ring"
+                       placeholder="name@company.com" value={employee.email}
+                       onChange={(e) => dispatch(loadSingleEmployee({...employee, email: e.target.value}))}/>
             </div>
             <div>
-                <label className="block text-xs font-medium text-muted-foreground mb-1.5 uppercase tracking-wide">Phone number</label>
-                <input className="w-full bg-input-background text-foreground placeholder:text-muted-foreground text-sm rounded-md px-3 py-2 border border-border focus:outline-none focus:ring-1 focus:ring-ring" placeholder="+32 6 ..." value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value })} />
+                <label className="block text-xs font-medium text-muted-foreground mb-1.5 uppercase tracking-wide">Phone
+                    number</label>
+                <input
+                    className="w-full bg-input-background text-foreground placeholder:text-muted-foreground text-sm rounded-md px-3 py-2 border border-border focus:outline-none focus:ring-1 focus:ring-ring"
+                    placeholder="+32 6 ..." value={employee.phone}
+                    onChange={(e) => dispatch(loadSingleEmployee({...employee, phone: e.target.value}))}/>
             </div>
             <div>
-                <label className="block text-xs font-medium text-muted-foreground mb-1.5 uppercase tracking-wide">Start date</label>
-                <input type="date" className="w-full bg-input-background text-foreground text-sm rounded-md px-3 py-2 border border-border focus:outline-none focus:ring-1 focus:ring-ring" value={moment(form.startDate).format("YYYY-MM-DD")} onChange={(e) => setDate(e.target.value)} />
+                <label className="block text-xs font-medium text-muted-foreground mb-1.5 uppercase tracking-wide">Start
+                    date</label>
+                <input type="date"
+                       className="w-full bg-input-background text-foreground text-sm rounded-md px-3 py-2 border border-border focus:outline-none focus:ring-1 focus:ring-ring"
+                       value={moment(employee.startDate).format("YYYY-MM-DD")}
+                       onChange={(e) => setDate(e.target.value)}/>
             </div>
             <div className="col-span-2">
-                <Link to={"/employees"} onClick={() => saveEmployee()} className="flex items-center gap-2 px-4 py-2.5 rounded-md bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/90 transition-colors">
-                    <Save className="w-4 h-4" /> Save
+                <Link to={"/employees"} onClick={() => saveEmployee()}
+                      className="flex items-center gap-2 px-4 py-2.5 rounded-md bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/90 transition-colors">
+                    <Save className="w-4 h-4"/> Save
                 </Link>
             </div>
         </div>

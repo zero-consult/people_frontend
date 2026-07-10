@@ -12,6 +12,8 @@ import {
 import axios from "axios";
 import {BACKEND_HOST} from "../Constants.ts";
 import moment from "moment";
+import {useDispatch, useSelector} from "react-redux";
+import {loadEmployees, selectEmployees} from "../redux/employee.slice.ts";
 
 
 
@@ -108,7 +110,8 @@ function Pagination({ page, total, onChange }: { page: number; total: number; on
 
 
 function Employeelist() {
-    const [employees, setEmployees] = useState<Employee[]>([]);
+    const dispatch = useDispatch();
+    const employees = useSelector(selectEmployees);
     const [search, setSearch] = useState("");
     const [deptFilter, setDeptFilter] = useState<Department | "All">("All");
     const [sortKey, setSortKey] = useState<keyof Employee>("firstName");
@@ -118,7 +121,7 @@ function Employeelist() {
     async function fetchEmployees() {
         const employeeList = await EmployeeApiFp(new Configuration({basePath: BACKEND_HOST})).employeesList();
         const employeeListResponse = await employeeList(axios);
-        setEmployees(employeeListResponse.data);
+        dispatch(loadEmployees(employeeListResponse.data));
     }
 
     useEffect(() => {
