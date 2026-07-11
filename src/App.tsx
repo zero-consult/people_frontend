@@ -6,6 +6,7 @@ import Customerlist from "./pages/Customerlist.tsx";
 import SingleEmployee from "./pages/SingleEmployee.tsx";
 import {Provider} from "react-redux";
 import store from "./redux/store.ts";
+import SingleCustomer from "./pages/SingleCustomer.tsx";
 
 function NavigationList({active}: {active: string}) {
   return (<><Link
@@ -58,6 +59,7 @@ function App() {
                   <Route path="/" element={<NavigationList active="employees"/>} />
                   <Route path="/employees/*" element={<NavigationList active="employees"/>} />
                   <Route path="/employees" element={<NavigationList active="employees"/>} />
+                  <Route path="/customers/*" element={<NavigationList active="customers"/>} />
                   <Route path="/customers" element={<NavigationList active="customers"/>} />
                 </Routes>
               </nav>
@@ -85,6 +87,8 @@ function App() {
                 <Route path="/employees/add" element={<SingleEmployee />} />
                 <Route path="/employees/:employeeId/edit" element={<SingleEmployee />} />
                 <Route path="/customers" element={<Customerlist />} />
+                <Route path="/customers/add" element={<SingleCustomer />} />
+                <Route path="/customers/:customerId/edit" element={<SingleCustomer />} />
               </Routes>
             </main>
           </div>

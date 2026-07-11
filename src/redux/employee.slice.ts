@@ -1,4 +1,4 @@
-import type {Employee} from "../types/employee";
+import type {Employee} from "../types/people";
 import {createSlice, type PayloadAction} from "@reduxjs/toolkit";
 import type {RootState} from "./store.ts";
 import moment from "moment";
@@ -28,7 +28,7 @@ const employeeSlice = createSlice({
         loadSingleEmployee: (state, action: PayloadAction<Employee>) => {
             state.selectedEmployee = action.payload
         },
-        resetSingleEmployee: (state)=> {
+        resetSingleEmployee: (state) => {
             state.selectedEmployee = EMPTY_EMP;
         },
     },
