@@ -3,7 +3,7 @@ import {Link, useParams} from "react-router";
 import {loadSingleCustomer, resetSingleCustomer, selectSelectedCustomer} from "../redux/customer.slice.ts";
 import {useEffect} from "react";
 import {Configuration, CustomerApiFp, type CustomerStatus, type Sector} from "../types/people";
-import {BACKEND_HOST} from "../Constants.ts";
+import {PEOPLE_BACKEND_HOST} from "../Constants.ts";
 import axios from "axios";
 import moment from "moment/moment";
 import {Save} from "lucide-react";
@@ -14,7 +14,7 @@ function SingleCustomer() {
     const customer = useSelector(selectSelectedCustomer);
 
     async function fetchCustomer(customerId: string) {
-        const customerFetch = await CustomerApiFp(new Configuration({basePath: BACKEND_HOST})).getCustomer(customerId);
+        const customerFetch = await CustomerApiFp(new Configuration({basePath: PEOPLE_BACKEND_HOST})).getCustomer(customerId);
         const customerFetchResponse = await customerFetch(axios);
         dispatch(loadSingleCustomer(customerFetchResponse.data));
     }
@@ -29,11 +29,11 @@ function SingleCustomer() {
 
     async function saveCustomer() {
         if (typeof customerId === "undefined") {
-            const customerAdd = await CustomerApiFp(new Configuration({basePath: BACKEND_HOST})).addCustomer(customer);
+            const customerAdd = await CustomerApiFp(new Configuration({basePath: PEOPLE_BACKEND_HOST})).addCustomer(customer);
             const customerAddResponse = await customerAdd(axios);
             dispatch(loadSingleCustomer(customerAddResponse.data));
         } else {
-            const customerUpdate = await CustomerApiFp(new Configuration({basePath: BACKEND_HOST})).updateCustomer(customerId, customer);
+            const customerUpdate = await CustomerApiFp(new Configuration({basePath: PEOPLE_BACKEND_HOST})).updateCustomer(customerId, customer);
             const customerUpdateResponse = await customerUpdate(axios);
             dispatch(loadSingleCustomer(customerUpdateResponse.data));
         }

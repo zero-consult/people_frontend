@@ -9,7 +9,7 @@ import {
 import {useEffect, useMemo, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {loadCustomers, selectCustomers} from "../redux/customer.slice.ts";
-import {BACKEND_HOST} from "../Constants.ts";
+import {PEOPLE_BACKEND_HOST} from "../Constants.ts";
 import axios from "axios";
 import Pagination, {PAGE_SIZE} from "../components/Pagination.tsx";
 import {Globe, Mail, MapPin, Pencil, Plus, Search, SortAscIcon, SortDesc, Trash2} from "lucide-react";
@@ -55,7 +55,7 @@ function Customerlist() {
     const [currentPage, setCurrentPage] = useState(1);
 
     async function fetchCustomers() {
-        const customerList = await CustomerApiFp(new Configuration({basePath: BACKEND_HOST})).customersList();
+        const customerList = await CustomerApiFp(new Configuration({basePath: PEOPLE_BACKEND_HOST})).customersList();
         const customerListResponse = await customerList(axios);
         dispatch(loadCustomers(customerListResponse.data));
     }

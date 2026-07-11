@@ -10,7 +10,7 @@ import {
     type EmployeeStatus
 } from "../types/people";
 import axios from "axios";
-import {BACKEND_HOST} from "../Constants.ts";
+import {PEOPLE_BACKEND_HOST} from "../Constants.ts";
 import moment from "moment";
 import {useDispatch, useSelector} from "react-redux";
 import {loadEmployees, selectEmployees} from "../redux/employee.slice.ts";
@@ -56,7 +56,7 @@ function Employeelist() {
     const [currentPage, setCurrentPage] = useState(1);
 
     async function fetchEmployees() {
-        const employeeList = await EmployeeApiFp(new Configuration({basePath: BACKEND_HOST})).employeesList();
+        const employeeList = await EmployeeApiFp(new Configuration({basePath: PEOPLE_BACKEND_HOST})).employeesList();
         const employeeListResponse = await employeeList(axios);
         dispatch(loadEmployees(employeeListResponse.data));
     }

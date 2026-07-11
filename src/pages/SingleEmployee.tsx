@@ -2,7 +2,7 @@ import {useEffect, useMemo, useState} from "react";
 import {Link, useParams} from "react-router";
 import {Save, Search, X} from "lucide-react";
 import {Configuration, type Department, EmployeeApiFp, type EmployeeStatus} from "../types/people";
-import {BACKEND_HOST} from "../Constants.ts";
+import {PEOPLE_BACKEND_HOST} from "../Constants.ts";
 import axios from "axios";
 import moment from "moment";
 import {useDispatch, useSelector} from "react-redux";
@@ -27,7 +27,7 @@ function SingleEmployee() {
     }, [search]);
 
     async function fetchEmployees() {
-        const employeeList = await EmployeeApiFp(new Configuration({basePath: BACKEND_HOST})).employeesList();
+        const employeeList = await EmployeeApiFp(new Configuration({basePath: PEOPLE_BACKEND_HOST})).employeesList();
         const employeeListResponse = await employeeList(axios);
         dispatch(loadEmployees(employeeListResponse.data));
     }
@@ -37,7 +37,7 @@ function SingleEmployee() {
     }, []);
 
     async function fetchEmployee(employeeId: string) {
-        const employeeFetch = await EmployeeApiFp(new Configuration({basePath: BACKEND_HOST})).getEmployee(employeeId);
+        const employeeFetch = await EmployeeApiFp(new Configuration({basePath: PEOPLE_BACKEND_HOST})).getEmployee(employeeId);
         const employeeFetchResponse = await employeeFetch(axios);
         dispatch(loadSingleEmployee(employeeFetchResponse.data));
     }
@@ -52,11 +52,11 @@ function SingleEmployee() {
 
     async function saveEmployee() {
         if (typeof employeeId === "undefined") {
-            const employeeAdd = await EmployeeApiFp(new Configuration({basePath: BACKEND_HOST})).addEmployee(employee);
+            const employeeAdd = await EmployeeApiFp(new Configuration({basePath: PEOPLE_BACKEND_HOST})).addEmployee(employee);
             const employeeAddResponse = await employeeAdd(axios);
             dispatch(loadSingleEmployee(employeeAddResponse.data));
         } else {
-            const employeeUpdate = await EmployeeApiFp(new Configuration({basePath: BACKEND_HOST})).updateEmployee(employeeId, employee);
+            const employeeUpdate = await EmployeeApiFp(new Configuration({basePath: PEOPLE_BACKEND_HOST})).updateEmployee(employeeId, employee);
             const employeeUpdateResponse = await employeeUpdate(axios);
             dispatch(loadSingleEmployee(employeeUpdateResponse.data));
         }

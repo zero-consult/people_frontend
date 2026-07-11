@@ -1,1 +1,1 @@
-export const BACKEND_HOST='http://localhost:8080'
+export const PEOPLE_BACKEND_HOST= import.meta.env.VITE_PEOPLE_BACKEND_HOST
