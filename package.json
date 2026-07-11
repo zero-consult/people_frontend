@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "generate": "openapi-generator-cli generate -g typescript-axios -i ./idl/employee-api.yaml -o ./src/types/employee --additional-properties=withSeparateModelsAndApi=true,modelPackage=model,apiPackage=api --api-package api --model-package model",
+    "generate": "openapi-generator-cli generate -g typescript-axios -i idl/people-api.yaml -o ./src/types/people --additional-properties=withSeparateModelsAndApi=true,modelPackage=model,apiPackage=api --api-package api --model-package model",
     "build": "npm run generate && tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",

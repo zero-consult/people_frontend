@@ -8,7 +8,7 @@ import {
     type Employee,
     EmployeeApiFp,
     type EmployeeStatus
-} from "../types/employee/index.ts";
+} from "../types/people";
 import axios from "axios";
 import {BACKEND_HOST} from "../Constants.ts";
 import moment from "moment";

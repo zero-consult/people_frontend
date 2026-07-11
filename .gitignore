@@ -24,4 +24,4 @@ dist-ssr
 *.sw?
 
 # IDL generated types
-src/types/employee/
+src/types/people/

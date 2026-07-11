@@ -74,7 +74,7 @@ pipeline {
 				script {
 					version = readCurrentTag()
 				}
-			    sh "sed -i 's/\"version\": \"0.1.0\"/\"version\": \"$version\"/' package.json"
+			    sh "sed -i 's/\"version\": \"0.0.0\"/\"version\": \"$version\"/' package.json"
 			    sh 'npm install'
                 sh 'npm run build'
             }

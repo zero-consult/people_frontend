@@ -1,7 +1,7 @@
 import {useEffect, useMemo, useState} from "react";
 import {Link, useParams} from "react-router";
 import {Save, Search, X} from "lucide-react";
-import {Configuration, type Department, EmployeeApiFp, type EmployeeStatus} from "../types/employee/index.ts";
+import {Configuration, type Department, EmployeeApiFp, type EmployeeStatus} from "../types/people";
 import {BACKEND_HOST} from "../Constants.ts";
 import axios from "axios";
 import moment from "moment";
