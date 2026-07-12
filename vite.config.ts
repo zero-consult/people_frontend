@@ -1,19 +1,25 @@
 import {defineConfig} from 'vitest/config'
 import react from '@vitejs/plugin-react'
 import tailwindcss from "@tailwindcss/vite";
+import {loadEnv} from "vite";
 
-// https://vite.dev/config/
-export default defineConfig({
-    test: {
-        globals: true,
-        environment: "jsdom",
-    },
-    server: {
-        host: 'people-frontend', // node container in docker (container name)
-        origin: 'http://localhost:5173', // exposed node container address
-    },
-    plugins: [
-        react(),
-        tailwindcss()
-    ],
-})
+
+export default ({mode}) => {
+    process.env = {...process.env, ...loadEnv(mode, process.cwd())};
+
+    return defineConfig({
+        test: {
+            globals: true,
+            environment: "jsdom",
+        },
+        server: {
+            host: process.env.VITE_PEOPLE_HOST, // node container in docker (container name)
+            origin: 'http://localhost:5174', // exposed node container address
+            port: 5173,
+        },
+        plugins: [
+            react(),
+            tailwindcss()
+        ],
+    })
+}

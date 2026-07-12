@@ -1,5 +1,5 @@
 import './App.css'
-import {Briefcase, Building2, LogOut, Users} from "lucide-react";
+import {Briefcase, Building2, Clock, LogOut, Users} from "lucide-react";
 import {BrowserRouter, Link, Route, Routes} from "react-router";
 import Employeelist from "./pages/Employeelist.tsx";
 import Customerlist from "./pages/Customerlist.tsx";
@@ -32,7 +32,19 @@ function NavigationList({active}: {active: string}) {
       }`}>
     <Briefcase className="w-4 h-4 shrink-0" />
     Customers
-  </Link></>)
+  </Link>
+    <Link
+        key={"Timesheets"}
+        to={import.meta.env.VITE_TIMESHEET_FRONTEND_URL + "/timesheets"}
+        className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-md text-sm transition-colors cursor-pointer
+      ${
+            active === "timesheets"
+                ? "bg-primary/15 text-primary font-medium"
+                : "text-sidebar-foreground/60 hover:text-sidebar-foreground hover:bg-sidebar-accent"
+        }`}>
+      <Clock className="w-4 h-4 shrink-0"/>
+      Timesheets
+    </Link></>)
 }
 
 function App() {
@@ -48,7 +60,7 @@ function App() {
                     <Building2 className="w-4 h-4 text-white" />
                   </div>
                   <span className="text-sidebar-foreground font-semibold text-sm tracking-wide" style={{ fontFamily: "'Instrument Sans', sans-serif" }}>
-                                PeopleDesk
+                                Zero Consult
                             </span>
                 </div>
               </div>
