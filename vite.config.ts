@@ -8,6 +8,10 @@ export default defineConfig({
         globals: true,
         environment: "jsdom",
     },
+    server: {
+        host: 'people-frontend', // node container in docker (container name)
+        origin: 'http://localhost:5173', // exposed node container address
+    },
     plugins: [
         react(),
         tailwindcss()
