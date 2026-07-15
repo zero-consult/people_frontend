@@ -209,9 +209,11 @@ function Employeelist() {
                                     <Link to={"/employees/" + emp.id + "/edit"}
                                           className="p-1.5 rounded-md hover:bg-primary/15 hover:text-primary text-muted-foreground transition-colors"><Pencil
                                         className="w-3.5 h-3.5"/></Link>
-                                    <button
-                                        className="p-1.5 rounded-md hover:bg-destructive/15 hover:text-destructive text-muted-foreground transition-colors">
-                                        <Trash2 className="w-3.5 h-3.5"/></button>
+                                    {!emp.hasTimesheetEntries ?
+                                        <button
+                                            className="p-1.5 rounded-md hover:bg-destructive/15 hover:text-destructive text-muted-foreground transition-colors">
+                                            <Trash2 className="w-3.5 h-3.5"/></button>
+                                        : <></>}
                                 </nav>
                             </div>
                         </td>

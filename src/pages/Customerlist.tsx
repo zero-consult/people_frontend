@@ -176,7 +176,8 @@ function Customerlist() {
                     <tbody>
                     {filtered.length === 0 && (
                         <tr>
-                            <td colSpan={7} className="py-16 text-center text-muted-foreground text-sm">No customers found.
+                            <td colSpan={7} className="py-16 text-center text-muted-foreground text-sm">No customers
+                                found.
                             </td>
                         </tr>
                     )}
@@ -222,9 +223,11 @@ function Customerlist() {
                                     <Link to={"/customers/" + customer.id + "/edit"}
                                           className="p-1.5 rounded-md hover:bg-primary/15 hover:text-primary text-muted-foreground transition-colors"><Pencil
                                         className="w-3.5 h-3.5"/></Link>
-                                    <button
-                                        className="p-1.5 rounded-md hover:bg-destructive/15 hover:text-destructive text-muted-foreground transition-colors">
-                                        <Trash2 className="w-3.5 h-3.5"/></button>
+                                    {!customer.hasTimesheetEntries ?
+                                        <button
+                                            className="p-1.5 rounded-md hover:bg-destructive/15 hover:text-destructive text-muted-foreground transition-colors">
+                                            <Trash2 className="w-3.5 h-3.5"/></button>
+                                        : <></>}
                                 </div>
                             </td>
                         </tr>

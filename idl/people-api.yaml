@@ -38,6 +38,24 @@ paths:
               schema:
                 $ref: '#/components/schemas/Customer'
   /customers/{id}:
+    delete:
+      tags:
+        - customer
+      summary: Delete a customer
+      operationId: deleteCustomer
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Customer deleted
+          content:
+            text/plain:
+              schema:
+                type: string
     get:
       tags:
         - customer
@@ -75,7 +93,37 @@ paths:
               $ref: '#/components/schemas/Customer'
       responses:
         '200':
-          description: Employee updated
+          description: Customer updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Customer'
+  /customers/{id}/hasTimesheetEntries:
+    post:
+      tags:
+        - customer
+      summary: mark customer hasTimesheetEntries
+      operationId: updateCustomerHasTimesheetEntries
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                hasTimesheetEntries:
+                  type: boolean
+              required:
+                - hasTimesheetEntries
+      responses:
+        '200':
+          description: Customer marked hasTimesheetEntries
           content:
             application/json:
               schema:
@@ -114,6 +162,24 @@ paths:
               schema:
                 $ref: '#/components/schemas/Employee'
   /employees/{id}:
+    delete:
+      tags:
+        - employee
+      summary: Delete an employee
+      operationId: deleteEmployee
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Employee deleted
+          content:
+            text/plain:
+              schema:
+                type: string
     get:
       tags:
         - employee
@@ -156,6 +222,36 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Employee'
+  /employees/{id}/hasTimesheetEntries:
+    post:
+      tags:
+        - employee
+      summary: mark employee hasTimesheetEntries
+      operationId: updateEmployeeHasTimesheetEntries
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                hasTimesheetEntries:
+                  type: boolean
+              required:
+                - hasTimesheetEntries
+      responses:
+        '200':
+          description: Employee marked hasTimesheetEntries
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Employee'
 components:
   schemas:
     Customer:
@@ -171,6 +267,9 @@ components:
           type: string
         email:
           type: string
+        hasTimesheetEntries:
+          type: boolean
+          readOnly: true
         id:
           type: string
         phone:
@@ -210,6 +309,9 @@ components:
           type: string
         functionTitle:
           type: string
+        hasTimesheetEntries:
+          type: boolean
+          readOnly: true
         id:
           type: string
         lastName:
