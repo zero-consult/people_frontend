@@ -97,9 +97,9 @@ function SingleCustomer() {
                     ...customer,
                     status: e.target.value as CustomerStatus
                 }))}>
-                    <option key={"Active"}>Active</option>
-                    <option key={"Inactive"}>Inactive</option>
-                    <option key={"Prospect"}>Prospect</option>
+                    <option key={"Active"} value={"Active"}>Active</option>
+                    <option key={"Inactive"} value={"Inactive"}>Inactive</option>
+                    <option key={"Prospect"} value={"Prospect"}>Prospect</option>
                 </select>
             </div>
             <div className="col-span-2">
@@ -148,7 +148,7 @@ function SingleCustomer() {
             </div>
             <div className="col-span-2">
                 <button onClick={() => saveCustomer()}
-                        className="flex items-center gap-2 px-4 py-2.5 rounded-md bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/90 transition-colors">
+                        className="w-full flex items-center gap-2 px-4 py-2.5 rounded-md bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/90 transition-colors">
                     <Save className="w-4 h-4"/> Save
                 </button>
             </div>

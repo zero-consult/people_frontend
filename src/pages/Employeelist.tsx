@@ -99,6 +99,18 @@ function Employeelist() {
     const activeCount = employees.filter((e) => e.status === "Active").length;
     const leaveCount = employees.filter((e) => e.status === "On leave").length;
 
+    async function deleteEmployee(emp: Employee) {
+        if(typeof emp.id != "undefined") {
+            const deleteEmployee = await EmployeeApiFp(new Configuration({basePath: PEOPLE_BACKEND_HOST})).deleteEmployee(emp.id);
+            const deleteEmployeeResponse = await deleteEmployee(axios);
+            if (deleteEmployeeResponse.status === 200) {
+                fetchEmployees();
+            } else {
+                alert("Failed to delete employee");
+            }
+        }
+    }
+
     return <>
         <header className="px-8 py-6 border-b border-border flex items-center justify-between">
             <div>
@@ -211,6 +223,7 @@ function Employeelist() {
                                         className="w-3.5 h-3.5"/></Link>
                                     {!emp.hasTimesheetEntries ?
                                         <button
+                                            onClick={() => deleteEmployee(emp)}
                                             className="p-1.5 rounded-md hover:bg-destructive/15 hover:text-destructive text-muted-foreground transition-colors">
                                             <Trash2 className="w-3.5 h-3.5"/></button>
                                         : <></>}

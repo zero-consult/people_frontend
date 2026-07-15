@@ -97,6 +97,18 @@ function Customerlist() {
     const activeCount = customers.filter((c) => c.status === "Active").length;
     const prospectCount = customers.filter((c) => c.status === "Prospect").length;
 
+    async function deleteCustomer(emp: Customer) {
+        if (typeof emp.id != "undefined") {
+            const deleteCustomer = await CustomerApiFp(new Configuration({basePath: PEOPLE_BACKEND_HOST})).deleteCustomer(emp.id);
+            const deleteCustomerResponse = await deleteCustomer(axios);
+            if (deleteCustomerResponse.status === 200) {
+                fetchCustomers();
+            } else {
+                alert("Failed to delete customer");
+            }
+        }
+    }
+
     return (
         <>
             <header className="px-8 py-6 border-b border-border flex items-center justify-between">
@@ -225,6 +237,7 @@ function Customerlist() {
                                         className="w-3.5 h-3.5"/></Link>
                                     {!customer.hasTimesheetEntries ?
                                         <button
+                                            onClick={() => deleteCustomer(customer)}
                                             className="p-1.5 rounded-md hover:bg-destructive/15 hover:text-destructive text-muted-foreground transition-colors">
                                             <Trash2 className="w-3.5 h-3.5"/></button>
                                         : <></>}

@@ -119,9 +119,9 @@ function SingleEmployee() {
                     ...employee,
                     status: e.target.value as EmployeeStatus
                 }))}>
-                    <option key="Active">active</option>
-                    <option key="Inactive">inactive</option>
-                    <option key="On leave">on leave</option>
+                    <option key="Active" value={"Active"}>active</option>
+                    <option key="Inactive" value={"Inactive"}>inactive</option>
+                    <option key="On leave" value={"On leave"}>on leave</option>
                 </select>
             </div>
             <div className="col-span-2">
