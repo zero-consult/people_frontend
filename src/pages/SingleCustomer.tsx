@@ -54,7 +54,7 @@ function SingleCustomer() {
                     person first name</label>
                 <input
                     className="w-full bg-input-background text-foreground placeholder:text-muted-foreground text-sm rounded-md px-3 py-2 border border-border focus:outline-none focus:ring-1 focus:ring-ring"
-                    placeholder="Voor- en achternaam" value={customer.contactPersonFirstName}
+                    placeholder="First name" value={customer.contactPersonFirstName}
                     onChange={(e) => dispatch(loadSingleCustomer({
                         ...customer,
                         contactPersonFirstName: e.target.value
@@ -65,7 +65,7 @@ function SingleCustomer() {
                     person last name</label>
                 <input
                     className="w-full bg-input-background text-foreground placeholder:text-muted-foreground text-sm rounded-md px-3 py-2 border border-border focus:outline-none focus:ring-1 focus:ring-ring"
-                    placeholder="Voor- en achternaam" value={customer.contactPersonLastName}
+                    placeholder="Last name" value={customer.contactPersonLastName}
                     onChange={(e) => dispatch(loadSingleCustomer({
                         ...customer,
                         contactPersonLastName: e.target.value

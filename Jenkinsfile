@@ -9,6 +9,12 @@ pipeline {
                 }
             }
         }
+        stage('pull tags') {
+            agent any
+            steps {
+                sh "git fetch --tags"
+            }
+        }
 		stage('Tag version') {
 		    agent {
                 docker { image 'node:latest' }

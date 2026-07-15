@@ -176,8 +176,7 @@ function Customerlist() {
                     <tbody>
                     {filtered.length === 0 && (
                         <tr>
-                            <td colSpan={7} className="py-16 text-center text-muted-foreground text-sm">Geen klanten
-                                gevonden.
+                            <td colSpan={7} className="py-16 text-center text-muted-foreground text-sm">No customers found.
                             </td>
                         </tr>
                     )}
