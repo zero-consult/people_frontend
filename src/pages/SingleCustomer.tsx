@@ -37,6 +37,7 @@ function SingleCustomer() {
             const customerUpdateResponse = await customerUpdate(axios);
             dispatch(loadSingleCustomer(customerUpdateResponse.data));
         }
+        window.location.href = "/customers";
     }
 
     return <>
@@ -146,10 +147,10 @@ function SingleCustomer() {
                        }))}/>
             </div>
             <div className="col-span-2">
-                <Link to={"/customers"} onClick={() => saveCustomer()}
+                <button onClick={() => saveCustomer()}
                       className="flex items-center gap-2 px-4 py-2.5 rounded-md bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/90 transition-colors">
                     <Save className="w-4 h-4"/> Save
-                </Link>
+                </button>
             </div>
         </div>
     </>

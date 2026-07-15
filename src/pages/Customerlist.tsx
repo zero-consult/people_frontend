@@ -103,10 +103,10 @@ function Customerlist() {
                 <div>
                     <h1 className="text-xl font-semibold text-foreground tracking-tight"
                         style={{fontFamily: "'Instrument Sans', sans-serif"}}>
-                        Klanten
+                        Customers
                     </h1>
                     <p className="text-sm text-muted-foreground mt-0.5">
-                        {customers.length} klanten — {activeCount} actief, {prospectCount} prospects
+                        {customers.length} customers — {activeCount} active, {prospectCount} prospects
                     </p>
                 </div>
                 <Link to={"/customers/add"}
@@ -117,9 +117,9 @@ function Customerlist() {
 
             <div className="px-8 py-5 grid grid-cols-3 gap-4 border-b border-border">
                 {[
-                    {label: "Totaal", value: customers.length, sub: "klanten"},
-                    {label: "Actief", value: activeCount, sub: "lopende relatie"},
-                    {label: "Prospects", value: prospectCount, sub: "in onderhandeling"},
+                    {label: "Total", value: customers.length, sub: "customers"},
+                    {label: "Active", value: activeCount, sub: "ongoing relation"},
+                    {label: "Prospects", value: prospectCount, sub: "in negotiation"},
                 ].map(({label, value, sub}) => (
                     <div key={label} className="bg-card rounded-lg px-5 py-4 border border-border">
                         <p className="text-xs text-muted-foreground uppercase tracking-widest mb-1"
@@ -136,7 +136,7 @@ function Customerlist() {
                     <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground"/>
                     <input
                         className="w-full bg-input-background text-foreground placeholder:text-muted-foreground text-sm rounded-md pl-9 pr-3 py-2 border border-border focus:outline-none focus:ring-1 focus:ring-ring"
-                        placeholder="Zoek bedrijf, contactpersoon, stad…" value={search} onChange={(e) => {
+                        placeholder="Search company, contact person, city..." value={search} onChange={(e) => {
                         setSearch(e.target.value);
                         setCurrentPage(1);
                     }}/>

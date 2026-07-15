@@ -60,6 +60,7 @@ function SingleEmployee() {
             const employeeUpdateResponse = await employeeUpdate(axios);
             dispatch(loadSingleEmployee(employeeUpdateResponse.data));
         }
+        window.location.href = "/employees";
     }
 
     function setDate(date: string) {
@@ -195,10 +196,10 @@ function SingleEmployee() {
                 }
             </div>
             <div className="col-span-2">
-                <Link to={"/employees"} onClick={() => saveEmployee()}
+                <button onClick={() => saveEmployee()}
                       className="flex items-center gap-2 px-4 py-2.5 rounded-md bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/90 transition-colors">
                     <Save className="w-4 h-4"/> Save
-                </Link>
+                </button>
             </div>
         </div>
     </>
