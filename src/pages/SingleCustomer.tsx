@@ -1,5 +1,5 @@
 import {useDispatch, useSelector} from "react-redux";
-import {Link, useParams} from "react-router";
+import {useParams} from "react-router";
 import {loadSingleCustomer, resetSingleCustomer, selectSelectedCustomer} from "../redux/customer.slice.ts";
 import {useEffect} from "react";
 import {Configuration, CustomerApiFp, type CustomerStatus, type Sector} from "../types/people";
@@ -148,7 +148,7 @@ function SingleCustomer() {
             </div>
             <div className="col-span-2">
                 <button onClick={() => saveCustomer()}
-                      className="flex items-center gap-2 px-4 py-2.5 rounded-md bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/90 transition-colors">
+                        className="flex items-center gap-2 px-4 py-2.5 rounded-md bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/90 transition-colors">
                     <Save className="w-4 h-4"/> Save
                 </button>
             </div>

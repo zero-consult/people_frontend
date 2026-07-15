@@ -1,5 +1,5 @@
 import {useEffect, useMemo, useState} from "react";
-import {Link, useParams} from "react-router";
+import {useParams} from "react-router";
 import {Save, Search, X} from "lucide-react";
 import {Configuration, type Department, EmployeeApiFp, type EmployeeStatus} from "../types/people";
 import {PEOPLE_BACKEND_HOST} from "../Constants.ts";
@@ -197,7 +197,7 @@ function SingleEmployee() {
             </div>
             <div className="col-span-2">
                 <button onClick={() => saveEmployee()}
-                      className="flex items-center gap-2 px-4 py-2.5 rounded-md bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/90 transition-colors">
+                        className="flex items-center gap-2 px-4 py-2.5 rounded-md bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/90 transition-colors">
                     <Save className="w-4 h-4"/> Save
                 </button>
             </div>
