@@ -7,6 +7,7 @@ import {PEOPLE_BACKEND_HOST} from "../Constants.ts";
 import axios from "axios";
 import moment from "moment/moment";
 import {Save} from "lucide-react";
+import {handleError, showError} from "../redux/error.slice.ts";
 
 function SingleCustomer() {
     const dispatch = useDispatch();
@@ -15,8 +16,12 @@ function SingleCustomer() {
 
     async function fetchCustomer(customerId: string) {
         const customerFetch = await CustomerApiFp(new Configuration({basePath: PEOPLE_BACKEND_HOST})).getCustomer(customerId);
-        const customerFetchResponse = await customerFetch(axios);
-        dispatch(loadSingleCustomer(customerFetchResponse.data));
+        try {
+            const customerFetchResponse = await customerFetch(axios);
+            dispatch(loadSingleCustomer(customerFetchResponse.data));
+        } catch(error) {
+            dispatch(handleError(error))
+        }
     }
 
     useEffect(() => {
@@ -28,31 +33,58 @@ function SingleCustomer() {
     }, [customerId]);
 
     async function saveCustomer() {
+        if (customer.companyName.length === 0) {
+            dispatch(showError({title: "Input error", message: "Company name is required"}));
+            return;
+        }
+        if (customer.contactPersonFirstName.length === 0) {
+            dispatch(showError({title: "Input error", message: "Company contact person first name is required"}));
+            return;
+        }
+        if (customer.contactPersonLastName.length === 0) {
+            dispatch(showError({title: "Input error", message: "Company contact person last name is required"}));
+            return;
+        }
+        if (customer.email.length === 0) {
+            dispatch(showError({title: "Input error", message: "E-mail is required"}));
+            return;
+        }
+        if (customer.email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/) === null) {
+            dispatch(showError({title: "Input error", message: "E-mail is invalid"}));
+            return;
+        }
         if (typeof customerId === "undefined") {
             const customerAdd = await CustomerApiFp(new Configuration({basePath: PEOPLE_BACKEND_HOST})).addCustomer(customer);
-            const customerAddResponse = await customerAdd(axios);
-            dispatch(loadSingleCustomer(customerAddResponse.data));
+            try {
+                const customerAddResponse = await customerAdd(axios);
+                dispatch(loadSingleCustomer(customerAddResponse.data));
+                window.location.href = "/customers";
+            } catch(error) {
+                dispatch(handleError(error))
+            }
         } else {
             const customerUpdate = await CustomerApiFp(new Configuration({basePath: PEOPLE_BACKEND_HOST})).updateCustomer(customerId, customer);
-            const customerUpdateResponse = await customerUpdate(axios);
-            dispatch(loadSingleCustomer(customerUpdateResponse.data));
+            try {
+                const customerUpdateResponse = await customerUpdate(axios);
+                dispatch(loadSingleCustomer(customerUpdateResponse.data));
+                window.location.href = "/customers";
+            } catch(error) {
+                dispatch(handleError(error))
+            }
         }
-        window.location.href = "/customers";
     }
 
     return <>
         <div className="grid grid-cols-2 gap-4 p-5">
             <div className="col-span-2">
-                <label className="block text-xs font-medium text-muted-foreground mb-1.5 uppercase tracking-wide">Company
-                    name *</label>
+                <label className="block text-xs font-medium text-muted-foreground mb-1.5 uppercase tracking-wide">Company name *</label>
                 <input
                     className="w-full bg-input-background text-foreground placeholder:text-muted-foreground text-sm rounded-md px-3 py-2 border border-border focus:outline-none focus:ring-1 focus:ring-ring"
-                    placeholder="bijv. Nexgen Solutions BV" value={customer.companyName}
+                    placeholder="E.g. Nexgen Solutions BV" value={customer.companyName}
                     onChange={(e) => dispatch(loadSingleCustomer({...customer, companyName: e.target.value}))}/>
             </div>
             <div>
-                <label className="block text-xs font-medium text-muted-foreground mb-1.5 uppercase tracking-wide">Contact
-                    person first name</label>
+                <label className="block text-xs font-medium text-muted-foreground mb-1.5 uppercase tracking-wide">Contact person first name *</label>
                 <input
                     className="w-full bg-input-background text-foreground placeholder:text-muted-foreground text-sm rounded-md px-3 py-2 border border-border focus:outline-none focus:ring-1 focus:ring-ring"
                     placeholder="First name" value={customer.contactPersonFirstName}
@@ -62,8 +94,7 @@ function SingleCustomer() {
                     }))}/>
             </div>
             <div>
-                <label className="block text-xs font-medium text-muted-foreground mb-1.5 uppercase tracking-wide">Contact
-                    person last name</label>
+                <label className="block text-xs font-medium text-muted-foreground mb-1.5 uppercase tracking-wide">Contact person last name *</label>
                 <input
                     className="w-full bg-input-background text-foreground placeholder:text-muted-foreground text-sm rounded-md px-3 py-2 border border-border focus:outline-none focus:ring-1 focus:ring-ring"
                     placeholder="Last name" value={customer.contactPersonLastName}
@@ -103,8 +134,7 @@ function SingleCustomer() {
                 </select>
             </div>
             <div className="col-span-2">
-                <label className="block text-xs font-medium text-muted-foreground mb-1.5 uppercase tracking-wide">E-mail
-                    *</label>
+                <label className="block text-xs font-medium text-muted-foreground mb-1.5 uppercase tracking-wide">E-mail *</label>
                 <input type="email"
                        className="w-full bg-input-background text-foreground placeholder:text-muted-foreground text-sm rounded-md px-3 py-2 border border-border focus:outline-none focus:ring-1 focus:ring-ring"
                        placeholder="contact@company.com" value={customer.email}
@@ -112,8 +142,7 @@ function SingleCustomer() {
             </div>
             <div>
                 <label
-                    className="block text-xs font-medium text-muted-foreground mb-1.5 uppercase tracking-wide">Phone
-                    number</label>
+                    className="block text-xs font-medium text-muted-foreground mb-1.5 uppercase tracking-wide">Phone number</label>
                 <input
                     className="w-full bg-input-background text-foreground placeholder:text-muted-foreground text-sm rounded-md px-3 py-2 border border-border focus:outline-none focus:ring-1 focus:ring-ring"
                     placeholder="+31 20 ..." value={customer.phone}
@@ -124,7 +153,7 @@ function SingleCustomer() {
                     className="block text-xs font-medium text-muted-foreground mb-1.5 uppercase tracking-wide">City</label>
                 <input
                     className="w-full bg-input-background text-foreground placeholder:text-muted-foreground text-sm rounded-md px-3 py-2 border border-border focus:outline-none focus:ring-1 focus:ring-ring"
-                    placeholder="bijv. Amsterdam" value={customer.city}
+                    placeholder="E.g. Amsterdam" value={customer.city}
                     onChange={(e) => dispatch(loadSingleCustomer({...customer, city: e.target.value}))}/>
             </div>
             <div>
@@ -132,12 +161,11 @@ function SingleCustomer() {
                     className="block text-xs font-medium text-muted-foreground mb-1.5 uppercase tracking-wide">Website</label>
                 <input
                     className="w-full bg-input-background text-foreground placeholder:text-muted-foreground text-sm rounded-md px-3 py-2 border border-border focus:outline-none focus:ring-1 focus:ring-ring"
-                    placeholder="bedrijf.nl" value={customer.website}
+                    placeholder="company.com" value={customer.website}
                     onChange={(e) => dispatch(loadSingleCustomer({...customer, website: e.target.value}))}/>
             </div>
             <div>
-                <label className="block text-xs font-medium text-muted-foreground mb-1.5 uppercase tracking-wide">Customer
-                    since</label>
+                <label className="block text-xs font-medium text-muted-foreground mb-1.5 uppercase tracking-wide">Customer since</label>
                 <input type="date"
                        className="w-full bg-input-background text-foreground text-sm rounded-md px-3 py-2 border border-border focus:outline-none focus:ring-1 focus:ring-ring"
                        value={moment(customer.startDate).format("YYYY-MM-DD")}

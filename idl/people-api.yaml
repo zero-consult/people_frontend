@@ -56,6 +56,18 @@ paths:
             text/plain:
               schema:
                 type: string
+        '404':
+          description: 'Entity not found'
+          content:
+            text/plain:
+              schema:
+                type: string
+        '405':
+          description: 'Customer has timesheets so cannot be deleted'
+          content:
+            text/plain:
+              schema:
+                type: string
     get:
       tags:
         - customer
@@ -74,6 +86,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Customer'
+        '404':
+          description: 'Entity not found'
+          content:
+            text/plain:
+              schema:
+                type: string
     put:
       tags:
         - customer
@@ -98,6 +116,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Customer'
+        '404':
+          description: 'Entity not found'
+          content:
+            text/plain:
+              schema:
+                type: string
   /customers/{id}/hasTimesheetEntries:
     post:
       tags:
@@ -180,6 +204,18 @@ paths:
             text/plain:
               schema:
                 type: string
+        '404':
+          description: 'Entity not found'
+          content:
+            text/plain:
+              schema:
+                type: string
+        '405':
+          description: 'Employee has timesheets so cannot be deleted'
+          content:
+            text/plain:
+              schema:
+                type: string
     get:
       tags:
         - employee
@@ -198,6 +234,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Employee'
+        '404':
+          description: 'Entity not found'
+          content:
+            text/plain:
+              schema:
+                type: string
     put:
       tags:
         - employee
@@ -222,6 +264,18 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Employee'
+        '404':
+          description: 'Entity not found'
+          content:
+            text/plain:
+              schema:
+                type: string
+        '406':
+          description: 'Circular manager reference'
+          content:
+            text/plain:
+              schema:
+                type: string
   /employees/{id}/hasTimesheetEntries:
     post:
       tags:
@@ -252,6 +306,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Employee'
+        '404':
+          description: 'Entity not found'
+          content:
+            text/plain:
+              schema:
+                type: string
 components:
   schemas:
     Customer:

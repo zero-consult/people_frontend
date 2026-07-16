@@ -15,6 +15,7 @@ import Pagination, {PAGE_SIZE} from "../components/Pagination.tsx";
 import {Globe, Mail, MapPin, Pencil, Plus, Search, SortAscIcon, SortDesc, Trash2} from "lucide-react";
 import {Link} from "react-router";
 import moment from "moment/moment";
+import {handleError} from "../redux/error.slice.ts";
 
 const CUST_STATUS_COLORS: Record<CustomerStatus, string> = {
     Active: "bg-emerald-500/15 text-emerald-400",
@@ -56,8 +57,12 @@ function Customerlist() {
 
     async function fetchCustomers() {
         const customerList = await CustomerApiFp(new Configuration({basePath: PEOPLE_BACKEND_HOST})).customersList();
-        const customerListResponse = await customerList(axios);
-        dispatch(loadCustomers(customerListResponse.data));
+        try {
+            const customerListResponse = await customerList(axios);
+            dispatch(loadCustomers(customerListResponse.data));
+        } catch(error) {
+            dispatch(handleError(error))
+        }
     }
 
     useEffect(() => {
@@ -100,11 +105,11 @@ function Customerlist() {
     async function deleteCustomer(emp: Customer) {
         if (typeof emp.id != "undefined") {
             const deleteCustomer = await CustomerApiFp(new Configuration({basePath: PEOPLE_BACKEND_HOST})).deleteCustomer(emp.id);
-            const deleteCustomerResponse = await deleteCustomer(axios);
-            if (deleteCustomerResponse.status === 200) {
+            try {
+                await deleteCustomer(axios);
                 fetchCustomers();
-            } else {
-                alert("Failed to delete customer");
+            } catch(error) {
+                dispatch(handleError(error))
             }
         }
     }

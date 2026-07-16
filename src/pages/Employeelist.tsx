@@ -15,6 +15,7 @@ import moment from "moment";
 import {useDispatch, useSelector} from "react-redux";
 import {loadEmployees, selectEmployees} from "../redux/employee.slice.ts";
 import Pagination, {PAGE_SIZE} from "../components/Pagination.tsx";
+import {handleError} from "../redux/error.slice.ts";
 
 
 const DEPT_COLORS: Record<Department, string> = {
@@ -57,8 +58,12 @@ function Employeelist() {
 
     async function fetchEmployees() {
         const employeeList = await EmployeeApiFp(new Configuration({basePath: PEOPLE_BACKEND_HOST})).employeesList();
-        const employeeListResponse = await employeeList(axios);
-        dispatch(loadEmployees(employeeListResponse.data));
+        try {
+            const employeeListResponse = await employeeList(axios);
+            dispatch(loadEmployees(employeeListResponse.data));
+        } catch(error) {
+            dispatch(handleError(error))
+        }
     }
 
     useEffect(() => {
@@ -102,11 +107,11 @@ function Employeelist() {
     async function deleteEmployee(emp: Employee) {
         if(typeof emp.id != "undefined") {
             const deleteEmployee = await EmployeeApiFp(new Configuration({basePath: PEOPLE_BACKEND_HOST})).deleteEmployee(emp.id);
-            const deleteEmployeeResponse = await deleteEmployee(axios);
-            if (deleteEmployeeResponse.status === 200) {
+            try {
+                await deleteEmployee(axios);
                 fetchEmployees();
-            } else {
-                alert("Failed to delete employee");
+            } catch(error) {
+                dispatch(handleError(error))
             }
         }
     }

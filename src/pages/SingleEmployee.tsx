@@ -13,6 +13,7 @@ import {
     selectEmployees,
     selectSelectedEmployee
 } from "../redux/employee.slice.ts";
+import {handleError, showError} from "../redux/error.slice.ts";
 
 
 function SingleEmployee() {
@@ -28,8 +29,12 @@ function SingleEmployee() {
 
     async function fetchEmployees() {
         const employeeList = await EmployeeApiFp(new Configuration({basePath: PEOPLE_BACKEND_HOST})).employeesList();
-        const employeeListResponse = await employeeList(axios);
-        dispatch(loadEmployees(employeeListResponse.data));
+        try {
+            const employeeListResponse = await employeeList(axios);
+            dispatch(loadEmployees(employeeListResponse.data));
+        } catch(error) {
+            dispatch(handleError(error))
+        }
     }
 
     useEffect(() => {
@@ -38,8 +43,12 @@ function SingleEmployee() {
 
     async function fetchEmployee(employeeId: string) {
         const employeeFetch = await EmployeeApiFp(new Configuration({basePath: PEOPLE_BACKEND_HOST})).getEmployee(employeeId);
-        const employeeFetchResponse = await employeeFetch(axios);
-        dispatch(loadSingleEmployee(employeeFetchResponse.data));
+        try {
+            const employeeFetchResponse = await employeeFetch(axios);
+            dispatch(loadSingleEmployee(employeeFetchResponse.data));
+        } catch(error) {
+            dispatch(handleError(error))
+        }
     }
 
     useEffect(() => {
@@ -50,17 +59,47 @@ function SingleEmployee() {
         }
     }, [employeeId]);
 
+
     async function saveEmployee() {
+        if (employee.firstName.length === 0) {
+            dispatch(showError({title: "Input error", message: "First name is required"}));
+            return;
+        }
+        if (employee.firstName.length === 0) {
+            dispatch(showError({title: "Input error", message: "Last name is required"}));
+            return;
+        }
+        if (employee.email.length === 0) {
+            dispatch(showError({title: "Input error", message: "E-mail is required"}));
+            return;
+        }
+        if (employee.email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/) === null) {
+            dispatch(showError({title: "Input error", message: "E-mail is invalid"}));
+            return;
+        }
+        if (Number.isNaN(employee.startDate)) {
+            dispatch(showError({title: "Input error", message: "Start date is required"}));
+            return;
+        }
         if (typeof employeeId === "undefined") {
             const employeeAdd = await EmployeeApiFp(new Configuration({basePath: PEOPLE_BACKEND_HOST})).addEmployee(employee);
-            const employeeAddResponse = await employeeAdd(axios);
-            dispatch(loadSingleEmployee(employeeAddResponse.data));
+            try {
+                const employeeAddResponse = await employeeAdd(axios);
+                dispatch(loadSingleEmployee(employeeAddResponse.data));
+                window.location.href = "/employees";
+            } catch (error) {
+                dispatch(handleError(error))
+            }
         } else {
             const employeeUpdate = await EmployeeApiFp(new Configuration({basePath: PEOPLE_BACKEND_HOST})).updateEmployee(employeeId, employee);
-            const employeeUpdateResponse = await employeeUpdate(axios);
-            dispatch(loadSingleEmployee(employeeUpdateResponse.data));
+            try {
+                const employeeUpdateResponse = await employeeUpdate(axios);
+                dispatch(loadSingleEmployee(employeeUpdateResponse.data));
+                window.location.href = "/employees";
+            } catch (error) {
+                dispatch(handleError(error))
+            }
         }
-        window.location.href = "/employees";
     }
 
     function setDate(date: string) {
@@ -70,27 +109,24 @@ function SingleEmployee() {
     return <>
         <div className="grid grid-cols-2 gap-4 p-5">
             <div>
-                <label className="block text-xs font-medium text-muted-foreground mb-1.5 uppercase tracking-wide">First
-                    Name *</label>
+                <label className="block text-xs font-medium text-muted-foreground mb-1.5 uppercase tracking-wide">First Name *</label>
                 <input
                     className="w-full bg-input-background text-foreground placeholder:text-muted-foreground text-sm rounded-md px-3 py-2 border border-border focus:outline-none focus:ring-1 focus:ring-ring"
                     placeholder="First name" value={employee.firstName}
                     onChange={(e) => dispatch(loadSingleEmployee({...employee, firstName: e.target.value}))}/>
             </div>
             <div>
-                <label className="block text-xs font-medium text-muted-foreground mb-1.5 uppercase tracking-wide">Last
-                    Name *</label>
+                <label className="block text-xs font-medium text-muted-foreground mb-1.5 uppercase tracking-wide">Last Name *</label>
                 <input
                     className="w-full bg-input-background text-foreground placeholder:text-muted-foreground text-sm rounded-md px-3 py-2 border border-border focus:outline-none focus:ring-1 focus:ring-ring"
                     placeholder="Last name" value={employee.lastName}
                     onChange={(e) => dispatch(loadSingleEmployee({...employee, lastName: e.target.value}))}/>
             </div>
             <div className="col-span-2">
-                <label className="block text-xs font-medium text-muted-foreground mb-1.5 uppercase tracking-wide">Function
-                    Title</label>
+                <label className="block text-xs font-medium text-muted-foreground mb-1.5 uppercase tracking-wide">Function Title</label>
                 <input
                     className="w-full bg-input-background text-foreground placeholder:text-muted-foreground text-sm rounded-md px-3 py-2 border border-border focus:outline-none focus:ring-1 focus:ring-ring"
-                    placeholder="eg. Senior Developer" value={employee.functionTitle}
+                    placeholder="E.g. Senior Developer" value={employee.functionTitle}
                     onChange={(e) => dispatch(loadSingleEmployee({...employee, functionTitle: e.target.value}))}/>
             </div>
             <div>
@@ -125,24 +161,21 @@ function SingleEmployee() {
                 </select>
             </div>
             <div className="col-span-2">
-                <label className="block text-xs font-medium text-muted-foreground mb-1.5 uppercase tracking-wide">E-mail
-                    address *</label>
+                <label className="block text-xs font-medium text-muted-foreground mb-1.5 uppercase tracking-wide">E-mail address *</label>
                 <input type="email"
                        className="w-full bg-input-background text-foreground placeholder:text-muted-foreground text-sm rounded-md px-3 py-2 border border-border focus:outline-none focus:ring-1 focus:ring-ring"
                        placeholder="name@company.com" value={employee.email}
                        onChange={(e) => dispatch(loadSingleEmployee({...employee, email: e.target.value}))}/>
             </div>
             <div>
-                <label className="block text-xs font-medium text-muted-foreground mb-1.5 uppercase tracking-wide">Phone
-                    number</label>
+                <label className="block text-xs font-medium text-muted-foreground mb-1.5 uppercase tracking-wide">Phone number</label>
                 <input
                     className="w-full bg-input-background text-foreground placeholder:text-muted-foreground text-sm rounded-md px-3 py-2 border border-border focus:outline-none focus:ring-1 focus:ring-ring"
                     placeholder="+32 6 ..." value={employee.phone}
                     onChange={(e) => dispatch(loadSingleEmployee({...employee, phone: e.target.value}))}/>
             </div>
             <div>
-                <label className="block text-xs font-medium text-muted-foreground mb-1.5 uppercase tracking-wide">Start
-                    date</label>
+                <label className="block text-xs font-medium text-muted-foreground mb-1.5 uppercase tracking-wide">Start date *</label>
                 <input type="date"
                        className="w-full bg-input-background text-foreground text-sm rounded-md px-3 py-2 border border-border focus:outline-none focus:ring-1 focus:ring-ring"
                        value={moment(employee.startDate).format("YYYY-MM-DD")}
@@ -159,7 +192,7 @@ function SingleEmployee() {
                                 <div className="flex items-center gap-2">
                                     <div className="w-full rounded-full flex px-0 py-0">
                                         <span
-                                            className="text-primary text-2xl">{employee.manager.firstName} {employee.manager.lastName}</span>
+                                            className="text-primary">{employee.manager.firstName} {employee.manager.lastName}</span>
                                         <X size={32} className="absolute right-5 py-1 text-muted-foreground"
                                            onClick={() => dispatch(loadSingleEmployee({
                                                ...employee,
@@ -197,7 +230,7 @@ function SingleEmployee() {
             </div>
             <div className="col-span-2">
                 <button onClick={() => saveEmployee()}
-                        className="flex items-center gap-2 px-4 py-2.5 rounded-md bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/90 transition-colors">
+                        className="w-full flex items-center gap-2 px-4 py-2.5 rounded-md bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/90 transition-colors">
                     <Save className="w-4 h-4"/> Save
                 </button>
             </div>

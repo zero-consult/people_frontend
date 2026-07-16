@@ -7,6 +7,7 @@ import SingleEmployee from "./pages/SingleEmployee.tsx";
 import {Provider} from "react-redux";
 import store from "./redux/store.ts";
 import SingleCustomer from "./pages/SingleCustomer.tsx";
+import ErrorMessagePopup from "./components/ErrorMessagePopup.tsx";
 
 function NavigationList({active}: {active: string}) {
   return (<><Link
@@ -50,6 +51,7 @@ function NavigationList({active}: {active: string}) {
 function App() {
   return (
       <Provider store={store}>
+        <ErrorMessagePopup />
         <BrowserRouter>
           <div className="min-h-screen flex" style={{ fontFamily: "'DM Sans', sans-serif" }}>
             {/* Sidebar */}
