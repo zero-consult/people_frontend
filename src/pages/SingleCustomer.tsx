@@ -33,19 +33,19 @@ function SingleCustomer() {
     }, [customerId]);
 
     async function saveCustomer() {
-        if (customer.companyName.length === 0) {
+        if (customer.companyName.trim().length === 0) {
             dispatch(showError({title: "Input error", message: "Company name is required"}));
             return;
         }
-        if (customer.contactPersonFirstName.length === 0) {
+        if (customer.contactPersonFirstName.trim().length === 0) {
             dispatch(showError({title: "Input error", message: "Company contact person first name is required"}));
             return;
         }
-        if (customer.contactPersonLastName.length === 0) {
+        if (customer.contactPersonLastName.trim().length === 0) {
             dispatch(showError({title: "Input error", message: "Company contact person last name is required"}));
             return;
         }
-        if (customer.email.length === 0) {
+        if (customer.email.trim().length === 0) {
             dispatch(showError({title: "Input error", message: "E-mail is required"}));
             return;
         }

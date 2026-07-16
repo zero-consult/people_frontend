@@ -61,15 +61,15 @@ function SingleEmployee() {
 
 
     async function saveEmployee() {
-        if (employee.firstName.length === 0) {
+        if (employee.firstName.trim().length === 0) {
             dispatch(showError({title: "Input error", message: "First name is required"}));
             return;
         }
-        if (employee.firstName.length === 0) {
+        if (employee.firstName.trim().length === 0) {
             dispatch(showError({title: "Input error", message: "Last name is required"}));
             return;
         }
-        if (employee.email.length === 0) {
+        if (employee.email.trim().length === 0) {
             dispatch(showError({title: "Input error", message: "E-mail is required"}));
             return;
         }
