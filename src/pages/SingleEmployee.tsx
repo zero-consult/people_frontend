@@ -81,6 +81,10 @@ function SingleEmployee() {
             dispatch(showError({title: "Input error", message: "Start date is required"}));
             return;
         }
+        if (employee.phone.trim().length > 0 && employee.phone.trim().match(/^\+?[\s\d]+$/) === null) {
+            dispatch(showError({title: "Input error", message: "¨Phone number is invalid"}));
+            return;
+        }
         if (typeof employeeId === "undefined") {
             const employeeAdd = await EmployeeApiFp(new Configuration({basePath: PEOPLE_BACKEND_HOST})).addEmployee(employee);
             try {
