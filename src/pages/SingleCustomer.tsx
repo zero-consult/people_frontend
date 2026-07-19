@@ -8,8 +8,10 @@ import axios from "axios";
 import moment from "moment/moment";
 import {Save} from "lucide-react";
 import {handleError, showError} from "../redux/error.slice.ts";
+import {useTranslation} from "react-i18next";
 
 function SingleCustomer() {
+    const {t} = useTranslation();
     const dispatch = useDispatch();
     const {customerId} = useParams();
     const customer = useSelector(selectSelectedCustomer);
@@ -34,23 +36,27 @@ function SingleCustomer() {
 
     async function saveCustomer() {
         if (customer.companyName.trim().length === 0) {
-            dispatch(showError({title: "Input error", message: "Company name is required"}));
+            dispatch(showError({title: "Input error", message: t('single_customer.input.error.companyName_required')}));
             return;
         }
         if (customer.contactPersonFirstName.trim().length === 0) {
-            dispatch(showError({title: "Input error", message: "Company contact person first name is required"}));
+            dispatch(showError({title: "Input error", message: t('single_customer.input.error.contactPersonFirstName_required')}));
             return;
         }
         if (customer.contactPersonLastName.trim().length === 0) {
-            dispatch(showError({title: "Input error", message: "Company contact person last name is required"}));
+            dispatch(showError({title: "Input error", message: t('single_customer.input.error.contactPersonLastName_required')}));
             return;
         }
         if (customer.email.trim().length === 0) {
-            dispatch(showError({title: "Input error", message: "E-mail is required"}));
+            dispatch(showError({title: "Input error", message: t('single_customer.input.error.email_required')}));
             return;
         }
         if (customer.email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/) === null) {
-            dispatch(showError({title: "Input error", message: "E-mail is invalid"}));
+            dispatch(showError({title: "Input error", message: t('single_customer.input.error.email_invalid')}));
+            return;
+        }
+        if (customer.phone.trim().length > 0 && customer.phone.trim().match(/^\+?[\s\d]+$/) === null) {
+            dispatch(showError({title: "Input error", message: t('single_employee.input.error.phone_invalid')}));
             return;
         }
         if (typeof customerId === "undefined") {
@@ -77,27 +83,27 @@ function SingleCustomer() {
     return <>
         <div className="grid grid-cols-2 gap-4 p-5">
             <div className="col-span-2">
-                <label className="block text-xs font-medium text-muted-foreground mb-1.5 uppercase tracking-wide">Company name *</label>
+                <label className="block text-xs font-medium text-muted-foreground mb-1.5 uppercase tracking-wide">{t('single_customer.labels.company_name')} *</label>
                 <input
                     className="w-full bg-input-background text-foreground placeholder:text-muted-foreground text-sm rounded-md px-3 py-2 border border-border focus:outline-none focus:ring-1 focus:ring-ring"
-                    placeholder="E.g. Nexgen Solutions BV" value={customer.companyName}
+                    placeholder={t('single_customer.placeholders.company_name')} value={customer.companyName}
                     onChange={(e) => dispatch(loadSingleCustomer({...customer, companyName: e.target.value}))}/>
             </div>
             <div>
-                <label className="block text-xs font-medium text-muted-foreground mb-1.5 uppercase tracking-wide">Contact person first name *</label>
+                <label className="block text-xs font-medium text-muted-foreground mb-1.5 uppercase tracking-wide">{t('single_customer.labels.contact_person_first_name')} *</label>
                 <input
                     className="w-full bg-input-background text-foreground placeholder:text-muted-foreground text-sm rounded-md px-3 py-2 border border-border focus:outline-none focus:ring-1 focus:ring-ring"
-                    placeholder="First name" value={customer.contactPersonFirstName}
+                    placeholder={t('single_customer.placeholders.first_name')} value={customer.contactPersonFirstName}
                     onChange={(e) => dispatch(loadSingleCustomer({
                         ...customer,
                         contactPersonFirstName: e.target.value
                     }))}/>
             </div>
             <div>
-                <label className="block text-xs font-medium text-muted-foreground mb-1.5 uppercase tracking-wide">Contact person last name *</label>
+                <label className="block text-xs font-medium text-muted-foreground mb-1.5 uppercase tracking-wide">{t('single_customer.labels.contact_person_last_name')} *</label>
                 <input
                     className="w-full bg-input-background text-foreground placeholder:text-muted-foreground text-sm rounded-md px-3 py-2 border border-border focus:outline-none focus:ring-1 focus:ring-ring"
-                    placeholder="Last name" value={customer.contactPersonLastName}
+                    placeholder={t('single_customer.placeholders.last_name')} value={customer.contactPersonLastName}
                     onChange={(e) => dispatch(loadSingleCustomer({
                         ...customer,
                         contactPersonLastName: e.target.value
@@ -105,67 +111,67 @@ function SingleCustomer() {
             </div>
             <div>
                 <label
-                    className="block text-xs font-medium text-muted-foreground mb-1.5 uppercase tracking-wide">Sector</label>
+                    className="block text-xs font-medium text-muted-foreground mb-1.5 uppercase tracking-wide">{t('single_customer.labels.sector')}</label>
                 <select
                     className="w-full bg-input-background text-foreground text-sm rounded-md px-3 py-2 border border-border focus:outline-none focus:ring-1 focus:ring-ring appearance-none cursor-pointer"
                     value={customer.sector}
                     onChange={(e) => dispatch(loadSingleCustomer({...customer, sector: e.target.value as Sector}))}>
-                    <option key={"Tech"}>Tech</option>
-                    <option key={"Retail"}>Retail</option>
-                    <option key={"Healthcare"}>Healthcare</option>
-                    <option key={"Finance"}>Finance</option>
-                    <option key={"Government"}>Government</option>
-                    <option key={"Education"}>Education</option>
-                    <option key={"Other"}>Other</option>
+                    <option key={"Tech"}>{t('single_customer.sector.tech')}</option>
+                    <option key={"Retail"}>{t('single_customer.sector.retail')}</option>
+                    <option key={"Healthcare"}>{t('single_customer.sector.healthcare')}</option>
+                    <option key={"Finance"}>{t('single_customer.sector.finance')}</option>
+                    <option key={"Government"}>{t('single_customer.sector.government')}</option>
+                    <option key={"Education"}>{t('single_customer.sector.education')}</option>
+                    <option key={"Other"}>{t('single_customer.sector.other')}</option>
                 </select>
             </div>
             <div>
                 <label
-                    className="block text-xs font-medium text-muted-foreground mb-1.5 uppercase tracking-wide">Status</label>
+                    className="block text-xs font-medium text-muted-foreground mb-1.5 uppercase tracking-wide">{t('single_customer.labels.status')}</label>
                 <select
                     className="w-full bg-input-background text-foreground text-sm rounded-md px-3 py-2 border border-border focus:outline-none focus:ring-1 focus:ring-ring appearance-none cursor-pointer"
                     value={customer.status} onChange={(e) => dispatch(loadSingleCustomer({
                     ...customer,
                     status: e.target.value as CustomerStatus
                 }))}>
-                    <option key={"Active"} value={"Active"}>Active</option>
-                    <option key={"Inactive"} value={"Inactive"}>Inactive</option>
-                    <option key={"Prospect"} value={"Prospect"}>Prospect</option>
+                    <option key={"Active"} value={"Active"}>{t('single_customer.status.active')}</option>
+                    <option key={"Inactive"} value={"Inactive"}>{t('single_customer.status.inactive')}</option>
+                    <option key={"Prospect"} value={"Prospect"}>{t('single_customer.status.prospect')}</option>
                 </select>
             </div>
             <div className="col-span-2">
-                <label className="block text-xs font-medium text-muted-foreground mb-1.5 uppercase tracking-wide">E-mail *</label>
+                <label className="block text-xs font-medium text-muted-foreground mb-1.5 uppercase tracking-wide">{t('single_customer.labels.email')} *</label>
                 <input type="email"
                        className="w-full bg-input-background text-foreground placeholder:text-muted-foreground text-sm rounded-md px-3 py-2 border border-border focus:outline-none focus:ring-1 focus:ring-ring"
-                       placeholder="contact@company.com" value={customer.email}
+                       placeholder={t('single_customer.placeholders.email')} value={customer.email}
                        onChange={(e) => dispatch(loadSingleCustomer({...customer, email: e.target.value}))}/>
             </div>
             <div>
                 <label
-                    className="block text-xs font-medium text-muted-foreground mb-1.5 uppercase tracking-wide">Phone number</label>
+                    className="block text-xs font-medium text-muted-foreground mb-1.5 uppercase tracking-wide">{t('single_customer.labels.phone')}</label>
                 <input
                     className="w-full bg-input-background text-foreground placeholder:text-muted-foreground text-sm rounded-md px-3 py-2 border border-border focus:outline-none focus:ring-1 focus:ring-ring"
-                    placeholder="+31 20 ..." value={customer.phone}
+                    placeholder={t('single_customer.placeholders.phone')} value={customer.phone}
                     onChange={(e) => dispatch(loadSingleCustomer({...customer, phone: e.target.value}))}/>
             </div>
             <div>
                 <label
-                    className="block text-xs font-medium text-muted-foreground mb-1.5 uppercase tracking-wide">City</label>
+                    className="block text-xs font-medium text-muted-foreground mb-1.5 uppercase tracking-wide">{t('single_customer.labels.city')}</label>
                 <input
                     className="w-full bg-input-background text-foreground placeholder:text-muted-foreground text-sm rounded-md px-3 py-2 border border-border focus:outline-none focus:ring-1 focus:ring-ring"
-                    placeholder="E.g. Amsterdam" value={customer.city}
+                    placeholder={t('single_customer.placeholders.city')} value={customer.city}
                     onChange={(e) => dispatch(loadSingleCustomer({...customer, city: e.target.value}))}/>
             </div>
             <div>
                 <label
-                    className="block text-xs font-medium text-muted-foreground mb-1.5 uppercase tracking-wide">Website</label>
+                    className="block text-xs font-medium text-muted-foreground mb-1.5 uppercase tracking-wide">{t('single_customer.labels.website')}</label>
                 <input
                     className="w-full bg-input-background text-foreground placeholder:text-muted-foreground text-sm rounded-md px-3 py-2 border border-border focus:outline-none focus:ring-1 focus:ring-ring"
-                    placeholder="company.com" value={customer.website}
+                    placeholder={t('single_customer.placeholders.website')} value={customer.website}
                     onChange={(e) => dispatch(loadSingleCustomer({...customer, website: e.target.value}))}/>
             </div>
             <div>
-                <label className="block text-xs font-medium text-muted-foreground mb-1.5 uppercase tracking-wide">Customer since</label>
+                <label className="block text-xs font-medium text-muted-foreground mb-1.5 uppercase tracking-wide">{t('single_customer.labels.customer_since')}</label>
                 <input type="date"
                        className="w-full bg-input-background text-foreground text-sm rounded-md px-3 py-2 border border-border focus:outline-none focus:ring-1 focus:ring-ring"
                        value={moment(customer.startDate).format("YYYY-MM-DD")}
@@ -177,7 +183,7 @@ function SingleCustomer() {
             <div className="col-span-2">
                 <button onClick={() => saveCustomer()}
                         className="w-full flex items-center gap-2 px-4 py-2.5 rounded-md bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/90 transition-colors">
-                    <Save className="w-4 h-4"/> Save
+                    <Save className="w-4 h-4"/>{t('single_customer.save')}
                 </button>
             </div>
         </div>

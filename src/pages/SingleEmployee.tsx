@@ -14,9 +14,11 @@ import {
     selectSelectedEmployee
 } from "../redux/employee.slice.ts";
 import {handleError, showError} from "../redux/error.slice.ts";
+import {useTranslation} from "react-i18next";
 
 
 function SingleEmployee() {
+    const {t} = useTranslation();
     const dispatch = useDispatch();
     const {employeeId} = useParams();
     const employee = useSelector(selectSelectedEmployee);
@@ -62,27 +64,27 @@ function SingleEmployee() {
 
     async function saveEmployee() {
         if (employee.firstName.trim().length === 0) {
-            dispatch(showError({title: "Input error", message: "First name is required"}));
+            dispatch(showError({title: "Input error", message: t('single_employee.input.error.firstname')}));
             return;
         }
         if (employee.firstName.trim().length === 0) {
-            dispatch(showError({title: "Input error", message: "Last name is required"}));
+            dispatch(showError({title: "Input error", message: t('single_employee.input.error.lastname')}));
             return;
         }
         if (employee.email.trim().length === 0) {
-            dispatch(showError({title: "Input error", message: "E-mail is required"}));
+            dispatch(showError({title: "Input error", message: t('single_employee.input.error.email_required')}));
             return;
         }
         if (employee.email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/) === null) {
-            dispatch(showError({title: "Input error", message: "E-mail is invalid"}));
+            dispatch(showError({title: "Input error", message: t('single_employee.input.error.email_invalid')}));
             return;
         }
         if (Number.isNaN(employee.startDate)) {
-            dispatch(showError({title: "Input error", message: "Start date is required"}));
+            dispatch(showError({title: "Input error", message: t('single_employee.input.error.startDate')}));
             return;
         }
-        if (employee.phone.trim().length > 0 && employee.phone.trim().match(/^\+?[\s\d]+$/) === null) {
-            dispatch(showError({title: "Input error", message: "¨Phone number is invalid"}));
+        if (employee.phone.trim().length > 0 && employee.phone.trim().match(/^\+?[\s\d-]+$/) === null) {
+            dispatch(showError({title: "Input error", message: t('single_employee.input.error.phone')}));
             return;
         }
         if (typeof employeeId === "undefined") {
@@ -113,73 +115,73 @@ function SingleEmployee() {
     return <>
         <div className="grid grid-cols-2 gap-4 p-5">
             <div>
-                <label className="block text-xs font-medium text-muted-foreground mb-1.5 uppercase tracking-wide">First Name *</label>
+                <label className="block text-xs font-medium text-muted-foreground mb-1.5 uppercase tracking-wide">{t('single_employee.labels.firstName')} *</label>
                 <input
                     className="w-full bg-input-background text-foreground placeholder:text-muted-foreground text-sm rounded-md px-3 py-2 border border-border focus:outline-none focus:ring-1 focus:ring-ring"
-                    placeholder="First name" value={employee.firstName}
+                    placeholder={t('single_employee.labels.firstName')} value={employee.firstName}
                     onChange={(e) => dispatch(loadSingleEmployee({...employee, firstName: e.target.value}))}/>
             </div>
             <div>
-                <label className="block text-xs font-medium text-muted-foreground mb-1.5 uppercase tracking-wide">Last Name *</label>
+                <label className="block text-xs font-medium text-muted-foreground mb-1.5 uppercase tracking-wide">{t('single_employee.labels.lastName')} *</label>
                 <input
                     className="w-full bg-input-background text-foreground placeholder:text-muted-foreground text-sm rounded-md px-3 py-2 border border-border focus:outline-none focus:ring-1 focus:ring-ring"
-                    placeholder="Last name" value={employee.lastName}
+                    placeholder={t('single_employee.labels.lastName')} value={employee.lastName}
                     onChange={(e) => dispatch(loadSingleEmployee({...employee, lastName: e.target.value}))}/>
             </div>
             <div className="col-span-2">
-                <label className="block text-xs font-medium text-muted-foreground mb-1.5 uppercase tracking-wide">Function Title</label>
+                <label className="block text-xs font-medium text-muted-foreground mb-1.5 uppercase tracking-wide">{t('single_employee.labels.role')}</label>
                 <input
                     className="w-full bg-input-background text-foreground placeholder:text-muted-foreground text-sm rounded-md px-3 py-2 border border-border focus:outline-none focus:ring-1 focus:ring-ring"
-                    placeholder="E.g. Senior Developer" value={employee.functionTitle}
+                    placeholder={t('single_employee.placeholders.role')} value={employee.functionTitle}
                     onChange={(e) => dispatch(loadSingleEmployee({...employee, functionTitle: e.target.value}))}/>
             </div>
             <div>
                 <label
-                    className="block text-xs font-medium text-muted-foreground mb-1.5 uppercase tracking-wide">Department</label>
+                    className="block text-xs font-medium text-muted-foreground mb-1.5 uppercase tracking-wide">{t('single_employee.labels.department')}</label>
                 <select
                     className="w-full bg-input-background text-foreground text-sm rounded-md px-3 py-2 border border-border focus:outline-none focus:ring-1 focus:ring-ring appearance-none cursor-pointer"
                     value={employee.department} onChange={(e) => dispatch(loadSingleEmployee({
                     ...employee,
                     department: e.target.value as Department
                 }))}>
-                    <option key="Engineering">Engineering</option>
-                    <option key="Design">Design</option>
-                    <option key="Marketing">Marketing</option>
-                    <option key="Hr">Hr</option>
-                    <option key="Finance">Finance</option>
-                    <option key="Operations">Operations</option>
+                    <option key="Engineering">{t('single_employee.department.engineering')}</option>
+                    <option key="Design">{t('single_employee.department.design')}</option>
+                    <option key="Marketing">{t('single_employee.department.marketing')}</option>
+                    <option key="Hr">{t('single_employee.department.hr')}</option>
+                    <option key="Finance">{t('single_employee.department.finance')}</option>
+                    <option key="Operations">{t('single_employee.department.operations')}</option>
                 </select>
             </div>
             <div>
                 <label
-                    className="block text-xs font-medium text-muted-foreground mb-1.5 uppercase tracking-wide">Status</label>
+                    className="block text-xs font-medium text-muted-foreground mb-1.5 uppercase tracking-wide">{t('single_employee.labels.status')}</label>
                 <select
                     className="w-full bg-input-background text-foreground text-sm rounded-md px-3 py-2 border border-border focus:outline-none focus:ring-1 focus:ring-ring appearance-none cursor-pointer"
                     value={employee.status} onChange={(e) => dispatch(loadSingleEmployee({
                     ...employee,
                     status: e.target.value as EmployeeStatus
                 }))}>
-                    <option key="Active" value={"Active"}>active</option>
-                    <option key="Inactive" value={"Inactive"}>inactive</option>
-                    <option key="On leave" value={"On leave"}>on leave</option>
+                    <option key="Active" value={"Active"}>{t('single_employee.status.active')}</option>
+                    <option key="Inactive" value={"Inactive"}>{t('single_employee.status.inactive')}</option>
+                    <option key="On leave" value={"On leave"}>{t('single_employee.status.onleave')}</option>
                 </select>
             </div>
             <div className="col-span-2">
-                <label className="block text-xs font-medium text-muted-foreground mb-1.5 uppercase tracking-wide">E-mail address *</label>
+                <label className="block text-xs font-medium text-muted-foreground mb-1.5 uppercase tracking-wide">{t('single_employee.labels.email')} *</label>
                 <input type="email"
                        className="w-full bg-input-background text-foreground placeholder:text-muted-foreground text-sm rounded-md px-3 py-2 border border-border focus:outline-none focus:ring-1 focus:ring-ring"
-                       placeholder="name@company.com" value={employee.email}
+                       placeholder={t('single_employee.placeholders.email')} value={employee.email}
                        onChange={(e) => dispatch(loadSingleEmployee({...employee, email: e.target.value}))}/>
             </div>
             <div>
-                <label className="block text-xs font-medium text-muted-foreground mb-1.5 uppercase tracking-wide">Phone number</label>
+                <label className="block text-xs font-medium text-muted-foreground mb-1.5 uppercase tracking-wide">{t('single_employee.labels.phone')}</label>
                 <input
                     className="w-full bg-input-background text-foreground placeholder:text-muted-foreground text-sm rounded-md px-3 py-2 border border-border focus:outline-none focus:ring-1 focus:ring-ring"
-                    placeholder="+32 6 ..." value={employee.phone}
+                    placeholder={t('single_employee.placeholders.phone')} value={employee.phone}
                     onChange={(e) => dispatch(loadSingleEmployee({...employee, phone: e.target.value}))}/>
             </div>
             <div>
-                <label className="block text-xs font-medium text-muted-foreground mb-1.5 uppercase tracking-wide">Start date *</label>
+                <label className="block text-xs font-medium text-muted-foreground mb-1.5 uppercase tracking-wide">{t('single_employee.labels.startDate')} *</label>
                 <input type="date"
                        className="w-full bg-input-background text-foreground text-sm rounded-md px-3 py-2 border border-border focus:outline-none focus:ring-1 focus:ring-ring"
                        value={moment(employee.startDate).format("YYYY-MM-DD")}
@@ -187,7 +189,7 @@ function SingleEmployee() {
             </div>
             <div className="col-span-2">
                 <label
-                    className="block text-xs font-medium text-muted-foreground mb-1.5 uppercase tracking-wide">Manager</label>
+                    className="block text-xs font-medium text-muted-foreground mb-1.5 uppercase tracking-wide">{t('single_employee.labels.manager')}</label>
                 {
                     typeof employee.manager != "undefined" && employee.manager !== null ?
                         <div>
@@ -213,7 +215,7 @@ function SingleEmployee() {
                                     className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground"/>
                                 <input
                                     className="w-full bg-input-background text-foreground placeholder:text-muted-foreground text-sm rounded-md pl-9 pr-3 py-2 border border-border focus:outline-none focus:ring-1 focus:ring-ring"
-                                    placeholder="Search manager" value={search}
+                                    placeholder={t('single_employee.placeholders.search')} value={search}
                                     onChange={(e) => setSearch(e.target.value)}/>
                             </div>
                             {search.length > 0 ?
@@ -235,7 +237,7 @@ function SingleEmployee() {
             <div className="col-span-2">
                 <button onClick={() => saveEmployee()}
                         className="w-full flex items-center gap-2 px-4 py-2.5 rounded-md bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/90 transition-colors">
-                    <Save className="w-4 h-4"/> Save
+                    <Save className="w-4 h-4"/>{t('single_employee.save')}
                 </button>
             </div>
         </div>

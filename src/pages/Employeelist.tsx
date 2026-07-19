@@ -16,6 +16,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {loadEmployees, selectEmployees} from "../redux/employee.slice.ts";
 import Pagination, {PAGE_SIZE} from "../components/Pagination.tsx";
 import {handleError} from "../redux/error.slice.ts";
+import {useTranslation} from "react-i18next";
 
 
 const DEPT_COLORS: Record<Department, string> = {
@@ -48,6 +49,7 @@ function getAvatarColor(name: string) {
 
 
 function Employeelist() {
+    const { t } = useTranslation();
     const dispatch = useDispatch();
     const employees = useSelector(selectEmployees);
     const [search, setSearch] = useState("");
@@ -121,23 +123,23 @@ function Employeelist() {
             <div>
                 <h1 className="text-xl font-semibold text-foreground tracking-tight"
                     style={{fontFamily: "'Instrument Sans', sans-serif"}}>
-                    Employees
+                    {t('menu.employees')}
                 </h1>
                 <p className="text-sm text-muted-foreground mt-0.5">
-                    {employees.length} employees — {activeCount} active, {leaveCount} on leave
+                    {t('employeelist.number_of_employees', {count: employees.length})} — {t('employeelist.active_employees', {count: activeCount})}, {t('employeelist.on_leave_employees', {count: leaveCount})}
                 </p>
             </div>
             <Link to={"/employees/add"}
                   className="flex items-center gap-2 px-4 py-2.5 rounded-md bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/90 transition-colors">
-                <Plus className="w-4 h-4"/> Add employee
+                <Plus className="w-4 h-4"/> {t('employeelist.add_employee')}
             </Link>
         </header>
 
         <div className="px-8 py-5 grid grid-cols-3 gap-4 border-b border-border">
             {[
-                {label: "Total", value: employees.length, sub: "employees"},
-                {label: "Active", value: activeCount, sub: "in service"},
-                {label: "On leave", value: leaveCount, sub: "abscent"},
+                {label: t("employeelist.card.total"), value: employees.length, sub: t("employeelist.card.employees")},
+                {label: t("employeelist.card.active"), value: activeCount, sub: t("employeelist.card.in_service")},
+                {label: t("employeelist.card.on_leave"), value: leaveCount, sub: t("employeelist.card.abscent")},
             ].map(({label, value, sub}) => (
                 <div key={label} className="bg-card rounded-lg px-5 py-4 border border-border">
                     <p className="text-xs text-muted-foreground uppercase tracking-widest mb-1"
@@ -154,13 +156,13 @@ function Employeelist() {
                 <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground"/>
                 <input
                     className="w-full bg-input-background text-foreground placeholder:text-muted-foreground text-sm rounded-md pl-9 pr-3 py-2 border border-border focus:outline-none focus:ring-1 focus:ring-ring"
-                    placeholder="Search name, function, e-mail..." value={search}
+                    placeholder={t("employeelist.filter.search")} value={search}
                     onChange={(e) => setSearch(e.target.value)}/>
             </div>
             <div className="flex items-center gap-2 flex-wrap">
                 {(["All", DepartmentList.Design, DepartmentList.Hr, DepartmentList.Finance, DepartmentList.Engineering, DepartmentList.Marketing, DepartmentList.Operations] as const).map((d) => (
                     <button key={d} onClick={() => setDeptFilter(d as Department | "All")}
-                            className={`px-3 py-1.5 rounded-md text-xs font-medium transition-colors ${deptFilter === d ? "bg-primary text-primary-foreground" : "bg-secondary text-secondary-foreground hover:bg-secondary/80"}`}>{d}</button>
+                            className={`px-3 py-1.5 rounded-md text-xs font-medium transition-colors ${deptFilter === d ? "bg-primary text-primary-foreground" : "bg-secondary text-secondary-foreground hover:bg-secondary/80"}`}>{t('employeelist.filter.department.' + d.toLowerCase())}</button>
                 ))}
             </div>
         </div>
@@ -172,8 +174,8 @@ function Employeelist() {
                 <thead>
                 <tr className="border-b border-border">
                     {([
-                        ["name", "Name"], ["role", "Function"], ["department", "Department"],
-                        ["email", "E-mail"], ["startDate", "Start date"], ["status", "Status"],
+                        ["name", t("employeelist.table_headers.name")], ["role", t("employeelist.table_headers.role")], ["department", t("employeelist.table_headers.department")],
+                        ["email", t("employeelist.table_headers.email")], ["startDate", t("employeelist.table_headers.startDate")], ["status", t("employeelist.table_headers.status")],
                     ] as [keyof Employee, string][]).map(([key, label]) => (
                         <th key={key}
                             className="text-left py-3 px-3 text-xs font-medium text-muted-foreground uppercase tracking-widest cursor-pointer select-none hover:text-foreground transition-colors"
@@ -184,15 +186,14 @@ function Employeelist() {
                         </th>
                     ))}
                     <th className="py-3 px-3 text-right text-xs font-medium text-muted-foreground uppercase tracking-widest"
-                        style={{fontFamily: "'DM Mono', monospace"}}>Actions
+                        style={{fontFamily: "'DM Mono', monospace"}}>{t("employeelist.table_headers.actions")}
                     </th>
                 </tr>
                 </thead>
                 <tbody>
                 {paginated.length === 0 && (
                     <tr>
-                        <td colSpan={7} className="py-16 text-center text-muted-foreground text-sm">No employees
-                            found.
+                        <td colSpan={7} className="py-16 text-center text-muted-foreground text-sm">{t('employeelist.table.empty')}
                         </td>
                     </tr>
                 )}
@@ -208,7 +209,7 @@ function Employeelist() {
                         </td>
                         <td className="py-3.5 px-3 text-muted-foreground">{emp.functionTitle}</td>
                         <td className="py-3.5 px-3"><span
-                            className={`px-2.5 py-0.5 rounded-full text-xs font-medium ${typeof emp.department != "undefined" ? DEPT_COLORS[emp.department] : ""}`}>{emp.department}</span>
+                            className={`px-2.5 py-0.5 rounded-full text-xs font-medium ${typeof emp.department != "undefined" ? DEPT_COLORS[emp.department] : ""}`}>{t('employeelist.filter.department.' + ("" + emp.department).toLowerCase())}</span>
                         </td>
                         <td className="py-3.5 px-3 text-muted-foreground"
                             style={{fontFamily: "'DM Mono', monospace", fontSize: "0.8rem"}}>{emp.email}</td>
@@ -217,20 +218,20 @@ function Employeelist() {
                             {moment(emp.startDate).format("DD-MM-YYYY")}
                         </td>
                         <td className="py-3.5 px-3"><span
-                            className={`px-2.5 py-0.5 rounded-full text-xs font-medium ${EMP_STATUS_COLORS[emp.status]}`}>{emp.status}</span>
+                            className={`px-2.5 py-0.5 rounded-full text-xs font-medium ${EMP_STATUS_COLORS[emp.status]}`}>{t('employeelist.status.' + ("" + emp.status).replaceAll(' ', '').toLowerCase())}</span>
                         </td>
                         <td className="py-3.5 px-3 text-right">
                             <div
                                 className="flex items-center justify-end gap-1.5 opacity-0 group-hover:opacity-100 transition-opacity">
                                 <nav className="flex">
                                     <Link to={"/employees/" + emp.id + "/edit"}
-                                          className="p-1.5 rounded-md hover:bg-primary/15 hover:text-primary text-muted-foreground transition-colors"><Pencil
-                                        className="w-3.5 h-3.5"/></Link>
+                                          className="p-1.5 rounded-md hover:bg-primary/15 hover:text-primary text-muted-foreground transition-colors"><Pencil className="w-3.5 h-3.5"/></Link>
                                     {!emp.hasTimesheetEntries ?
                                         <button
                                             onClick={() => deleteEmployee(emp)}
                                             className="p-1.5 rounded-md hover:bg-destructive/15 hover:text-destructive text-muted-foreground transition-colors">
-                                            <Trash2 className="w-3.5 h-3.5"/></button>
+                                            <Trash2 className="w-3.5 h-3.5"/>
+                                        </button>
                                         : <></>}
                                 </nav>
                             </div>

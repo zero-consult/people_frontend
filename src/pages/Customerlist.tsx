@@ -16,6 +16,7 @@ import {Globe, Mail, MapPin, Pencil, Plus, Search, SortAscIcon, SortDesc, Trash2
 import {Link} from "react-router";
 import moment from "moment/moment";
 import {handleError} from "../redux/error.slice.ts";
+import {useTranslation} from "react-i18next";
 
 const CUST_STATUS_COLORS: Record<CustomerStatus, string> = {
     Active: "bg-emerald-500/15 text-emerald-400",
@@ -47,6 +48,7 @@ function getAvatarColor(name: string) {
 }
 
 function Customerlist() {
+    const {t} = useTranslation();
     const dispatch = useDispatch();
     const customers = useSelector(selectCustomers);
     const [search, setSearch] = useState("");
@@ -120,23 +122,23 @@ function Customerlist() {
                 <div>
                     <h1 className="text-xl font-semibold text-foreground tracking-tight"
                         style={{fontFamily: "'Instrument Sans', sans-serif"}}>
-                        Customers
+                        {t('menu.customers')}
                     </h1>
                     <p className="text-sm text-muted-foreground mt-0.5">
-                        {customers.length} customers — {activeCount} active, {prospectCount} prospects
+                        {t('customerlist.number_of_customers', {count: customers.length})} — {t('customerlist.active_customers', {count: activeCount})}, {t('customerlist.prospects', {count: prospectCount})}
                     </p>
                 </div>
                 <Link to={"/customers/add"}
                       className="flex items-center gap-2 px-4 py-2.5 rounded-md bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/90 transition-colors">
-                    <Plus className="w-4 h-4"/> Add customer
+                    <Plus className="w-4 h-4"/> {t('customerlist.add_customer')}
                 </Link>
             </header>
 
             <div className="px-8 py-5 grid grid-cols-3 gap-4 border-b border-border">
                 {[
-                    {label: "Total", value: customers.length, sub: "customers"},
-                    {label: "Active", value: activeCount, sub: "ongoing relation"},
-                    {label: "Prospects", value: prospectCount, sub: "in negotiation"},
+                    {label: t('customerlist.card.total'), value: customers.length, sub: t('customerlist.card.customers')},
+                    {label: t('customerlist.card.active'), value: activeCount, sub: t('customerlist.card.ongoing_relation', {count: activeCount})},
+                    {label: t('customerlist.card.prospects'), value: prospectCount, sub: t('customerlist.card.in_negotiation')},
                 ].map(({label, value, sub}) => (
                     <div key={label} className="bg-card rounded-lg px-5 py-4 border border-border">
                         <p className="text-xs text-muted-foreground uppercase tracking-widest mb-1"
@@ -153,7 +155,7 @@ function Customerlist() {
                     <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground"/>
                     <input
                         className="w-full bg-input-background text-foreground placeholder:text-muted-foreground text-sm rounded-md pl-9 pr-3 py-2 border border-border focus:outline-none focus:ring-1 focus:ring-ring"
-                        placeholder="Search company, contact person, city..." value={search} onChange={(e) => {
+                        placeholder={t('customerlist.filter.search')} value={search} onChange={(e) => {
                         setSearch(e.target.value);
                         setCurrentPage(1);
                     }}/>
@@ -164,18 +166,20 @@ function Customerlist() {
                             setSectorFilter(s as CustomerSector | "All");
                             setCurrentPage(1);
                         }}
-                                className={`px-3 py-1.5 rounded-md text-xs font-medium transition-colors ${sectorFilter === s ? "bg-primary text-primary-foreground" : "bg-secondary text-secondary-foreground hover:bg-secondary/80"}`}>{s}</button>
+                                className={`px-3 py-1.5 rounded-md text-xs font-medium transition-colors ${sectorFilter === s ? "bg-primary text-primary-foreground" : "bg-secondary text-secondary-foreground hover:bg-secondary/80"}`}>{t('customerlist.filter.sector.' + s.toLowerCase())}</button>
                     ))}
                 </div>
             </div>
+
+            <Pagination page={currentPage} total={filtered.length} onChange={setCurrentPage}/>
 
             <div className="overflow-x-auto px-8 py-4">
                 <table className="w-full border-collapse text-sm">
                     <thead>
                     <tr className="border-b border-border">
                         {([
-                            ["company", "Company"], ["contact", "Contact person"], ["sector", "Sector"],
-                            ["city", "City"], ["since", "Customer since"], ["status", "Status"],
+                            ["company", t('customerlist.table_headers.company')], ["contact", t('customerlist.table_headers.contact_person')], ["sector", t('customerlist.table_headers.sector')],
+                            ["city", t('customerlist.table_headers.city')], ["since", t('customerlist.table_headers.customer_since')], ["status", t('customerlist.table_headers.status')],
                         ] as [keyof Customer, string][]).map(([key, label]) => (
                             <th key={key}
                                 className="text-left py-3 px-3 text-xs font-medium text-muted-foreground uppercase tracking-widest cursor-pointer select-none hover:text-foreground transition-colors"
@@ -186,16 +190,14 @@ function Customerlist() {
                             </th>
                         ))}
                         <th className="py-3 px-3 text-right text-xs font-medium text-muted-foreground uppercase tracking-widest"
-                            style={{fontFamily: "'DM Mono', monospace"}}>Actions
+                            style={{fontFamily: "'DM Mono', monospace"}}>{t('customerlist.table_headers.actions')}
                         </th>
                     </tr>
                     </thead>
                     <tbody>
                     {filtered.length === 0 && (
                         <tr>
-                            <td colSpan={7} className="py-16 text-center text-muted-foreground text-sm">No customers
-                                found.
-                            </td>
+                            <td colSpan={7} className="py-16 text-center text-muted-foreground text-sm">{t('customerlist.table.empty')}</td>
                         </tr>
                     )}
                     {paginated.map((customer, i) => (
@@ -221,7 +223,7 @@ function Customerlist() {
                                 </p>
                             </td>
                             <td className="py-3.5 px-3"><span
-                                className={`px-2.5 py-0.5 rounded-full text-xs font-medium ${SECTOR_COLORS[customer.sector]}`}>{customer.sector}</span>
+                                className={`px-2.5 py-0.5 rounded-full text-xs font-medium ${SECTOR_COLORS[customer.sector]}`}>{t('customerlist.filter.sector.' + ('' + customer.sector).toLowerCase())}</span>
                             </td>
                             <td className="py-3.5 px-3 text-muted-foreground">
                                 <span className="flex items-center gap-1.5"><MapPin
@@ -232,7 +234,7 @@ function Customerlist() {
                                 {moment(customer.startDate).format("DD-MM-YYYY")}
                             </td>
                             <td className="py-3.5 px-3"><span
-                                className={`px-2.5 py-0.5 rounded-full text-xs font-medium ${CUST_STATUS_COLORS[customer.status]}`}>{customer.status}</span>
+                                className={`px-2.5 py-0.5 rounded-full text-xs font-medium ${CUST_STATUS_COLORS[customer.status]}`}>{t('customerlist.status.' + ('' + customer.status).toLowerCase())}</span>
                             </td>
                             <td className="py-3.5 px-3 text-right">
                                 <div
@@ -253,7 +255,6 @@ function Customerlist() {
                     </tbody>
                 </table>
             </div>
-            <Pagination page={currentPage} total={filtered.length} onChange={setCurrentPage}/>
         </>
     )
 }

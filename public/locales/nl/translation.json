@@ -1,0 +1,193 @@
+{
+  "customerlist": {
+    "add_customer": "klant toevoegen",
+    "active_customers": "{{count}} actief",
+    "card": {
+      "active": "Actief",
+      "customers": "klanten",
+      "in_negotiation": "in onderhandeling",
+      "ongoing_relation_one": "lopende relatie",
+      "ongoing_relation_other": "lopende relaties",
+      "prospects": "Potentiële klanten",
+      "total": "Totaal"
+    },
+    "filter": {
+      "sector": {
+        "all": "Allemaal",
+        "education": "Education",
+        "finance": "Finance",
+        "government": "Overheid",
+        "healthcare": "Gezondheidszorg",
+        "other": "Andere",
+        "retail": "Retail",
+        "tech": "Tech"
+      },
+      "search": "Zoek op bedrijf, contactpersoon, stad..."
+    },
+    "number_of_customers_one": "{{count}} klant",
+    "number_of_customers_other": "{{count}} klanten",
+    "prospects_one": "{{count}} potentiële klant",
+    "prospects_other": "{{count}} potentiële klanten",
+    "table": {
+      "empty": "Geen klanten gevonden."
+    },
+    "table_headers": {
+      "actions": "Acties",
+      "company": "Bedrijf",
+      "contact_person": "Contactpersoon",
+      "customer_since": "Klant sinds",
+      "sector": "Sector",
+      "city": "Stad",
+      "status": "Status"
+    },
+    "status": {
+      "active": "Actief",
+      "prospect": "Potentiële klant",
+      "inactive": "Inactief"
+    }
+  },
+  "employeelist": {
+    "active_employees": "{{count}} actief",
+    "add_employee": "Werknemer toevoegen",
+    "card": {
+      "abscent": "Afwezig",
+      "active": "Actief",
+      "employees": "Werknemers",
+      "in_service": "In dienst",
+      "on_leave": "Op vakantie",
+      "total": "Totaal"
+    },
+    "filter": {
+      "department": {
+        "all": "Allemaal",
+        "design": "Design",
+        "finance": "Finance",
+        "engineering": "Engineering",
+        "hr": "HR",
+        "marketing": "Marketing",
+        "operations": "Operations"
+      },
+      "search": "Zoek op naam, functie, e-mail..."
+    },
+    "number_of_employees_one": "{{count}} werknemer",
+    "number_of_employees_other": "{{count}} werknemers",
+    "on_leave_employees": "{{count}} op vakantie",
+    "status": {
+      "active": "Actief",
+      "onleave": "Op vakantie",
+      "inactive": "Inactief"
+    },
+    "table": {
+      "empty": "Geen werknemers gevonden."
+    },
+    "table_headers": {
+      "actions": "Acties",
+      "department": "Department",
+      "email": "E-mail",
+      "name": "Naam",
+      "role": "Functie",
+      "startDate": "Start datum",
+      "status": "Status"
+    }
+  },
+  "menu": {
+    "employees": "Werknemers",
+    "customers": "Klanten",
+    "timesheets": "Uurroosters",
+    "logout": "Log uit"
+  },
+  "pagination": {
+    "of": "{{from}} – {{until}} van {{total}}"
+  },
+  "single_customer": {
+    "input": {
+      "error": {
+        "company_name_required": "Bedrijfsnaam is vereist.",
+        "contact_person_first_name_required": "Voornaam contactpersoon is vereist.",
+        "contact_person_last_name_required": "Achternaam contactpersoon is vereist.",
+        "email_invalid": "E-mail is ongeldig.",
+        "email_required": "E-mail is vereist.",
+        "phone_invalid": "Telefoonnummer is ongeldig."
+      }
+    },
+    "labels": {
+      "company_name": "Bedrijfsnaam",
+      "contact_person_first_name": "Voornaam contactpersoon",
+      "contact_person_last_name": "Achternaam contactpersoon",
+      "email": "E-mail adres",
+      "phone": "Telefoonnummer",
+      "sector": "Sector",
+      "status": "Status",
+      "city": "Stad",
+      "website": "Website",
+      "customer_since": "Klant sinds"
+    },
+    "placeholders": {
+      "city": "Bijv. Amsterdam",
+      "company_name": "Bijv. Nexgen Solutions BV",
+      "email": "contact@bedrijf.com",
+      "first_name": "Voornaam",
+      "last_name": "Achternaam",
+      "phone": "+32 6 ...",
+      "website": "bedrijf.com"
+    },
+    "save": "Opslaan",
+    "sector": {
+      "education": "Education",
+      "finance": "Finance",
+      "government": "Overheid",
+      "healthcare": "Gezondheidszorg",
+      "other": "Andere",
+      "retail": "Retail",
+      "tech": "Tech"
+    },
+    "status": {
+      "active": "Actief",
+      "prospect": "Potentiële klant",
+      "inactive": "Inactief"
+    }
+  },
+  "single_employee": {
+    "department": {
+      "design": "Design",
+      "engineering": "Engineering",
+      "finance": "Finance",
+      "hr": "HR",
+      "marketing": "Marketing",
+      "operations": "Operations"
+    },
+    "input": {
+      "error": {
+        "email_invalid": "E-mail is ongeldig.",
+        "email_required": "E-mail is vereist.",
+        "firstName": "Voornaam is vereist.",
+        "lastName": "Achternaam is vereist.",
+        "phone": "Telefoonnummer is ongeldig.",
+        "startDate": "Start date is vereist."
+      }
+    },
+    "labels": {
+      "department": "Department",
+      "email": "E-mail adres",
+      "firstName": "Voornaam",
+      "lastName": "Achternaam",
+      "manager": "Manager",
+      "phone": "Telefoonnummer",
+      "role": "Functie titel",
+      "startDate": "Start datum",
+      "status": "Status"
+    },
+    "placeholders": {
+      "email": "E.g. naam@bedrijf.com",
+      "phone": "+32 6 ...",
+      "role": "Bijv. Senior Developer",
+      "search": "Zoek manager"
+    },
+    "save": "Opslaan",
+    "status": {
+      "active": "Actief",
+      "inactive": "Inactief",
+      "onleave": "Op vakantie"
+    }
+  }
+}

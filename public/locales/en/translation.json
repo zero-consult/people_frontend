@@ -1,0 +1,192 @@
+{
+  "customerlist": {
+    "add_customer": "Add customer",
+    "active_customers": "{{count}} active",
+    "card": {
+      "active": "Active",
+      "customers": "customers",
+      "in_negotiation": "in negotiation",
+      "ongoing_relation": "ongoing relation",
+      "prospects": "Prospects",
+      "total": "Total"
+    },
+    "filter": {
+      "sector": {
+        "all": "All",
+        "education": "Education",
+        "finance": "Finance",
+        "government": "Government",
+        "healthcare": "Healthcare",
+        "other": "Other",
+        "retail": "Retail",
+        "tech": "Tech"
+      },
+      "search": "Search company, contact person, city..."
+    },
+    "number_of_customers_one": "{{count}} customer",
+    "number_of_customers_other": "{{count}} customers",
+    "prospects_one": "{{count}} prospect",
+    "prospects_other": "{{count}} prospects",
+    "table": {
+      "empty": "No customers found."
+    },
+    "table_headers": {
+      "actions": "Actions",
+      "company": "Company",
+      "contact_person": "Contact person",
+      "customer_since": "Customer since",
+      "sector": "Sector",
+      "city": "City",
+      "status": "Status"
+    },
+    "status": {
+      "active": "Active",
+      "prospect": "Prospect",
+      "inactive": "Inactive"
+    }
+  },
+  "employeelist": {
+    "active_employees": "{{count}} active",
+    "add_employee": "Add employee",
+    "card": {
+      "abscent": "Abscent",
+      "active": "Active",
+      "employees": "Employees",
+      "in_service": "In service",
+      "on_leave": "On leave",
+      "total": "Total"
+    },
+    "filter": {
+      "department": {
+        "all": "All",
+        "design": "Design",
+        "finance": "Finance",
+        "engineering": "Engineering",
+        "hr": "HR",
+        "marketing": "Marketing",
+        "operations": "Operations"
+      },
+      "search": "Search name, function, e-mail..."
+    },
+    "number_of_employees_one": "{{count}} employee",
+    "number_of_employees_other": "{{count}} employees",
+    "on_leave_employees": "{{count}} on leave",
+    "status": {
+      "active": "Active",
+      "onleave": "On leave",
+      "inactive": "Inactive"
+    },
+    "table": {
+      "empty": "No employees found."
+    },
+    "table_headers": {
+      "actions": "Actions",
+      "department": "Department",
+      "email": "E-mail",
+      "name": "Name",
+      "role": "Function",
+      "startDate": "Start date",
+      "status": "Status"
+    }
+  },
+  "menu": {
+    "employees": "Employees",
+    "customers": "Customers",
+    "timesheets": "Timesheets",
+    "logout": "Log out"
+  },
+  "pagination": {
+    "of": "{{from}} – {{until}} of {{total}}"
+  },
+  "single_customer": {
+    "input": {
+      "error": {
+        "company_name_required": "Company name is required.",
+        "contact_person_first_name_required": "Contact person first name is required.",
+        "contact_person_last_name_required": "Contact person last name is required.",
+        "email_invalid": "E-mail is invalid.",
+        "email_required": "E-mail is required.",
+        "phone_invalid": "Phone number is invalid."
+      }
+    },
+    "labels": {
+      "company_name": "Company name",
+      "contact_person_first_name": "Contact person first name",
+      "contact_person_last_name": "Contact person last name",
+      "email": "E-mail address",
+      "phone": "Phone number",
+      "sector": "Sector",
+      "status": "Status",
+      "city": "City",
+      "website": "Website",
+      "customer_since": "Customer since"
+    },
+    "placeholders": {
+      "city": "E.g. Amsterdam",
+      "company_name": "E.g. Nexgen Solutions BV",
+      "email": "contact@company.com",
+      "first_name": "First name",
+      "last_name": "Last name",
+      "phone": "+32 6 ...",
+      "website": "company.com"
+    },
+    "save": "Save",
+    "sector": {
+      "education": "Education",
+      "finance": "Finance",
+      "government": "Government",
+      "healthcare": "Healthcare",
+      "other": "Other",
+      "retail": "Retail",
+      "tech": "Tech"
+    },
+    "status": {
+      "active": "Active",
+      "prospect": "Prospect",
+      "inactive": "Inactive"
+    }
+  },
+  "single_employee": {
+    "department": {
+      "design": "Design",
+      "engineering": "Engineering",
+      "finance": "Finance",
+      "hr": "HR",
+      "marketing": "Marketing",
+      "operations": "Operations"
+    },
+    "input": {
+      "error": {
+        "email_invalid": "E-mail is invalid.",
+        "email_required": "E-mail is required.",
+        "firstName": "First name is required.",
+        "lastName": "Last name is required.",
+        "phone": "Phone number is invalid.",
+        "startDate": "Start date is required."
+      }
+    },
+    "labels": {
+      "department": "Department",
+      "email": "E-mail address",
+      "firstName": "First name",
+      "lastName": "Last name",
+      "manager": "Manager",
+      "phone": "Phone number",
+      "role": "Function title",
+      "startDate": "Start date",
+      "status": "Status"
+    },
+    "placeholders": {
+      "email": "E.g. name@company.com",
+      "phone": "+32 6 ...",
+      "role": "E.g. Senior Developer",
+      "search": "Search manager"
+    },
+    "save": "Save",
+    "status": {
+      "active": "Active",
+      "inactive": "Inactive",
+      "onleave": "On leave"
+    }
+  }
+}

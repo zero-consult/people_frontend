@@ -1,0 +1,192 @@
+{
+  "customerlist": {
+    "add_customer": "顧客を追加",
+    "active_customers": "{{count}}件 アクティブ",
+    "card": {
+      "active": "アクティブ",
+      "customers": "顧客",
+      "in_negotiation": "交渉中",
+      "ongoing_relation": "継続的な関係",
+      "prospects": "見込み客",
+      "total": "合計"
+    },
+    "filter": {
+      "sector": {
+        "all": "すべて",
+        "education": "教育",
+        "finance": "金融",
+        "government": "政府・官公庁",
+        "healthcare": "医療・ヘルスケア",
+        "other": "その他",
+        "retail": "小売",
+        "tech": "テック"
+      },
+      "search": "企業名、担当者、都市名で検索..."
+    },
+    "number_of_customers_one": "顧客 {{count}}件",
+    "number_of_customers_other": "顧客 {{count}}件",
+    "prospects_one": "見込み客 {{count}}件",
+    "prospects_other": "見込み客 {{count}}件",
+    "table": {
+      "empty": "顧客が見つかりませんでした。"
+    },
+    "table_headers": {
+      "actions": "操作",
+      "company": "企業名",
+      "contact_person": "担当者",
+      "customer_since": "取引開始日",
+      "sector": "業界・セクター",
+      "city": "都市",
+      "status": "ステータス"
+    },
+    "status": {
+      "active": "アクティブ",
+      "prospect": "見込み客",
+      "inactive": "非アクティブ"
+    }
+  },
+  "employeelist": {
+    "active_employees": "{{count}}名 アクティブ",
+    "add_employee": "従業員を追加",
+    "card": {
+      "abscent": "欠勤",
+      "active": "アクティブ",
+      "employees": "従業員",
+      "in_service": "在職中",
+      "on_leave": "休職中",
+      "total": "合計"
+    },
+    "filter": {
+      "department": {
+        "all": "すべて",
+        "design": "デザイン",
+        "finance": "財務・経理",
+        "engineering": "エンジニアリング",
+        "hr": "人事",
+        "marketing": "マーケティング",
+        "operations": "オペレーション"
+      },
+      "search": "氏名、職能、メールアドレスで検索..."
+    },
+    "number_of_employees_one": "従業員 {{count}}名",
+    "number_of_employees_other": "従業員 {{count}}名",
+    "on_leave_employees": "{{count}}名 休職中",
+    "status": {
+      "active": "アクティブ",
+      "onleave": "休職中",
+      "inactive": "非アクティブ"
+    },
+    "table": {
+      "empty": "従業員が見つかりませんでした。"
+    },
+    "table_headers": {
+      "actions": "操作",
+      "department": "部署",
+      "email": "メールアドレス",
+      "name": "氏名",
+      "role": "職能",
+      "startDate": "入社日",
+      "status": "ステータス"
+    }
+  },
+  "menu": {
+    "employees": "従業員",
+    "customers": "顧客",
+    "timesheets": "タイムシート",
+    "logout": "ログアウト"
+  },
+  "pagination": {
+    "of": "{{total}} の {{from}} – {{until}}"
+  },
+  "single_customer": {
+    "input": {
+      "error": {
+        "company_name_required": "企業名は必須です。",
+        "contact_person_first_name_required": "担当者の名（下の名前）は必須です。",
+        "contact_person_last_name_required": "担当者の姓（苗字）は必須です。",
+        "email_invalid": "メールアドレスが無効です。",
+        "email_required": "メールアドレスは必須です。",
+        "phone_invalid": "電話番号が無効です。"
+      }
+    },
+    "labels": {
+      "company_name": "企業名",
+      "contact_person_first_name": "担当者の名",
+      "contact_person_last_name": "担当者の姓",
+      "email": "メールアドレス",
+      "phone": "電話番号",
+      "sector": "業界・セクター",
+      "status": "ステータス",
+      "city": "都市",
+      "website": "ウェブサイト",
+      "customer_since": "取引開始日"
+    },
+    "placeholders": {
+      "city": "例: 東京都",
+      "company_name": "例: Nexgen Solutions 株式会社",
+      "email": "contact@company.com",
+      "first_name": "名",
+      "last_name": "姓",
+      "phone": "03-1234-...",
+      "website": "company.com"
+    },
+    "save": "保存",
+    "sector": {
+      "education": "教育",
+      "finance": "金融",
+      "government": "政府・官公庁",
+      "healthcare": "医療・ヘルスケア",
+      "other": "その他",
+      "retail": "小売",
+      "tech": "テック"
+    },
+    "status": {
+      "active": "アクティブ",
+      "prospect": "見込み客",
+      "inactive": "非アクティブ"
+    }
+  },
+  "single_employee": {
+    "department": {
+      "design": "デザイン",
+      "engineering": "エンジニアリング",
+      "finance": "財務・経理",
+      "hr": "人事",
+      "marketing": "マーケティング",
+      "operations": "オペレーション"
+    },
+    "input": {
+      "error": {
+        "email_invalid": "メールアドレスが無効です。",
+        "email_required": "メールアドレスは必須です。",
+        "firstName": "名は必須です。",
+        "lastName": "姓は必須です。",
+        "phone": "電話番号が無効です。",
+        "startDate": "入社日は必須です。"
+      }
+    },
+    "labels": {
+      "department": "部署",
+      "email": "メールアドレス",
+      "firstName": "名",
+      "lastName": "姓",
+      "manager": "マネージャー",
+      "phone": "電話番号",
+      "role": "職位・役職",
+      "startDate": "入社日",
+      "status": "ステータス"
+    },
+    "placeholders": {
+      "email": "例: name@company.com",
+      "phone": "090-1234-...",
+      "role": "例: シニアデベロッパー",
+      "search": "マネージャーを検索"
+    },
+    "save": "保存",
+    "status": {
+      "active": "アクティブ",
+      "inactive": "非アクティブ",
+      "onleave": "休職中"
+    }
+  }
+}
