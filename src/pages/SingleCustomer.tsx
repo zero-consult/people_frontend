@@ -36,15 +36,15 @@ function SingleCustomer() {
 
     async function saveCustomer() {
         if (customer.companyName.trim().length === 0) {
-            dispatch(showError({title: "Input error", message: t('single_customer.input.error.companyName_required')}));
+            dispatch(showError({title: "Input error", message: t('single_customer.input.error.company_name_required')}));
             return;
         }
         if (customer.contactPersonFirstName.trim().length === 0) {
-            dispatch(showError({title: "Input error", message: t('single_customer.input.error.contactPersonFirstName_required')}));
+            dispatch(showError({title: "Input error", message: t('single_customer.input.error.contact_person_first_name_required')}));
             return;
         }
         if (customer.contactPersonLastName.trim().length === 0) {
-            dispatch(showError({title: "Input error", message: t('single_customer.input.error.contactPersonLastName_required')}));
+            dispatch(showError({title: "Input error", message: t('single_customer.input.error.contact_person_last_name_required')}));
             return;
         }
         if (customer.email.trim().length === 0) {
@@ -55,8 +55,12 @@ function SingleCustomer() {
             dispatch(showError({title: "Input error", message: t('single_customer.input.error.email_invalid')}));
             return;
         }
-        if (customer.phone.trim().length > 0 && customer.phone.trim().match(/^\+?[\s\d]+$/) === null) {
-            dispatch(showError({title: "Input error", message: t('single_employee.input.error.phone_invalid')}));
+        if (customer.phone.trim().length > 0 && customer.phone.trim().match(/^\+?[\s\d-]+$/) === null) {
+            dispatch(showError({title: "Input error", message: t('single_customer.input.error.phone_invalid')}));
+            return;
+        }
+        if (Number.isNaN(customer.startDate)) {
+            dispatch(showError({title: "Input error", message: t('single_customer.input.error.startDate')}));
             return;
         }
         if (typeof customerId === "undefined") {
@@ -116,13 +120,13 @@ function SingleCustomer() {
                     className="w-full bg-input-background text-foreground text-sm rounded-md px-3 py-2 border border-border focus:outline-none focus:ring-1 focus:ring-ring appearance-none cursor-pointer"
                     value={customer.sector}
                     onChange={(e) => dispatch(loadSingleCustomer({...customer, sector: e.target.value as Sector}))}>
-                    <option key={"Tech"}>{t('single_customer.sector.tech')}</option>
-                    <option key={"Retail"}>{t('single_customer.sector.retail')}</option>
-                    <option key={"Healthcare"}>{t('single_customer.sector.healthcare')}</option>
-                    <option key={"Finance"}>{t('single_customer.sector.finance')}</option>
-                    <option key={"Government"}>{t('single_customer.sector.government')}</option>
-                    <option key={"Education"}>{t('single_customer.sector.education')}</option>
-                    <option key={"Other"}>{t('single_customer.sector.other')}</option>
+                    <option key={"Tech"} value={"Tech"}>{t('single_customer.sector.tech')}</option>
+                    <option key={"Retail"} value={"Retail"}>{t('single_customer.sector.retail')}</option>
+                    <option key={"Healthcare"} value={"Healthcare"}>{t('single_customer.sector.healthcare')}</option>
+                    <option key={"Finance"} value={"Finance"}>{t('single_customer.sector.finance')}</option>
+                    <option key={"Government"} value={"Government"}>{t('single_customer.sector.government')}</option>
+                    <option key={"Education"} value={"Education"}>{t('single_customer.sector.education')}</option>
+                    <option key={"Other"} value={"Other"}>{t('single_customer.sector.other')}</option>
                 </select>
             </div>
             <div>
@@ -171,7 +175,7 @@ function SingleCustomer() {
                     onChange={(e) => dispatch(loadSingleCustomer({...customer, website: e.target.value}))}/>
             </div>
             <div>
-                <label className="block text-xs font-medium text-muted-foreground mb-1.5 uppercase tracking-wide">{t('single_customer.labels.customer_since')}</label>
+                <label className="block text-xs font-medium text-muted-foreground mb-1.5 uppercase tracking-wide">{t('single_customer.labels.customer_since')} *</label>
                 <input type="date"
                        className="w-full bg-input-background text-foreground text-sm rounded-md px-3 py-2 border border-border focus:outline-none focus:ring-1 focus:ring-ring"
                        value={moment(customer.startDate).format("YYYY-MM-DD")}

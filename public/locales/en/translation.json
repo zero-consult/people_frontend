@@ -106,7 +106,8 @@
         "contact_person_last_name_required": "Contact person last name is required.",
         "email_invalid": "E-mail is invalid.",
         "email_required": "E-mail is required.",
-        "phone_invalid": "Phone number is invalid."
+        "phone_invalid": "Phone number is invalid.",
+        "startDate": "Start date is required."
       }
     },
     "labels": {

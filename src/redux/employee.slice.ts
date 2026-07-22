@@ -3,7 +3,7 @@ import {createSlice, type PayloadAction} from "@reduxjs/toolkit";
 import type {RootState} from "./store.ts";
 import moment from "moment";
 
-const EMPTY_EMP: Employee = {
+export const EMPTY_EMP: Employee = {
     firstName: "", lastName: "", functionTitle: "", department: "Engineering",
     email: "", phone: "", startDate: moment().valueOf(), status: "Active", manager: undefined,
 };

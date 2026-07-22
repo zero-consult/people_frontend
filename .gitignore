@@ -25,3 +25,6 @@ dist-ssr
 
 # IDL generated types
 src/types/people/
+
+# Coverage
+coverage/

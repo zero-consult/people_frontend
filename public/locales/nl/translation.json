@@ -107,7 +107,8 @@
         "contact_person_last_name_required": "Achternaam contactpersoon is vereist.",
         "email_invalid": "E-mail is ongeldig.",
         "email_required": "E-mail is vereist.",
-        "phone_invalid": "Telefoonnummer is ongeldig."
+        "phone_invalid": "Telefoonnummer is ongeldig.",
+        "startDate": "Start date is vereist."
       }
     },
     "labels": {

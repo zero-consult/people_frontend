@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import {render, screen} from '@testing-library/react';
 import App from './App';
 import {expect, type MockedFunction, test, vi} from "vitest";
 import axios from "axios";
@@ -7,7 +7,7 @@ import type {Employee} from "./types/people";
 vi.mock('axios', () => {
     return {
         default: {
-            defaults: { baseURL: 'http://localhost:8080'},
+            defaults: {baseURL: 'http://localhost:8080'},
             post: vi.fn(),
             get: vi.fn(),
             delete: vi.fn(),
@@ -29,28 +29,27 @@ vi.mock('axios', () => {
 });
 
 vi.mock('react-i18next', async (importOriginal) => {
+    const actual = await importOriginal<typeof import('react-i18next')>();
 
-const actual = await importOriginal<typeof import('react-i18next')>();
-
-return {
-    ...actual,
-    useTranslation: () => {
-        return {
-            t: vi.fn((key) => key),
-            i18n: {
-                resolvedLanguage: 'en',
-                changeLanguage: vi.fn(),
+    return {
+        ...actual,
+        useTranslation: () => {
+            return {
+                t: vi.fn((key) => key),
+                i18n: {
+                    resolvedLanguage: 'en',
+                    changeLanguage: vi.fn(),
+                }
             }
-        }
-    },
-}
+        },
+    }
 });
 
 test('renders employees', async () => {
     (axios.request as MockedFunction<typeof axios.request>).mockResolvedValue(
-        { data: [] as Employee[]}
+        {data: [] as Employee[]}
     )
-    render(<App />);
+    render(<App/>);
     const linkElement = await screen.findAllByText("menu.employees");
     expect(linkElement.length).toEqual(2);
 });

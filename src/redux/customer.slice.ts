@@ -3,7 +3,7 @@ import {createSlice, type PayloadAction} from "@reduxjs/toolkit";
 import type {RootState} from "./store.ts";
 import type {Customer} from "../types/people";
 
-const EMPTY_CUST: Customer = {
+export const EMPTY_CUST: Customer = {
     city: "", companyName: "",contactPersonFirstName: "", contactPersonLastName: "", sector: "Tech",
     email: "", phone: "", startDate: moment().valueOf(), status: "Prospect",
 };

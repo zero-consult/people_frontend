@@ -106,7 +106,8 @@
         "contact_person_last_name_required": "担当者の姓（苗字）は必須です。",
         "email_invalid": "メールアドレスが無効です。",
         "email_required": "メールアドレスは必須です。",
-        "phone_invalid": "電話番号が無効です。"
+        "phone_invalid": "電話番号が無効です。",
+        "startDate": "入社日は必須です。"
       }
     },
     "labels": {

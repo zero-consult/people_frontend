@@ -64,11 +64,11 @@ function SingleEmployee() {
 
     async function saveEmployee() {
         if (employee.firstName.trim().length === 0) {
-            dispatch(showError({title: "Input error", message: t('single_employee.input.error.firstname')}));
+            dispatch(showError({title: "Input error", message: t('single_employee.input.error.firstName')}));
             return;
         }
-        if (employee.firstName.trim().length === 0) {
-            dispatch(showError({title: "Input error", message: t('single_employee.input.error.lastname')}));
+        if (employee.lastName.trim().length === 0) {
+            dispatch(showError({title: "Input error", message: t('single_employee.input.error.lastName')}));
             return;
         }
         if (employee.email.trim().length === 0) {
@@ -144,12 +144,12 @@ function SingleEmployee() {
                     ...employee,
                     department: e.target.value as Department
                 }))}>
-                    <option key="Engineering">{t('single_employee.department.engineering')}</option>
-                    <option key="Design">{t('single_employee.department.design')}</option>
-                    <option key="Marketing">{t('single_employee.department.marketing')}</option>
-                    <option key="Hr">{t('single_employee.department.hr')}</option>
-                    <option key="Finance">{t('single_employee.department.finance')}</option>
-                    <option key="Operations">{t('single_employee.department.operations')}</option>
+                    <option key="Engineering" value="Engineering">{t('single_employee.department.engineering')}</option>
+                    <option key="Design" value="Design">{t('single_employee.department.design')}</option>
+                    <option key="Marketing" value="Marketing">{t('single_employee.department.marketing')}</option>
+                    <option key="Hr" value="Hr">{t('single_employee.department.hr')}</option>
+                    <option key="Finance" value="Finance">{t('single_employee.department.finance')}</option>
+                    <option key="Operations" value="Operations">{t('single_employee.department.operations')}</option>
                 </select>
             </div>
             <div>

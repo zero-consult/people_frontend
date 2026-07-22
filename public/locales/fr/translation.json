@@ -106,7 +106,8 @@
         "contact_person_last_name_required": "Le nom de la personne de contact est requis.",
         "email_invalid": "L'adresse e-mail n'est pas valide.",
         "email_required": "L'adresse e-mail est requise.",
-        "phone_invalid": "Le numéro de téléphone n'est pas valide."
+        "phone_invalid": "Le numéro de téléphone n'est pas valide.",
+        "startDate": "La date de début est requise."
       }
     },
     "labels": {

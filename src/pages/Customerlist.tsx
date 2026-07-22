@@ -154,6 +154,7 @@ function Customerlist() {
                 <div className="relative flex-1 max-w-xs">
                     <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground"/>
                     <input
+                        id="search"
                         className="w-full bg-input-background text-foreground placeholder:text-muted-foreground text-sm rounded-md pl-9 pr-3 py-2 border border-border focus:outline-none focus:ring-1 focus:ring-ring"
                         placeholder={t('customerlist.filter.search')} value={search} onChange={(e) => {
                         setSearch(e.target.value);
@@ -244,6 +245,7 @@ function Customerlist() {
                                         className="w-3.5 h-3.5"/></Link>
                                     {!customer.hasTimesheetEntries ?
                                         <button
+                                            id={"delete-" + customer.id}
                                             onClick={() => deleteCustomer(customer)}
                                             className="p-1.5 rounded-md hover:bg-destructive/15 hover:text-destructive text-muted-foreground transition-colors">
                                             <Trash2 className="w-3.5 h-3.5"/></button>
