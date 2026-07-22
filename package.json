@@ -9,7 +9,7 @@
     "build": "npm run generate && tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "test": "vitest",
+    "test": "vitest --no-color",
     "coverage": "vitest run --coverage"
   },
   "dependencies": {
