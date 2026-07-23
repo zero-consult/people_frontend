@@ -6,7 +6,11 @@ const languages = ["nl", "en", "fr", "jp"];
 
 const cookies = new Cookies(null, { domain: 'localhost', path: '/' });
 
-function LanguageSwitcher() {
+export type LanguageSwitcherProps = {
+    compact: boolean;
+};
+
+function LanguageSwitcher(props: LanguageSwitcherProps) {
     const {i18n} = useTranslation();
 
 
@@ -21,7 +25,9 @@ function LanguageSwitcher() {
     }
 
     return <div className="px-3 py-4 border-t flex border-sidebar-border">
-        {languages.map(((language) =>
+        {languages
+            .filter((language) => !props.compact || language === i18n.resolvedLanguage)
+            .map(((language) =>
                 <button className={"grow " + " " + (i18n.resolvedLanguage === language ? "text-primary": "")} style={{fontWeight: i18n.resolvedLanguage === language ? 'bold' : 'normal'}}
                         onClick={() => setLanguage(language)}>
                     {language}
