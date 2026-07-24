@@ -90,10 +90,16 @@
     }
   },
   "menu": {
-    "employees": "従業員",
     "customers": "顧客",
-    "timesheets": "タイムシート",
-    "logout": "ログアウト"
+    "employees": "従業員",
+    "fin": "金融",
+    "financial": "金融",
+    "invoices": "請求書",
+    "logout": "ログアウト",
+    "payslips": "給与明細",
+    "per": "人員",
+    "personnel": "人員",
+    "timesheets": "タイムシート"
   },
   "pagination": {
     "of": "{{total}} の {{from}} – {{until}}"

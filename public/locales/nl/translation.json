@@ -91,10 +91,16 @@
     }
   },
   "menu": {
-    "employees": "Werknemers",
     "customers": "Klanten",
-    "timesheets": "Uurroosters",
-    "logout": "Log uit"
+    "employees": "Werknemers",
+    "fin": "Fin",
+    "financial": "Financieel",
+    "invoices": "Facturen",
+    "logout": "Log uit",
+    "payslips": "Loonfiches",
+    "per": "Per",
+    "personnel": "Personeel",
+    "timesheets": "Uurroosters"
   },
   "pagination": {
     "of": "{{from}} – {{until}} van {{total}}"

@@ -90,10 +90,16 @@
     }
   },
   "menu": {
-    "employees": "Employees",
     "customers": "Customers",
-    "timesheets": "Timesheets",
-    "logout": "Log out"
+    "employees": "Employees",
+    "fin": "Fin",
+    "financial": "Financial",
+    "invoices": "Invoices",
+    "logout": "Log out",
+    "payslips": "Payslips",
+    "per": "Per",
+    "personnel": "Personnel",
+    "timesheets": "Timesheets"
   },
   "pagination": {
     "of": "{{from}} – {{until}} of {{total}}"
