@@ -124,7 +124,7 @@ test('sort on sector', async () => {
     const renderResult = render(<Provider store={store}><BrowserRouter><Customerlist/></BrowserRouter></Provider>);
     await waitForDataToBeLoaded(renderResult);
 
-    const departmentHeader = await renderResult.findByText('customerlist.table_headers.sector :');
+    const departmentHeader = await renderResult.findByText('customerlist.table_headers.sector');
     fireEvent.click(departmentHeader);
     expect(renderResult).toMatchSnapshot();
     fireEvent.click(departmentHeader);

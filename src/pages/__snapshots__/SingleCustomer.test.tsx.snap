@@ -127,6 +127,22 @@ exports[`render single customer page 1`] = `
           <label
             class="block text-xs font-medium text-muted-foreground mb-1.5 uppercase tracking-wide"
           >
+            single_customer.labels.hiringRate
+             *
+          </label>
+          <input
+            class="w-full bg-input-background text-foreground placeholder:text-muted-foreground text-sm rounded-md px-3 py-2 border border-border focus:outline-none focus:ring-1 focus:ring-ring"
+            placeholder="50,00"
+            type="number"
+            value="50"
+          />
+        </div>
+        <div
+          class="col-span-2"
+        >
+          <label
+            class="block text-xs font-medium text-muted-foreground mb-1.5 uppercase tracking-wide"
+          >
             single_customer.labels.email
              *
           </label>
@@ -336,6 +352,22 @@ exports[`render single customer page 1`] = `
             single_customer.status.prospect
           </option>
         </select>
+      </div>
+      <div
+        class="col-span-2"
+      >
+        <label
+          class="block text-xs font-medium text-muted-foreground mb-1.5 uppercase tracking-wide"
+        >
+          single_customer.labels.hiringRate
+           *
+        </label>
+        <input
+          class="w-full bg-input-background text-foreground placeholder:text-muted-foreground text-sm rounded-md px-3 py-2 border border-border focus:outline-none focus:ring-1 focus:ring-ring"
+          placeholder="50,00"
+          type="number"
+          value="50"
+        />
       </div>
       <div
         class="col-span-2"

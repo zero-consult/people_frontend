@@ -215,7 +215,23 @@ exports[`delete employee 1`] = `
                   class="inline-flex items-center gap-1"
                 >
                   employeelist.table_headers.name
-                   :
+                  <svg
+                    aria-hidden="true"
+                    class="lucide lucide-chevron-up w-3 h-3 opacity-20"
+                    fill="none"
+                    height="24"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    viewBox="0 0 24 24"
+                    width="24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="m18 15-6-6-6 6"
+                    />
+                  </svg>
                 </span>
               </th>
               <th
@@ -226,7 +242,23 @@ exports[`delete employee 1`] = `
                   class="inline-flex items-center gap-1"
                 >
                   employeelist.table_headers.role
-                   :
+                  <svg
+                    aria-hidden="true"
+                    class="lucide lucide-chevron-up w-3 h-3 opacity-20"
+                    fill="none"
+                    height="24"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    viewBox="0 0 24 24"
+                    width="24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="m18 15-6-6-6 6"
+                    />
+                  </svg>
                 </span>
               </th>
               <th
@@ -237,7 +269,23 @@ exports[`delete employee 1`] = `
                   class="inline-flex items-center gap-1"
                 >
                   employeelist.table_headers.department
-                   :
+                  <svg
+                    aria-hidden="true"
+                    class="lucide lucide-chevron-up w-3 h-3 opacity-20"
+                    fill="none"
+                    height="24"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    viewBox="0 0 24 24"
+                    width="24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="m18 15-6-6-6 6"
+                    />
+                  </svg>
                 </span>
               </th>
               <th
@@ -248,7 +296,23 @@ exports[`delete employee 1`] = `
                   class="inline-flex items-center gap-1"
                 >
                   employeelist.table_headers.email
-                   :
+                  <svg
+                    aria-hidden="true"
+                    class="lucide lucide-chevron-up w-3 h-3 opacity-20"
+                    fill="none"
+                    height="24"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    viewBox="0 0 24 24"
+                    width="24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="m18 15-6-6-6 6"
+                    />
+                  </svg>
                 </span>
               </th>
               <th
@@ -259,7 +323,23 @@ exports[`delete employee 1`] = `
                   class="inline-flex items-center gap-1"
                 >
                   employeelist.table_headers.startDate
-                   :
+                  <svg
+                    aria-hidden="true"
+                    class="lucide lucide-chevron-up w-3 h-3 opacity-20"
+                    fill="none"
+                    height="24"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    viewBox="0 0 24 24"
+                    width="24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="m18 15-6-6-6 6"
+                    />
+                  </svg>
                 </span>
               </th>
               <th
@@ -270,7 +350,23 @@ exports[`delete employee 1`] = `
                   class="inline-flex items-center gap-1"
                 >
                   employeelist.table_headers.status
-                   :
+                  <svg
+                    aria-hidden="true"
+                    class="lucide lucide-chevron-up w-3 h-3 opacity-20"
+                    fill="none"
+                    height="24"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    viewBox="0 0 24 24"
+                    width="24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="m18 15-6-6-6 6"
+                    />
+                  </svg>
                 </span>
               </th>
               <th
@@ -756,7 +852,23 @@ exports[`delete employee 1`] = `
                 class="inline-flex items-center gap-1"
               >
                 employeelist.table_headers.name
-                 :
+                <svg
+                  aria-hidden="true"
+                  class="lucide lucide-chevron-up w-3 h-3 opacity-20"
+                  fill="none"
+                  height="24"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="m18 15-6-6-6 6"
+                  />
+                </svg>
               </span>
             </th>
             <th
@@ -767,7 +879,23 @@ exports[`delete employee 1`] = `
                 class="inline-flex items-center gap-1"
               >
                 employeelist.table_headers.role
-                 :
+                <svg
+                  aria-hidden="true"
+                  class="lucide lucide-chevron-up w-3 h-3 opacity-20"
+                  fill="none"
+                  height="24"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="m18 15-6-6-6 6"
+                  />
+                </svg>
               </span>
             </th>
             <th
@@ -778,7 +906,23 @@ exports[`delete employee 1`] = `
                 class="inline-flex items-center gap-1"
               >
                 employeelist.table_headers.department
-                 :
+                <svg
+                  aria-hidden="true"
+                  class="lucide lucide-chevron-up w-3 h-3 opacity-20"
+                  fill="none"
+                  height="24"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="m18 15-6-6-6 6"
+                  />
+                </svg>
               </span>
             </th>
             <th
@@ -789,7 +933,23 @@ exports[`delete employee 1`] = `
                 class="inline-flex items-center gap-1"
               >
                 employeelist.table_headers.email
-                 :
+                <svg
+                  aria-hidden="true"
+                  class="lucide lucide-chevron-up w-3 h-3 opacity-20"
+                  fill="none"
+                  height="24"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="m18 15-6-6-6 6"
+                  />
+                </svg>
               </span>
             </th>
             <th
@@ -800,7 +960,23 @@ exports[`delete employee 1`] = `
                 class="inline-flex items-center gap-1"
               >
                 employeelist.table_headers.startDate
-                 :
+                <svg
+                  aria-hidden="true"
+                  class="lucide lucide-chevron-up w-3 h-3 opacity-20"
+                  fill="none"
+                  height="24"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="m18 15-6-6-6 6"
+                  />
+                </svg>
               </span>
             </th>
             <th
@@ -811,7 +987,23 @@ exports[`delete employee 1`] = `
                 class="inline-flex items-center gap-1"
               >
                 employeelist.table_headers.status
-                 :
+                <svg
+                  aria-hidden="true"
+                  class="lucide lucide-chevron-up w-3 h-3 opacity-20"
+                  fill="none"
+                  height="24"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="m18 15-6-6-6 6"
+                  />
+                </svg>
               </span>
             </th>
             <th
@@ -1354,7 +1546,23 @@ exports[`renders employee list 1`] = `
                   class="inline-flex items-center gap-1"
                 >
                   employeelist.table_headers.name
-                   :
+                  <svg
+                    aria-hidden="true"
+                    class="lucide lucide-chevron-up w-3 h-3 opacity-20"
+                    fill="none"
+                    height="24"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    viewBox="0 0 24 24"
+                    width="24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="m18 15-6-6-6 6"
+                    />
+                  </svg>
                 </span>
               </th>
               <th
@@ -1365,7 +1573,23 @@ exports[`renders employee list 1`] = `
                   class="inline-flex items-center gap-1"
                 >
                   employeelist.table_headers.role
-                   :
+                  <svg
+                    aria-hidden="true"
+                    class="lucide lucide-chevron-up w-3 h-3 opacity-20"
+                    fill="none"
+                    height="24"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    viewBox="0 0 24 24"
+                    width="24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="m18 15-6-6-6 6"
+                    />
+                  </svg>
                 </span>
               </th>
               <th
@@ -1376,7 +1600,23 @@ exports[`renders employee list 1`] = `
                   class="inline-flex items-center gap-1"
                 >
                   employeelist.table_headers.department
-                   :
+                  <svg
+                    aria-hidden="true"
+                    class="lucide lucide-chevron-up w-3 h-3 opacity-20"
+                    fill="none"
+                    height="24"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    viewBox="0 0 24 24"
+                    width="24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="m18 15-6-6-6 6"
+                    />
+                  </svg>
                 </span>
               </th>
               <th
@@ -1387,7 +1627,23 @@ exports[`renders employee list 1`] = `
                   class="inline-flex items-center gap-1"
                 >
                   employeelist.table_headers.email
-                   :
+                  <svg
+                    aria-hidden="true"
+                    class="lucide lucide-chevron-up w-3 h-3 opacity-20"
+                    fill="none"
+                    height="24"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    viewBox="0 0 24 24"
+                    width="24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="m18 15-6-6-6 6"
+                    />
+                  </svg>
                 </span>
               </th>
               <th
@@ -1398,7 +1654,23 @@ exports[`renders employee list 1`] = `
                   class="inline-flex items-center gap-1"
                 >
                   employeelist.table_headers.startDate
-                   :
+                  <svg
+                    aria-hidden="true"
+                    class="lucide lucide-chevron-up w-3 h-3 opacity-20"
+                    fill="none"
+                    height="24"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    viewBox="0 0 24 24"
+                    width="24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="m18 15-6-6-6 6"
+                    />
+                  </svg>
                 </span>
               </th>
               <th
@@ -1409,7 +1681,23 @@ exports[`renders employee list 1`] = `
                   class="inline-flex items-center gap-1"
                 >
                   employeelist.table_headers.status
-                   :
+                  <svg
+                    aria-hidden="true"
+                    class="lucide lucide-chevron-up w-3 h-3 opacity-20"
+                    fill="none"
+                    height="24"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    viewBox="0 0 24 24"
+                    width="24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="m18 15-6-6-6 6"
+                    />
+                  </svg>
                 </span>
               </th>
               <th
@@ -1766,7 +2054,23 @@ exports[`renders employee list 1`] = `
                 class="inline-flex items-center gap-1"
               >
                 employeelist.table_headers.name
-                 :
+                <svg
+                  aria-hidden="true"
+                  class="lucide lucide-chevron-up w-3 h-3 opacity-20"
+                  fill="none"
+                  height="24"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="m18 15-6-6-6 6"
+                  />
+                </svg>
               </span>
             </th>
             <th
@@ -1777,7 +2081,23 @@ exports[`renders employee list 1`] = `
                 class="inline-flex items-center gap-1"
               >
                 employeelist.table_headers.role
-                 :
+                <svg
+                  aria-hidden="true"
+                  class="lucide lucide-chevron-up w-3 h-3 opacity-20"
+                  fill="none"
+                  height="24"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="m18 15-6-6-6 6"
+                  />
+                </svg>
               </span>
             </th>
             <th
@@ -1788,7 +2108,23 @@ exports[`renders employee list 1`] = `
                 class="inline-flex items-center gap-1"
               >
                 employeelist.table_headers.department
-                 :
+                <svg
+                  aria-hidden="true"
+                  class="lucide lucide-chevron-up w-3 h-3 opacity-20"
+                  fill="none"
+                  height="24"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="m18 15-6-6-6 6"
+                  />
+                </svg>
               </span>
             </th>
             <th
@@ -1799,7 +2135,23 @@ exports[`renders employee list 1`] = `
                 class="inline-flex items-center gap-1"
               >
                 employeelist.table_headers.email
-                 :
+                <svg
+                  aria-hidden="true"
+                  class="lucide lucide-chevron-up w-3 h-3 opacity-20"
+                  fill="none"
+                  height="24"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="m18 15-6-6-6 6"
+                  />
+                </svg>
               </span>
             </th>
             <th
@@ -1810,7 +2162,23 @@ exports[`renders employee list 1`] = `
                 class="inline-flex items-center gap-1"
               >
                 employeelist.table_headers.startDate
-                 :
+                <svg
+                  aria-hidden="true"
+                  class="lucide lucide-chevron-up w-3 h-3 opacity-20"
+                  fill="none"
+                  height="24"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="m18 15-6-6-6 6"
+                  />
+                </svg>
               </span>
             </th>
             <th
@@ -1821,7 +2189,23 @@ exports[`renders employee list 1`] = `
                 class="inline-flex items-center gap-1"
               >
                 employeelist.table_headers.status
-                 :
+                <svg
+                  aria-hidden="true"
+                  class="lucide lucide-chevron-up w-3 h-3 opacity-20"
+                  fill="none"
+                  height="24"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="m18 15-6-6-6 6"
+                  />
+                </svg>
               </span>
             </th>
             <th
@@ -2235,7 +2619,23 @@ exports[`renders empty employee list 1`] = `
                   class="inline-flex items-center gap-1"
                 >
                   employeelist.table_headers.name
-                   :
+                  <svg
+                    aria-hidden="true"
+                    class="lucide lucide-chevron-up w-3 h-3 opacity-20"
+                    fill="none"
+                    height="24"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    viewBox="0 0 24 24"
+                    width="24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="m18 15-6-6-6 6"
+                    />
+                  </svg>
                 </span>
               </th>
               <th
@@ -2246,7 +2646,23 @@ exports[`renders empty employee list 1`] = `
                   class="inline-flex items-center gap-1"
                 >
                   employeelist.table_headers.role
-                   :
+                  <svg
+                    aria-hidden="true"
+                    class="lucide lucide-chevron-up w-3 h-3 opacity-20"
+                    fill="none"
+                    height="24"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    viewBox="0 0 24 24"
+                    width="24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="m18 15-6-6-6 6"
+                    />
+                  </svg>
                 </span>
               </th>
               <th
@@ -2257,7 +2673,23 @@ exports[`renders empty employee list 1`] = `
                   class="inline-flex items-center gap-1"
                 >
                   employeelist.table_headers.department
-                   :
+                  <svg
+                    aria-hidden="true"
+                    class="lucide lucide-chevron-up w-3 h-3 opacity-20"
+                    fill="none"
+                    height="24"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    viewBox="0 0 24 24"
+                    width="24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="m18 15-6-6-6 6"
+                    />
+                  </svg>
                 </span>
               </th>
               <th
@@ -2268,7 +2700,23 @@ exports[`renders empty employee list 1`] = `
                   class="inline-flex items-center gap-1"
                 >
                   employeelist.table_headers.email
-                   :
+                  <svg
+                    aria-hidden="true"
+                    class="lucide lucide-chevron-up w-3 h-3 opacity-20"
+                    fill="none"
+                    height="24"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    viewBox="0 0 24 24"
+                    width="24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="m18 15-6-6-6 6"
+                    />
+                  </svg>
                 </span>
               </th>
               <th
@@ -2279,7 +2727,23 @@ exports[`renders empty employee list 1`] = `
                   class="inline-flex items-center gap-1"
                 >
                   employeelist.table_headers.startDate
-                   :
+                  <svg
+                    aria-hidden="true"
+                    class="lucide lucide-chevron-up w-3 h-3 opacity-20"
+                    fill="none"
+                    height="24"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    viewBox="0 0 24 24"
+                    width="24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="m18 15-6-6-6 6"
+                    />
+                  </svg>
                 </span>
               </th>
               <th
@@ -2290,7 +2754,23 @@ exports[`renders empty employee list 1`] = `
                   class="inline-flex items-center gap-1"
                 >
                   employeelist.table_headers.status
-                   :
+                  <svg
+                    aria-hidden="true"
+                    class="lucide lucide-chevron-up w-3 h-3 opacity-20"
+                    fill="none"
+                    height="24"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    viewBox="0 0 24 24"
+                    width="24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="m18 15-6-6-6 6"
+                    />
+                  </svg>
                 </span>
               </th>
               <th
@@ -2526,7 +3006,23 @@ exports[`renders empty employee list 1`] = `
                 class="inline-flex items-center gap-1"
               >
                 employeelist.table_headers.name
-                 :
+                <svg
+                  aria-hidden="true"
+                  class="lucide lucide-chevron-up w-3 h-3 opacity-20"
+                  fill="none"
+                  height="24"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="m18 15-6-6-6 6"
+                  />
+                </svg>
               </span>
             </th>
             <th
@@ -2537,7 +3033,23 @@ exports[`renders empty employee list 1`] = `
                 class="inline-flex items-center gap-1"
               >
                 employeelist.table_headers.role
-                 :
+                <svg
+                  aria-hidden="true"
+                  class="lucide lucide-chevron-up w-3 h-3 opacity-20"
+                  fill="none"
+                  height="24"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="m18 15-6-6-6 6"
+                  />
+                </svg>
               </span>
             </th>
             <th
@@ -2548,7 +3060,23 @@ exports[`renders empty employee list 1`] = `
                 class="inline-flex items-center gap-1"
               >
                 employeelist.table_headers.department
-                 :
+                <svg
+                  aria-hidden="true"
+                  class="lucide lucide-chevron-up w-3 h-3 opacity-20"
+                  fill="none"
+                  height="24"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="m18 15-6-6-6 6"
+                  />
+                </svg>
               </span>
             </th>
             <th
@@ -2559,7 +3087,23 @@ exports[`renders empty employee list 1`] = `
                 class="inline-flex items-center gap-1"
               >
                 employeelist.table_headers.email
-                 :
+                <svg
+                  aria-hidden="true"
+                  class="lucide lucide-chevron-up w-3 h-3 opacity-20"
+                  fill="none"
+                  height="24"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="m18 15-6-6-6 6"
+                  />
+                </svg>
               </span>
             </th>
             <th
@@ -2570,7 +3114,23 @@ exports[`renders empty employee list 1`] = `
                 class="inline-flex items-center gap-1"
               >
                 employeelist.table_headers.startDate
-                 :
+                <svg
+                  aria-hidden="true"
+                  class="lucide lucide-chevron-up w-3 h-3 opacity-20"
+                  fill="none"
+                  height="24"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="m18 15-6-6-6 6"
+                  />
+                </svg>
               </span>
             </th>
             <th
@@ -2581,7 +3141,23 @@ exports[`renders empty employee list 1`] = `
                 class="inline-flex items-center gap-1"
               >
                 employeelist.table_headers.status
-                 :
+                <svg
+                  aria-hidden="true"
+                  class="lucide lucide-chevron-up w-3 h-3 opacity-20"
+                  fill="none"
+                  height="24"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="m18 15-6-6-6 6"
+                  />
+                </svg>
               </span>
             </th>
             <th
@@ -2874,7 +3450,23 @@ exports[`sort on department 1`] = `
                   class="inline-flex items-center gap-1"
                 >
                   employeelist.table_headers.name
-                   :
+                  <svg
+                    aria-hidden="true"
+                    class="lucide lucide-chevron-up w-3 h-3 opacity-20"
+                    fill="none"
+                    height="24"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    viewBox="0 0 24 24"
+                    width="24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="m18 15-6-6-6 6"
+                    />
+                  </svg>
                 </span>
               </th>
               <th
@@ -2885,7 +3477,23 @@ exports[`sort on department 1`] = `
                   class="inline-flex items-center gap-1"
                 >
                   employeelist.table_headers.role
-                   :
+                  <svg
+                    aria-hidden="true"
+                    class="lucide lucide-chevron-up w-3 h-3 opacity-20"
+                    fill="none"
+                    height="24"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    viewBox="0 0 24 24"
+                    width="24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="m18 15-6-6-6 6"
+                    />
+                  </svg>
                 </span>
               </th>
               <th
@@ -2898,7 +3506,7 @@ exports[`sort on department 1`] = `
                   employeelist.table_headers.department
                   <svg
                     aria-hidden="true"
-                    class="lucide lucide-arrow-up-narrow-wide"
+                    class="lucide lucide-chevron-up w-3 h-3 text-primary"
                     fill="none"
                     height="24"
                     stroke="currentColor"
@@ -2910,22 +3518,9 @@ exports[`sort on department 1`] = `
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
-                      d="m3 8 4-4 4 4"
-                    />
-                    <path
-                      d="M7 4v16"
-                    />
-                    <path
-                      d="M11 12h4"
-                    />
-                    <path
-                      d="M11 16h7"
-                    />
-                    <path
-                      d="M11 20h10"
+                      d="m18 15-6-6-6 6"
                     />
                   </svg>
-                   :
                 </span>
               </th>
               <th
@@ -2936,7 +3531,23 @@ exports[`sort on department 1`] = `
                   class="inline-flex items-center gap-1"
                 >
                   employeelist.table_headers.email
-                   :
+                  <svg
+                    aria-hidden="true"
+                    class="lucide lucide-chevron-up w-3 h-3 opacity-20"
+                    fill="none"
+                    height="24"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    viewBox="0 0 24 24"
+                    width="24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="m18 15-6-6-6 6"
+                    />
+                  </svg>
                 </span>
               </th>
               <th
@@ -2947,7 +3558,23 @@ exports[`sort on department 1`] = `
                   class="inline-flex items-center gap-1"
                 >
                   employeelist.table_headers.startDate
-                   :
+                  <svg
+                    aria-hidden="true"
+                    class="lucide lucide-chevron-up w-3 h-3 opacity-20"
+                    fill="none"
+                    height="24"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    viewBox="0 0 24 24"
+                    width="24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="m18 15-6-6-6 6"
+                    />
+                  </svg>
                 </span>
               </th>
               <th
@@ -2958,7 +3585,23 @@ exports[`sort on department 1`] = `
                   class="inline-flex items-center gap-1"
                 >
                   employeelist.table_headers.status
-                   :
+                  <svg
+                    aria-hidden="true"
+                    class="lucide lucide-chevron-up w-3 h-3 opacity-20"
+                    fill="none"
+                    height="24"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    viewBox="0 0 24 24"
+                    width="24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="m18 15-6-6-6 6"
+                    />
+                  </svg>
                 </span>
               </th>
               <th
@@ -3444,7 +4087,23 @@ exports[`sort on department 1`] = `
                 class="inline-flex items-center gap-1"
               >
                 employeelist.table_headers.name
-                 :
+                <svg
+                  aria-hidden="true"
+                  class="lucide lucide-chevron-up w-3 h-3 opacity-20"
+                  fill="none"
+                  height="24"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="m18 15-6-6-6 6"
+                  />
+                </svg>
               </span>
             </th>
             <th
@@ -3455,7 +4114,23 @@ exports[`sort on department 1`] = `
                 class="inline-flex items-center gap-1"
               >
                 employeelist.table_headers.role
-                 :
+                <svg
+                  aria-hidden="true"
+                  class="lucide lucide-chevron-up w-3 h-3 opacity-20"
+                  fill="none"
+                  height="24"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="m18 15-6-6-6 6"
+                  />
+                </svg>
               </span>
             </th>
             <th
@@ -3468,7 +4143,7 @@ exports[`sort on department 1`] = `
                 employeelist.table_headers.department
                 <svg
                   aria-hidden="true"
-                  class="lucide lucide-arrow-up-narrow-wide"
+                  class="lucide lucide-chevron-up w-3 h-3 text-primary"
                   fill="none"
                   height="24"
                   stroke="currentColor"
@@ -3480,22 +4155,9 @@ exports[`sort on department 1`] = `
                   xmlns="http://www.w3.org/2000/svg"
                 >
                   <path
-                    d="m3 8 4-4 4 4"
-                  />
-                  <path
-                    d="M7 4v16"
-                  />
-                  <path
-                    d="M11 12h4"
-                  />
-                  <path
-                    d="M11 16h7"
-                  />
-                  <path
-                    d="M11 20h10"
+                    d="m18 15-6-6-6 6"
                   />
                 </svg>
-                 :
               </span>
             </th>
             <th
@@ -3506,7 +4168,23 @@ exports[`sort on department 1`] = `
                 class="inline-flex items-center gap-1"
               >
                 employeelist.table_headers.email
-                 :
+                <svg
+                  aria-hidden="true"
+                  class="lucide lucide-chevron-up w-3 h-3 opacity-20"
+                  fill="none"
+                  height="24"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="m18 15-6-6-6 6"
+                  />
+                </svg>
               </span>
             </th>
             <th
@@ -3517,7 +4195,23 @@ exports[`sort on department 1`] = `
                 class="inline-flex items-center gap-1"
               >
                 employeelist.table_headers.startDate
-                 :
+                <svg
+                  aria-hidden="true"
+                  class="lucide lucide-chevron-up w-3 h-3 opacity-20"
+                  fill="none"
+                  height="24"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="m18 15-6-6-6 6"
+                  />
+                </svg>
               </span>
             </th>
             <th
@@ -3528,7 +4222,23 @@ exports[`sort on department 1`] = `
                 class="inline-flex items-center gap-1"
               >
                 employeelist.table_headers.status
-                 :
+                <svg
+                  aria-hidden="true"
+                  class="lucide lucide-chevron-up w-3 h-3 opacity-20"
+                  fill="none"
+                  height="24"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="m18 15-6-6-6 6"
+                  />
+                </svg>
               </span>
             </th>
             <th
@@ -4071,7 +4781,23 @@ exports[`sort on department 2`] = `
                   class="inline-flex items-center gap-1"
                 >
                   employeelist.table_headers.name
-                   :
+                  <svg
+                    aria-hidden="true"
+                    class="lucide lucide-chevron-up w-3 h-3 opacity-20"
+                    fill="none"
+                    height="24"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    viewBox="0 0 24 24"
+                    width="24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="m18 15-6-6-6 6"
+                    />
+                  </svg>
                 </span>
               </th>
               <th
@@ -4082,7 +4808,23 @@ exports[`sort on department 2`] = `
                   class="inline-flex items-center gap-1"
                 >
                   employeelist.table_headers.role
-                   :
+                  <svg
+                    aria-hidden="true"
+                    class="lucide lucide-chevron-up w-3 h-3 opacity-20"
+                    fill="none"
+                    height="24"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    viewBox="0 0 24 24"
+                    width="24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="m18 15-6-6-6 6"
+                    />
+                  </svg>
                 </span>
               </th>
               <th
@@ -4095,7 +4837,7 @@ exports[`sort on department 2`] = `
                   employeelist.table_headers.department
                   <svg
                     aria-hidden="true"
-                    class="lucide lucide-arrow-down-wide-narrow"
+                    class="lucide lucide-chevron-down w-3 h-3 text-primary"
                     fill="none"
                     height="24"
                     stroke="currentColor"
@@ -4107,22 +4849,9 @@ exports[`sort on department 2`] = `
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
-                      d="m3 16 4 4 4-4"
-                    />
-                    <path
-                      d="M7 20V4"
-                    />
-                    <path
-                      d="M11 4h10"
-                    />
-                    <path
-                      d="M11 8h7"
-                    />
-                    <path
-                      d="M11 12h4"
+                      d="m6 9 6 6 6-6"
                     />
                   </svg>
-                   :
                 </span>
               </th>
               <th
@@ -4133,7 +4862,23 @@ exports[`sort on department 2`] = `
                   class="inline-flex items-center gap-1"
                 >
                   employeelist.table_headers.email
-                   :
+                  <svg
+                    aria-hidden="true"
+                    class="lucide lucide-chevron-up w-3 h-3 opacity-20"
+                    fill="none"
+                    height="24"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    viewBox="0 0 24 24"
+                    width="24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="m18 15-6-6-6 6"
+                    />
+                  </svg>
                 </span>
               </th>
               <th
@@ -4144,7 +4889,23 @@ exports[`sort on department 2`] = `
                   class="inline-flex items-center gap-1"
                 >
                   employeelist.table_headers.startDate
-                   :
+                  <svg
+                    aria-hidden="true"
+                    class="lucide lucide-chevron-up w-3 h-3 opacity-20"
+                    fill="none"
+                    height="24"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    viewBox="0 0 24 24"
+                    width="24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="m18 15-6-6-6 6"
+                    />
+                  </svg>
                 </span>
               </th>
               <th
@@ -4155,7 +4916,23 @@ exports[`sort on department 2`] = `
                   class="inline-flex items-center gap-1"
                 >
                   employeelist.table_headers.status
-                   :
+                  <svg
+                    aria-hidden="true"
+                    class="lucide lucide-chevron-up w-3 h-3 opacity-20"
+                    fill="none"
+                    height="24"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    viewBox="0 0 24 24"
+                    width="24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="m18 15-6-6-6 6"
+                    />
+                  </svg>
                 </span>
               </th>
               <th
@@ -4641,7 +5418,23 @@ exports[`sort on department 2`] = `
                 class="inline-flex items-center gap-1"
               >
                 employeelist.table_headers.name
-                 :
+                <svg
+                  aria-hidden="true"
+                  class="lucide lucide-chevron-up w-3 h-3 opacity-20"
+                  fill="none"
+                  height="24"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="m18 15-6-6-6 6"
+                  />
+                </svg>
               </span>
             </th>
             <th
@@ -4652,7 +5445,23 @@ exports[`sort on department 2`] = `
                 class="inline-flex items-center gap-1"
               >
                 employeelist.table_headers.role
-                 :
+                <svg
+                  aria-hidden="true"
+                  class="lucide lucide-chevron-up w-3 h-3 opacity-20"
+                  fill="none"
+                  height="24"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="m18 15-6-6-6 6"
+                  />
+                </svg>
               </span>
             </th>
             <th
@@ -4665,7 +5474,7 @@ exports[`sort on department 2`] = `
                 employeelist.table_headers.department
                 <svg
                   aria-hidden="true"
-                  class="lucide lucide-arrow-down-wide-narrow"
+                  class="lucide lucide-chevron-down w-3 h-3 text-primary"
                   fill="none"
                   height="24"
                   stroke="currentColor"
@@ -4677,22 +5486,9 @@ exports[`sort on department 2`] = `
                   xmlns="http://www.w3.org/2000/svg"
                 >
                   <path
-                    d="m3 16 4 4 4-4"
-                  />
-                  <path
-                    d="M7 20V4"
-                  />
-                  <path
-                    d="M11 4h10"
-                  />
-                  <path
-                    d="M11 8h7"
-                  />
-                  <path
-                    d="M11 12h4"
+                    d="m6 9 6 6 6-6"
                   />
                 </svg>
-                 :
               </span>
             </th>
             <th
@@ -4703,7 +5499,23 @@ exports[`sort on department 2`] = `
                 class="inline-flex items-center gap-1"
               >
                 employeelist.table_headers.email
-                 :
+                <svg
+                  aria-hidden="true"
+                  class="lucide lucide-chevron-up w-3 h-3 opacity-20"
+                  fill="none"
+                  height="24"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="m18 15-6-6-6 6"
+                  />
+                </svg>
               </span>
             </th>
             <th
@@ -4714,7 +5526,23 @@ exports[`sort on department 2`] = `
                 class="inline-flex items-center gap-1"
               >
                 employeelist.table_headers.startDate
-                 :
+                <svg
+                  aria-hidden="true"
+                  class="lucide lucide-chevron-up w-3 h-3 opacity-20"
+                  fill="none"
+                  height="24"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="m18 15-6-6-6 6"
+                  />
+                </svg>
               </span>
             </th>
             <th
@@ -4725,7 +5553,23 @@ exports[`sort on department 2`] = `
                 class="inline-flex items-center gap-1"
               >
                 employeelist.table_headers.status
-                 :
+                <svg
+                  aria-hidden="true"
+                  class="lucide lucide-chevron-up w-3 h-3 opacity-20"
+                  fill="none"
+                  height="24"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="m18 15-6-6-6 6"
+                  />
+                </svg>
               </span>
             </th>
             <th

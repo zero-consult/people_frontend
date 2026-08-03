@@ -123,7 +123,7 @@ test('sort on department', async () => {
     const renderResult = render(<Provider store={store}><BrowserRouter><Employeelist/></BrowserRouter></Provider>);
     await waitForDataToBeLoaded(renderResult);
 
-    const departmentHeader = await renderResult.findByText('employeelist.table_headers.department :');
+    const departmentHeader = await renderResult.findByText('employeelist.table_headers.department');
     fireEvent.click(departmentHeader);
     expect(renderResult).toMatchSnapshot();
     fireEvent.click(departmentHeader);

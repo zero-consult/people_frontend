@@ -73,7 +73,7 @@ exports[`render single employee page 1`] = `
               single_employee.department.marketing
             </option>
             <option
-              value="Hr"
+              value="HR"
             >
               single_employee.department.hr
             </option>
@@ -199,6 +199,22 @@ exports[`render single employee page 1`] = `
         <div
           class="col-span-2"
         >
+          <label
+            class="block text-xs font-medium text-muted-foreground mb-1.5 uppercase tracking-wide"
+          >
+            single_employee.labels.grossWage
+             *
+          </label>
+          <input
+            class="w-full bg-input-background text-foreground placeholder:text-muted-foreground text-sm rounded-md px-3 py-2 border border-border focus:outline-none focus:ring-1 focus:ring-ring"
+            placeholder="4000,00"
+            type="number"
+            value="3000"
+          />
+        </div>
+        <div
+          class="col-span-2"
+        >
           <button
             class="w-full flex items-center gap-2 px-4 py-2.5 rounded-md bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/90 transition-colors"
           >
@@ -300,7 +316,7 @@ exports[`render single employee page 1`] = `
             single_employee.department.marketing
           </option>
           <option
-            value="Hr"
+            value="HR"
           >
             single_employee.department.hr
           </option>
@@ -422,6 +438,22 @@ exports[`render single employee page 1`] = `
             value=""
           />
         </div>
+      </div>
+      <div
+        class="col-span-2"
+      >
+        <label
+          class="block text-xs font-medium text-muted-foreground mb-1.5 uppercase tracking-wide"
+        >
+          single_employee.labels.grossWage
+           *
+        </label>
+        <input
+          class="w-full bg-input-background text-foreground placeholder:text-muted-foreground text-sm rounded-md px-3 py-2 border border-border focus:outline-none focus:ring-1 focus:ring-ring"
+          placeholder="4000,00"
+          type="number"
+          value="3000"
+        />
       </div>
       <div
         class="col-span-2"
