@@ -1,4 +1,4 @@
-import {Pencil, Plus, Search, SortAscIcon, SortDesc, Trash2} from "lucide-react";
+import {Pencil, Plus, Search, Trash2} from "lucide-react";
 import {useEffect, useMemo, useState} from "react";
 import {Link} from "react-router";
 import {
@@ -17,6 +17,7 @@ import {loadEmployees, selectEmployees} from "../redux/employee.slice.ts";
 import Pagination, {PAGE_SIZE} from "../components/Pagination.tsx";
 import {handleError} from "../redux/error.slice.ts";
 import {useTranslation} from "react-i18next";
+import SortIcon from "../components/SortIcon.tsx";
 
 
 const DEPT_COLORS: Record<Department, string> = {
@@ -49,7 +50,7 @@ function getAvatarColor(name: string) {
 
 
 function Employeelist() {
-    const { t } = useTranslation();
+    const {t} = useTranslation();
     const dispatch = useDispatch();
     const employees = useSelector(selectEmployees);
     const [search, setSearch] = useState("");
@@ -63,7 +64,7 @@ function Employeelist() {
         try {
             const employeeListResponse = await employeeList(axios);
             dispatch(loadEmployees(employeeListResponse.data));
-        } catch(error) {
+        } catch (error) {
             dispatch(handleError(error))
         }
     }
@@ -107,12 +108,12 @@ function Employeelist() {
     const leaveCount = employees.filter((e) => e.status === "On leave").length;
 
     async function deleteEmployee(emp: Employee) {
-        if(typeof emp.id != "undefined") {
+        if (typeof emp.id != "undefined") {
             const deleteEmployee = await EmployeeApiFp(new Configuration({basePath: PEOPLE_BACKEND_HOST})).deleteEmployee(emp.id);
             try {
                 await deleteEmployee(axios);
                 fetchEmployees();
-            } catch(error) {
+            } catch (error) {
                 dispatch(handleError(error))
             }
         }
@@ -182,8 +183,11 @@ function Employeelist() {
                             className="text-left py-3 px-3 text-xs font-medium text-muted-foreground uppercase tracking-widest cursor-pointer select-none hover:text-foreground transition-colors"
                             style={{fontFamily: "'DM Mono', monospace"}} onClick={() => handleSort(key)}>
                             <span
-                                className="inline-flex items-center gap-1">{label}{(sortKey === key ? (sortDir === "asc" ?
-                                <SortAscIcon/> : <SortDesc/>) : <></>)} :</span>
+                                className="inline-flex items-center gap-1">
+                                    {label}
+                                <SortIcon active={sortKey === key}
+                                          dir={sortDir}/>
+                                </span>
                         </th>
                     ))}
                     <th className="py-3 px-3 text-right text-xs font-medium text-muted-foreground uppercase tracking-widest"
@@ -194,7 +198,8 @@ function Employeelist() {
                 <tbody>
                 {paginated.length === 0 && (
                     <tr>
-                        <td colSpan={7} className="py-16 text-center text-muted-foreground text-sm">{t('employeelist.table.empty')}
+                        <td colSpan={7}
+                            className="py-16 text-center text-muted-foreground text-sm">{t('employeelist.table.empty')}
                         </td>
                     </tr>
                 )}
@@ -226,7 +231,8 @@ function Employeelist() {
                                 className="flex items-center justify-end gap-1.5 opacity-0 group-hover:opacity-100 transition-opacity">
                                 <nav className="flex">
                                     <Link to={"/employees/" + emp.id + "/edit"}
-                                          className="p-1.5 rounded-md hover:bg-primary/15 hover:text-primary text-muted-foreground transition-colors"><Pencil className="w-3.5 h-3.5"/></Link>
+                                          className="p-1.5 rounded-md hover:bg-primary/15 hover:text-primary text-muted-foreground transition-colors"><Pencil
+                                        className="w-3.5 h-3.5"/></Link>
                                     {!emp.hasTimesheetEntries ?
                                         <button
                                             id={"delete-" + emp.id}

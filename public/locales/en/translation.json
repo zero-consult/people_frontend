@@ -121,6 +121,7 @@
       "contact_person_first_name": "Contact person first name",
       "contact_person_last_name": "Contact person last name",
       "email": "E-mail address",
+      "hiringRate": "Hiring rate per hour",
       "phone": "Phone number",
       "sector": "Sector",
       "status": "Status",
@@ -164,6 +165,7 @@
     },
     "input": {
       "error": {
+        "grossWage_required": "Gross wage is required.",
         "email_invalid": "E-mail is invalid.",
         "email_required": "E-mail is required.",
         "firstName": "First name is required.",
@@ -173,6 +175,7 @@
       }
     },
     "labels": {
+      "grossWage": "Gross wage",
       "department": "Department",
       "email": "E-mail address",
       "firstName": "First name",

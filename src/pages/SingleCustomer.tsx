@@ -21,7 +21,7 @@ function SingleCustomer() {
         try {
             const customerFetchResponse = await customerFetch(axios);
             dispatch(loadSingleCustomer(customerFetchResponse.data));
-        } catch(error) {
+        } catch (error) {
             dispatch(handleError(error))
         }
     }
@@ -36,15 +36,28 @@ function SingleCustomer() {
 
     async function saveCustomer() {
         if (customer.companyName.trim().length === 0) {
-            dispatch(showError({title: "Input error", message: t('single_customer.input.error.company_name_required')}));
+            dispatch(showError({
+                title: "Input error",
+                message: t('single_customer.input.error.company_name_required')
+            }));
             return;
         }
         if (customer.contactPersonFirstName.trim().length === 0) {
-            dispatch(showError({title: "Input error", message: t('single_customer.input.error.contact_person_first_name_required')}));
+            dispatch(showError({
+                title: "Input error",
+                message: t('single_customer.input.error.contact_person_first_name_required')
+            }));
             return;
         }
         if (customer.contactPersonLastName.trim().length === 0) {
-            dispatch(showError({title: "Input error", message: t('single_customer.input.error.contact_person_last_name_required')}));
+            dispatch(showError({
+                title: "Input error",
+                message: t('single_customer.input.error.contact_person_last_name_required')
+            }));
+            return;
+        }
+        if (Number.isNaN(customer.hiringRatePerHour) || customer.hiringRatePerHour <= 0) {
+            dispatch(showError({title: "Input error", message: t('single_employee.input.error.grossWage_required')}));
             return;
         }
         if (customer.email.trim().length === 0) {
@@ -69,7 +82,7 @@ function SingleCustomer() {
                 const customerAddResponse = await customerAdd(axios);
                 dispatch(loadSingleCustomer(customerAddResponse.data));
                 window.location.href = "/customers";
-            } catch(error) {
+            } catch (error) {
                 dispatch(handleError(error))
             }
         } else {
@@ -78,7 +91,7 @@ function SingleCustomer() {
                 const customerUpdateResponse = await customerUpdate(axios);
                 dispatch(loadSingleCustomer(customerUpdateResponse.data));
                 window.location.href = "/customers";
-            } catch(error) {
+            } catch (error) {
                 dispatch(handleError(error))
             }
         }
@@ -87,14 +100,16 @@ function SingleCustomer() {
     return <>
         <div className="grid grid-cols-2 gap-4 p-5">
             <div className="col-span-2">
-                <label className="block text-xs font-medium text-muted-foreground mb-1.5 uppercase tracking-wide">{t('single_customer.labels.company_name')} *</label>
+                <label
+                    className="block text-xs font-medium text-muted-foreground mb-1.5 uppercase tracking-wide">{t('single_customer.labels.company_name')} *</label>
                 <input
                     className="w-full bg-input-background text-foreground placeholder:text-muted-foreground text-sm rounded-md px-3 py-2 border border-border focus:outline-none focus:ring-1 focus:ring-ring"
                     placeholder={t('single_customer.placeholders.company_name')} value={customer.companyName}
                     onChange={(e) => dispatch(loadSingleCustomer({...customer, companyName: e.target.value}))}/>
             </div>
             <div>
-                <label className="block text-xs font-medium text-muted-foreground mb-1.5 uppercase tracking-wide">{t('single_customer.labels.contact_person_first_name')} *</label>
+                <label
+                    className="block text-xs font-medium text-muted-foreground mb-1.5 uppercase tracking-wide">{t('single_customer.labels.contact_person_first_name')} *</label>
                 <input
                     className="w-full bg-input-background text-foreground placeholder:text-muted-foreground text-sm rounded-md px-3 py-2 border border-border focus:outline-none focus:ring-1 focus:ring-ring"
                     placeholder={t('single_customer.placeholders.first_name')} value={customer.contactPersonFirstName}
@@ -104,7 +119,8 @@ function SingleCustomer() {
                     }))}/>
             </div>
             <div>
-                <label className="block text-xs font-medium text-muted-foreground mb-1.5 uppercase tracking-wide">{t('single_customer.labels.contact_person_last_name')} *</label>
+                <label
+                    className="block text-xs font-medium text-muted-foreground mb-1.5 uppercase tracking-wide">{t('single_customer.labels.contact_person_last_name')} *</label>
                 <input
                     className="w-full bg-input-background text-foreground placeholder:text-muted-foreground text-sm rounded-md px-3 py-2 border border-border focus:outline-none focus:ring-1 focus:ring-ring"
                     placeholder={t('single_customer.placeholders.last_name')} value={customer.contactPersonLastName}
@@ -144,7 +160,19 @@ function SingleCustomer() {
                 </select>
             </div>
             <div className="col-span-2">
-                <label className="block text-xs font-medium text-muted-foreground mb-1.5 uppercase tracking-wide">{t('single_customer.labels.email')} *</label>
+                <label
+                    className="block text-xs font-medium text-muted-foreground mb-1.5 uppercase tracking-wide">{t('single_customer.labels.hiringRate')} *</label>
+                <input type="number"
+                       className="w-full bg-input-background text-foreground placeholder:text-muted-foreground text-sm rounded-md px-3 py-2 border border-border focus:outline-none focus:ring-1 focus:ring-ring"
+                       placeholder={"50,00"} value={customer.hiringRatePerHour}
+                       onChange={(e) => dispatch(loadSingleCustomer({
+                           ...customer,
+                           hiringRatePerHour: parseFloat(e.target.value)
+                       }))}/>
+            </div>
+            <div className="col-span-2">
+                <label
+                    className="block text-xs font-medium text-muted-foreground mb-1.5 uppercase tracking-wide">{t('single_customer.labels.email')} *</label>
                 <input type="email"
                        className="w-full bg-input-background text-foreground placeholder:text-muted-foreground text-sm rounded-md px-3 py-2 border border-border focus:outline-none focus:ring-1 focus:ring-ring"
                        placeholder={t('single_customer.placeholders.email')} value={customer.email}
@@ -175,7 +203,8 @@ function SingleCustomer() {
                     onChange={(e) => dispatch(loadSingleCustomer({...customer, website: e.target.value}))}/>
             </div>
             <div>
-                <label className="block text-xs font-medium text-muted-foreground mb-1.5 uppercase tracking-wide">{t('single_customer.labels.customer_since')} *</label>
+                <label
+                    className="block text-xs font-medium text-muted-foreground mb-1.5 uppercase tracking-wide">{t('single_customer.labels.customer_since')} *</label>
                 <input type="date"
                        className="w-full bg-input-background text-foreground text-sm rounded-md px-3 py-2 border border-border focus:outline-none focus:ring-1 focus:ring-ring"
                        value={moment(customer.startDate).format("YYYY-MM-DD")}

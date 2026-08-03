@@ -87,6 +87,10 @@ function SingleEmployee() {
             dispatch(showError({title: "Input error", message: t('single_employee.input.error.phone')}));
             return;
         }
+        if (Number.isNaN(employee.grossWage) || employee.grossWage <= 0) {
+            dispatch(showError({title: "Input error", message: t('single_employee.input.error.grossWage_required')}));
+            return;
+        }
         if (typeof employeeId === "undefined") {
             const employeeAdd = await EmployeeApiFp(new Configuration({basePath: PEOPLE_BACKEND_HOST})).addEmployee(employee);
             try {
@@ -147,7 +151,7 @@ function SingleEmployee() {
                     <option key="Engineering" value="Engineering">{t('single_employee.department.engineering')}</option>
                     <option key="Design" value="Design">{t('single_employee.department.design')}</option>
                     <option key="Marketing" value="Marketing">{t('single_employee.department.marketing')}</option>
-                    <option key="Hr" value="Hr">{t('single_employee.department.hr')}</option>
+                    <option key="Hr" value="HR">{t('single_employee.department.hr')}</option>
                     <option key="Finance" value="Finance">{t('single_employee.department.finance')}</option>
                     <option key="Operations" value="Operations">{t('single_employee.department.operations')}</option>
                 </select>
@@ -233,6 +237,13 @@ function SingleEmployee() {
                                 <></>}
                         </>
                 }
+            </div>
+            <div className="col-span-2">
+                <label className="block text-xs font-medium text-muted-foreground mb-1.5 uppercase tracking-wide">{t('single_employee.labels.grossWage')} *</label>
+                <input type="number"
+                       className="w-full bg-input-background text-foreground placeholder:text-muted-foreground text-sm rounded-md px-3 py-2 border border-border focus:outline-none focus:ring-1 focus:ring-ring"
+                       placeholder={"4000,00"} value={employee.grossWage}
+                       onChange={(e) => dispatch(loadSingleEmployee({...employee, grossWage: parseFloat(e.target.value)}))}/>
             </div>
             <div className="col-span-2">
                 <button onClick={() => saveEmployee()}

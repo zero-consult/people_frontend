@@ -12,11 +12,12 @@ import {loadCustomers, selectCustomers} from "../redux/customer.slice.ts";
 import {PEOPLE_BACKEND_HOST} from "../Constants.ts";
 import axios from "axios";
 import Pagination, {PAGE_SIZE} from "../components/Pagination.tsx";
-import {Globe, Mail, MapPin, Pencil, Plus, Search, SortAscIcon, SortDesc, Trash2} from "lucide-react";
+import {Globe, Mail, MapPin, Pencil, Plus, Search, Trash2} from "lucide-react";
 import {Link} from "react-router";
 import moment from "moment/moment";
 import {handleError} from "../redux/error.slice.ts";
 import {useTranslation} from "react-i18next";
+import SortIcon from "../components/SortIcon.tsx";
 
 const CUST_STATUS_COLORS: Record<CustomerStatus, string> = {
     Active: "bg-emerald-500/15 text-emerald-400",
@@ -62,7 +63,7 @@ function Customerlist() {
         try {
             const customerListResponse = await customerList(axios);
             dispatch(loadCustomers(customerListResponse.data));
-        } catch(error) {
+        } catch (error) {
             dispatch(handleError(error))
         }
     }
@@ -110,7 +111,7 @@ function Customerlist() {
             try {
                 await deleteCustomer(axios);
                 fetchCustomers();
-            } catch(error) {
+            } catch (error) {
                 dispatch(handleError(error))
             }
         }
@@ -136,9 +137,21 @@ function Customerlist() {
 
             <div className="px-8 py-5 grid grid-cols-3 gap-4 border-b border-border">
                 {[
-                    {label: t('customerlist.card.total'), value: customers.length, sub: t('customerlist.card.customers')},
-                    {label: t('customerlist.card.active'), value: activeCount, sub: t('customerlist.card.ongoing_relation', {count: activeCount})},
-                    {label: t('customerlist.card.prospects'), value: prospectCount, sub: t('customerlist.card.in_negotiation')},
+                    {
+                        label: t('customerlist.card.total'),
+                        value: customers.length,
+                        sub: t('customerlist.card.customers')
+                    },
+                    {
+                        label: t('customerlist.card.active'),
+                        value: activeCount,
+                        sub: t('customerlist.card.ongoing_relation', {count: activeCount})
+                    },
+                    {
+                        label: t('customerlist.card.prospects'),
+                        value: prospectCount,
+                        sub: t('customerlist.card.in_negotiation')
+                    },
                 ].map(({label, value, sub}) => (
                     <div key={label} className="bg-card rounded-lg px-5 py-4 border border-border">
                         <p className="text-xs text-muted-foreground uppercase tracking-widest mb-1"
@@ -186,8 +199,11 @@ function Customerlist() {
                                 className="text-left py-3 px-3 text-xs font-medium text-muted-foreground uppercase tracking-widest cursor-pointer select-none hover:text-foreground transition-colors"
                                 style={{fontFamily: "'DM Mono', monospace"}} onClick={() => handleSort(key)}>
                                 <span
-                                    className="inline-flex items-center gap-1">{label}{(sortKey === key ? (sortDir === "asc" ?
-                                    <SortAscIcon/> : <SortDesc/>) : <></>)} :</span>
+                                    className="inline-flex items-center gap-1">
+                                    {label}
+                                    <SortIcon active={sortKey === key}
+                                              dir={sortDir}/>
+                                </span>
                             </th>
                         ))}
                         <th className="py-3 px-3 text-right text-xs font-medium text-muted-foreground uppercase tracking-widest"
@@ -198,7 +214,8 @@ function Customerlist() {
                     <tbody>
                     {filtered.length === 0 && (
                         <tr>
-                            <td colSpan={7} className="py-16 text-center text-muted-foreground text-sm">{t('customerlist.table.empty')}</td>
+                            <td colSpan={7}
+                                className="py-16 text-center text-muted-foreground text-sm">{t('customerlist.table.empty')}</td>
                         </tr>
                     )}
                     {paginated.map((customer, i) => (

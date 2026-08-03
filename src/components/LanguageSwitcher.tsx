@@ -4,7 +4,7 @@ import Cookies from "universal-cookie";
 
 const languages = ["nl", "en", "fr", "jp"];
 
-const cookies = new Cookies(null, { domain: 'localhost', path: '/' });
+const cookies = new Cookies(null, {domain: 'localhost', path: '/'});
 
 export type LanguageSwitcherProps = {
     compact: boolean;
@@ -28,11 +28,14 @@ function LanguageSwitcher(props: LanguageSwitcherProps) {
         {languages
             .filter((language) => !props.compact || language === i18n.resolvedLanguage)
             .map(((language) =>
-                <button className={"grow " + " " + (i18n.resolvedLanguage === language ? "text-primary": "")} style={{fontWeight: i18n.resolvedLanguage === language ? 'bold' : 'normal'}}
+                    <button
+                        key={language}
+                        className={"grow " + " " + (i18n.resolvedLanguage === language ? "text-primary" : "")}
+                        style={{fontWeight: i18n.resolvedLanguage === language ? 'bold' : 'normal'}}
                         onClick={() => setLanguage(language)}>
-                    {language}
-                </button>
-        ))}
+                        {language}
+                    </button>
+            ))}
     </div>
 }
 

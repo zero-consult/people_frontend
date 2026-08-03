@@ -121,6 +121,7 @@
       "contact_person_first_name": "Prénom de la personne de contact",
       "contact_person_last_name": "Nom de la personne de contact",
       "email": "Adresse e-mail",
+      "hiringRate": "Taux horaire",
       "phone": "Numéro de téléphone",
       "sector": "Secteur",
       "status": "Statut",
@@ -167,12 +168,14 @@
         "email_invalid": "L'adresse e-mail n'est pas valide.",
         "email_required": "L'adresse e-mail est requise.",
         "firstName": "Le prénom est requis.",
+        "grossWage_required": "Salaire brut est requise.",
         "lastName": "Le nom est requis.",
         "phone": "Le numéro de téléphone n'est pas valide.",
         "startDate": "La date de début est requise."
       }
     },
     "labels": {
+      "grossWage": "Salaire brut",
       "department": "Département",
       "email": "Adresse e-mail",
       "firstName": "Prénom",

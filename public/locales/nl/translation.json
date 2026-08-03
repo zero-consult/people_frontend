@@ -122,6 +122,7 @@
       "contact_person_first_name": "Voornaam contactpersoon",
       "contact_person_last_name": "Achternaam contactpersoon",
       "email": "E-mail adres",
+      "hiringRate": "Uurtarief",
       "phone": "Telefoonnummer",
       "sector": "Sector",
       "status": "Status",
@@ -168,12 +169,14 @@
         "email_invalid": "E-mail is ongeldig.",
         "email_required": "E-mail is vereist.",
         "firstName": "Voornaam is vereist.",
+        "grossWage_required": "Brutoloon is vereist.",
         "lastName": "Achternaam is vereist.",
         "phone": "Telefoonnummer is ongeldig.",
         "startDate": "Start date is vereist."
       }
     },
     "labels": {
+      "grossWage": "Brutoloon",
       "department": "Department",
       "email": "E-mail adres",
       "firstName": "Voornaam",
