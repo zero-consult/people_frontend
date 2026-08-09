@@ -166,6 +166,7 @@
     "input": {
       "error": {
         "grossWage_required": "Gross wage is required.",
+        "hiringRate_required": "Hiring rate is required.",
         "email_invalid": "E-mail is invalid.",
         "email_required": "E-mail is required.",
         "firstName": "First name is required.",

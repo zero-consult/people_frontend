@@ -169,6 +169,7 @@
         "email_required": "L'adresse e-mail est requise.",
         "firstName": "Le prénom est requis.",
         "grossWage_required": "Salaire brut est requise.",
+        "hiringRate_required": "Le taux d'embauche est requise",
         "lastName": "Le nom est requis.",
         "phone": "Le numéro de téléphone n'est pas valide.",
         "startDate": "La date de début est requise."

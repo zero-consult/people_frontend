@@ -170,6 +170,7 @@
         "email_required": "E-mail is vereist.",
         "firstName": "Voornaam is vereist.",
         "grossWage_required": "Brutoloon is vereist.",
+        "hiringRate_required": "Uurtarief is vereist",
         "lastName": "Achternaam is vereist.",
         "phone": "Telefoonnummer is ongeldig.",
         "startDate": "Start date is vereist."

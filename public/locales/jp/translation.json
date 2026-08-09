@@ -169,6 +169,7 @@
         "email_required": "メールアドレスは必須です。",
         "firstName": "名は必須です。",
         "grossWage_required": "額面給与の入力は必須です。",
+        "hiringRate_required": "採用時時給の入力は必須です。",
         "lastName": "姓は必須です。",
         "phone": "電話番号が無効です。",
         "startDate": "入社日は必須です。"

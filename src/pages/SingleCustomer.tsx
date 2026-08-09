@@ -57,7 +57,7 @@ function SingleCustomer() {
             return;
         }
         if (Number.isNaN(customer.hiringRatePerHour) || customer.hiringRatePerHour <= 0) {
-            dispatch(showError({title: "Input error", message: t('single_employee.input.error.grossWage_required')}));
+            dispatch(showError({title: "Input error", message: t('single_employee.input.error.hiringRate_required')}));
             return;
         }
         if (customer.email.trim().length === 0) {
