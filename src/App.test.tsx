@@ -5,7 +5,6 @@ import axios from "axios";
 import type {Employee} from "./types/people";
 import store from "./redux/store.ts";
 import {Provider} from "react-redux";
-import {BrowserRouter} from "react-router";
 import {login} from "./redux/account.slice.ts";
 import {EMP_1} from "./testutils/testData.ts";
 
