@@ -9,15 +9,17 @@ import moment from "moment/moment";
 import {Save} from "lucide-react";
 import {handleError, showError} from "../redux/error.slice.ts";
 import {useTranslation} from "react-i18next";
+import {selectToken} from "../redux/account.slice.ts";
 
 function SingleCustomer() {
     const {t} = useTranslation();
     const dispatch = useDispatch();
     const {customerId} = useParams();
+    const token = useSelector(selectToken);
     const customer = useSelector(selectSelectedCustomer);
 
     async function fetchCustomer(customerId: string) {
-        const customerFetch = await CustomerApiFp(new Configuration({basePath: PEOPLE_BACKEND_HOST})).getCustomer(customerId);
+        const customerFetch = await CustomerApiFp(new Configuration({accessToken: token, basePath: PEOPLE_BACKEND_HOST})).getCustomer(customerId);
         try {
             const customerFetchResponse = await customerFetch(axios);
             dispatch(loadSingleCustomer(customerFetchResponse.data));
@@ -77,7 +79,7 @@ function SingleCustomer() {
             return;
         }
         if (typeof customerId === "undefined") {
-            const customerAdd = await CustomerApiFp(new Configuration({basePath: PEOPLE_BACKEND_HOST})).addCustomer(customer);
+            const customerAdd = await CustomerApiFp(new Configuration({accessToken: token, basePath: PEOPLE_BACKEND_HOST})).addCustomer(customer);
             try {
                 const customerAddResponse = await customerAdd(axios);
                 dispatch(loadSingleCustomer(customerAddResponse.data));
@@ -86,7 +88,7 @@ function SingleCustomer() {
                 dispatch(handleError(error))
             }
         } else {
-            const customerUpdate = await CustomerApiFp(new Configuration({basePath: PEOPLE_BACKEND_HOST})).updateCustomer(customerId, customer);
+            const customerUpdate = await CustomerApiFp(new Configuration({accessToken: token, basePath: PEOPLE_BACKEND_HOST})).updateCustomer(customerId, customer);
             try {
                 const customerUpdateResponse = await customerUpdate(axios);
                 dispatch(loadSingleCustomer(customerUpdateResponse.data));

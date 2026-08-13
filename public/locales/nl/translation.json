@@ -200,5 +200,9 @@
       "inactive": "Inactief",
       "onleave": "Op vakantie"
     }
+  },
+  "role": {
+    "admin": "Beheerder",
+    "employee": "Werknemer"
   }
 }

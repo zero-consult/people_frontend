@@ -15,12 +15,14 @@ import {
 } from "../redux/employee.slice.ts";
 import {handleError, showError} from "../redux/error.slice.ts";
 import {useTranslation} from "react-i18next";
+import {selectToken} from "../redux/account.slice.ts";
 
 
 function SingleEmployee() {
     const {t} = useTranslation();
     const dispatch = useDispatch();
     const {employeeId} = useParams();
+    const token = useSelector(selectToken);
     const employee = useSelector(selectSelectedEmployee);
     const employees = useSelector(selectEmployees);
     const [search, setSearch] = useState("");
@@ -30,7 +32,7 @@ function SingleEmployee() {
     }, [search]);
 
     async function fetchEmployees() {
-        const employeeList = await EmployeeApiFp(new Configuration({basePath: PEOPLE_BACKEND_HOST})).employeesList();
+        const employeeList = await EmployeeApiFp(new Configuration({accessToken: token, basePath: PEOPLE_BACKEND_HOST})).employeesList();
         try {
             const employeeListResponse = await employeeList(axios);
             dispatch(loadEmployees(employeeListResponse.data));
@@ -44,7 +46,7 @@ function SingleEmployee() {
     }, []);
 
     async function fetchEmployee(employeeId: string) {
-        const employeeFetch = await EmployeeApiFp(new Configuration({basePath: PEOPLE_BACKEND_HOST})).getEmployee(employeeId);
+        const employeeFetch = await EmployeeApiFp(new Configuration({accessToken: token, basePath: PEOPLE_BACKEND_HOST})).getEmployee(employeeId);
         try {
             const employeeFetchResponse = await employeeFetch(axios);
             dispatch(loadSingleEmployee(employeeFetchResponse.data));
@@ -92,7 +94,7 @@ function SingleEmployee() {
             return;
         }
         if (typeof employeeId === "undefined") {
-            const employeeAdd = await EmployeeApiFp(new Configuration({basePath: PEOPLE_BACKEND_HOST})).addEmployee(employee);
+            const employeeAdd = await EmployeeApiFp(new Configuration({accessToken: token, basePath: PEOPLE_BACKEND_HOST})).addEmployee(employee);
             try {
                 const employeeAddResponse = await employeeAdd(axios);
                 dispatch(loadSingleEmployee(employeeAddResponse.data));
@@ -101,7 +103,7 @@ function SingleEmployee() {
                 dispatch(handleError(error))
             }
         } else {
-            const employeeUpdate = await EmployeeApiFp(new Configuration({basePath: PEOPLE_BACKEND_HOST})).updateEmployee(employeeId, employee);
+            const employeeUpdate = await EmployeeApiFp(new Configuration({accessToken: token, basePath: PEOPLE_BACKEND_HOST})).updateEmployee(employeeId, employee);
             try {
                 const employeeUpdateResponse = await employeeUpdate(axios);
                 dispatch(loadSingleEmployee(employeeUpdateResponse.data));

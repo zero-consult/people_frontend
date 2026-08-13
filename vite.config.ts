@@ -8,13 +8,14 @@ export default ({mode}: { mode: string }) => {
     process.env = {...process.env, ...loadEnv(mode, process.cwd())};
 
     return defineConfig({
+        legacy: { inconsistentCjsInterop: true },
         test: {
             globals: true,
             environment: "jsdom",
         },
         server: {
             host: process.env.VITE_PEOPLE_HOST, // node container in docker (container name)
-            origin: 'http://localhost:5174', // exposed node container address
+            origin: 'http://localhost:5173', // exposed node container address
             port: 5173,
         },
         plugins: [

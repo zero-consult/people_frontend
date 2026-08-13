@@ -199,5 +199,9 @@
       "inactive": "非アクティブ",
       "onleave": "休職中"
     }
+  },
+  "role": {
+    "admin": "管理者",
+    "employee": "従業員"
   }
 }

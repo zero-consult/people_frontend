@@ -199,5 +199,9 @@
       "inactive": "Inactive",
       "onleave": "On leave"
     }
+  },
+  "role": {
+    "admin": "Administrator",
+    "employee": "Employee"
   }
 }

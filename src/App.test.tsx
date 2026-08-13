@@ -3,6 +3,11 @@ import App from './App';
 import {expect, type MockedFunction, test, vi} from "vitest";
 import axios from "axios";
 import type {Employee} from "./types/people";
+import store from "./redux/store.ts";
+import {Provider} from "react-redux";
+import {BrowserRouter} from "react-router";
+import {login} from "./redux/account.slice.ts";
+import {EMP_1} from "./testutils/testData.ts";
 
 vi.mock('axios', () => {
     return {
@@ -49,7 +54,8 @@ test('renders employees', async () => {
     (axios.request as MockedFunction<typeof axios.request>).mockResolvedValue(
         {data: [] as Employee[]}
     )
-    render(<App/>);
+    store.store.dispatch(login({user: EMP_1, admin: true, token: 'Test'}))
+    render(<Provider store={store.store}><App/></Provider>);
     const linkElement = await screen.findAllByText("menu.employees");
     expect(linkElement.length).toEqual(2);
 });

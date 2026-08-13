@@ -76,7 +76,7 @@ test('render single employee page', async () => {
     axiosCalls.mockResolvedValue(
         {data: [EMP_1] as Employee[]}
     )
-    const renderResult = render(<Provider store={store}><BrowserRouter><SingleEmployee/></BrowserRouter></Provider>);
+    const renderResult = render(<Provider store={store.store}><BrowserRouter><SingleEmployee/></BrowserRouter></Provider>);
     expect(renderResult).toMatchSnapshot();
 })
 
@@ -86,30 +86,30 @@ test('change form values', async () => {
     axiosCalls.mockResolvedValue(
         {data: [EMP_1] as Employee[]}
     )
-    const renderResult = render(<Provider store={store}><BrowserRouter><SingleEmployee/></BrowserRouter></Provider>);
+    const renderResult = render(<Provider store={store.store}><BrowserRouter><SingleEmployee/></BrowserRouter></Provider>);
     await changeInputValue(renderResult, 'single_employee.labels.firstName *', 'Jane');
-    let selectedEmployee = selectSelectedEmployee(store.getState());
+    let selectedEmployee = selectSelectedEmployee(store.store.getState());
     expect(selectedEmployee.firstName).toBe('Jane')
     await changeInputValue(renderResult, 'single_employee.labels.lastName *', 'Roe');
-    selectedEmployee = selectSelectedEmployee(store.getState());
+    selectedEmployee = selectSelectedEmployee(store.store.getState());
     expect(selectedEmployee.lastName).toBe('Roe')
     await changeInputValue(renderResult, 'single_employee.labels.role', 'developer');
-    selectedEmployee = selectSelectedEmployee(store.getState());
+    selectedEmployee = selectSelectedEmployee(store.store.getState());
     expect(selectedEmployee.functionTitle).toBe('developer')
     await changeInputValue(renderResult, 'single_employee.labels.email *', 'jane@doe.com');
-    selectedEmployee = selectSelectedEmployee(store.getState());
+    selectedEmployee = selectSelectedEmployee(store.store.getState());
     expect(selectedEmployee.email).toBe('jane@doe.com')
     await changeInputValue(renderResult, 'single_employee.labels.phone', '+32 477 77 77 77');
-    selectedEmployee = selectSelectedEmployee(store.getState());
+    selectedEmployee = selectSelectedEmployee(store.store.getState());
     expect(selectedEmployee.phone).toBe('+32 477 77 77 77')
     await changeInputValue(renderResult, 'single_employee.labels.startDate *', '2026-07-19');
-    selectedEmployee = selectSelectedEmployee(store.getState());
+    selectedEmployee = selectSelectedEmployee(store.store.getState());
     expect(moment(selectedEmployee.startDate).format("YYYY-MM-DD")).toBe("2026-07-19")
     await changeSelectValue(renderResult, 'single_employee.labels.department', "Marketing");
-    selectedEmployee = selectSelectedEmployee(store.getState());
+    selectedEmployee = selectSelectedEmployee(store.store.getState());
     expect(selectedEmployee.department).toBe(Department.Marketing)
     await changeSelectValue(renderResult, 'single_employee.labels.status', "Inactive");
-    selectedEmployee = selectSelectedEmployee(store.getState());
+    selectedEmployee = selectSelectedEmployee(store.store.getState());
     expect(selectedEmployee.status).toBe(EmployeeStatus.Inactive)
 })
 
@@ -118,14 +118,14 @@ test('change manager', async () => {
     axiosCalls.mockResolvedValue(
         {data: [EMP_1] as Employee[]}
     )
-    const renderResult = render(<Provider store={store}><BrowserRouter><SingleEmployee/></BrowserRouter></Provider>);
+    const renderResult = render(<Provider store={store.store}><BrowserRouter><SingleEmployee/></BrowserRouter></Provider>);
     const renderedLabel = await renderResult.findByText('single_employee.labels.manager');
     expect(renderedLabel.parentNode).not.toBeNull();
     const renderedInput = renderedLabel.parentNode!.querySelector('input');
     fireEvent.change(renderedInput!, {target: {value: 'John'}})
     const employee = await renderResult.findByText('John Doe');
     fireEvent.click(employee);
-    const selectedEmployee = selectSelectedEmployee(store.getState());
+    const selectedEmployee = selectSelectedEmployee(store.store.getState());
     expect(selectedEmployee.manager!.id).toBe('1');
 })
 
@@ -136,7 +136,7 @@ test('Save employee', async () => {
     )
 
     const renderResult = render(<Provider
-        store={store}><BrowserRouter><ErrorMessagePopup/><SingleEmployee/></BrowserRouter></Provider>);
+        store={store.store}><BrowserRouter><ErrorMessagePopup/><SingleEmployee/></BrowserRouter></Provider>);
     const saveButton = await renderResult.findByText('single_employee.save');
     fireEvent.click(saveButton);
     await waitFor(async () => await renderResult.findByText('single_employee.input.error.firstName'))
@@ -159,7 +159,7 @@ test('Save employee', async () => {
     await waitFor(async () => await renderResult.findByText('single_employee.input.error.phone'))
     await changeInputValue(renderResult, 'single_employee.labels.phone', '+32 477 77 77 77');
 
-    const selectedEmployee = selectSelectedEmployee(store.getState());
+    const selectedEmployee = selectSelectedEmployee(store.store.getState());
     axiosCalls.mockResolvedValueOnce(({
         data: selectedEmployee
     }))
@@ -177,7 +177,7 @@ test('Edit employee', async () => {
     const useParamsCalls = useParams as MockedFunction<typeof useParams>;
     useParamsCalls.mockReturnValue({employeeId: '2'})
     const renderResult = render(<Provider
-        store={store}><BrowserRouter><ErrorMessagePopup/><SingleEmployee/></BrowserRouter></Provider>);
+        store={store.store}><BrowserRouter><ErrorMessagePopup/><SingleEmployee/></BrowserRouter></Provider>);
     const saveButton = await renderResult.findByText('single_employee.save');
     await changeInputValue(renderResult, 'single_employee.labels.firstName *', 'Jane');
     await changeInputValue(renderResult, 'single_employee.labels.lastName *', 'Roe');
@@ -185,7 +185,7 @@ test('Edit employee', async () => {
     await changeInputValue(renderResult, 'single_employee.labels.startDate *', '2026-07-19');
     await changeInputValue(renderResult, 'single_employee.labels.phone', '+32 477 77 77 77');
 
-    const selectedEmployee = selectSelectedEmployee(store.getState());
+    const selectedEmployee = selectSelectedEmployee(store.store.getState());
     axiosCalls.mockResolvedValueOnce(({
         data: selectedEmployee
     }))

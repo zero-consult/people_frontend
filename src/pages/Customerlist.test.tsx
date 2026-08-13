@@ -54,7 +54,7 @@ test('renders empty customer list', async () => {
     (axios.request as MockedFunction<typeof axios.request>).mockResolvedValue(
         {data: [] as Customer[]}
     )
-    const renderResult = render(<Provider store={store}><BrowserRouter><Customerlist/></BrowserRouter></Provider>);
+    const renderResult = render(<Provider store={store.store}><BrowserRouter><Customerlist/></BrowserRouter></Provider>);
     await waitFor(async () => {
         const tableItem = await renderResult.findAllByText("customerlist.table.empty");
         expect(tableItem.length).toEqual(1);
@@ -66,7 +66,7 @@ test('renders customer list', async () => {
     (axios.request as MockedFunction<typeof axios.request>).mockResolvedValue(
         {data: [CUST_1] as Customer[]}
     )
-    const renderResult = render(<Provider store={store}><BrowserRouter><Customerlist/></BrowserRouter></Provider>);
+    const renderResult = render(<Provider store={store.store}><BrowserRouter><Customerlist/></BrowserRouter></Provider>);
     await waitForDataToBeLoaded(renderResult);
     expect(renderResult).toMatchSnapshot();
 });
@@ -82,7 +82,7 @@ test('can search customers', async () => {
     (axios.request as MockedFunction<typeof axios.request>).mockResolvedValue(
         {data: [CUST_1] as Customer[]}
     )
-    const renderResult = render(<Provider store={store}><BrowserRouter><Customerlist/></BrowserRouter></Provider>);
+    const renderResult = render(<Provider store={store.store}><BrowserRouter><Customerlist/></BrowserRouter></Provider>);
 
     await waitForDataToBeLoaded(renderResult);
 
@@ -104,7 +104,7 @@ test('filter on sector', async () => {
         {data: [CUST_1, {...CUST_1, id: '2', contactPersonFirstName: 'John', sector: "Government"}] as Customer[]}
     )
 
-    const renderResult = render(<Provider store={store}><BrowserRouter><Customerlist/></BrowserRouter></Provider>);
+    const renderResult = render(<Provider store={store.store}><BrowserRouter><Customerlist/></BrowserRouter></Provider>);
     await waitForDataToBeLoaded(renderResult);
 
     expect(() => {
@@ -121,7 +121,7 @@ test('sort on sector', async () => {
     (axios.request as MockedFunction<typeof axios.request>).mockResolvedValue(
         {data: [CUST_1, {...CUST_1, id: '2', contactPersonFirstName: 'John', sector: "Government"}] as Customer[]}
     )
-    const renderResult = render(<Provider store={store}><BrowserRouter><Customerlist/></BrowserRouter></Provider>);
+    const renderResult = render(<Provider store={store.store}><BrowserRouter><Customerlist/></BrowserRouter></Provider>);
     await waitForDataToBeLoaded(renderResult);
 
     const departmentHeader = await renderResult.findByText('customerlist.table_headers.sector');
@@ -135,7 +135,7 @@ test('delete customer', async () => {
     (axios.request as MockedFunction<typeof axios.request>).mockResolvedValue(
         {data: [CUST_1, {...CUST_1, id: '2', contactPersonFirstName: 'John', sector: "Government"}] as Customer[]}
     )
-    const renderResult = render(<Provider store={store}><BrowserRouter><Customerlist/></BrowserRouter></Provider>);
+    const renderResult = render(<Provider store={store.store}><BrowserRouter><Customerlist/></BrowserRouter></Provider>);
     await waitForDataToBeLoaded(renderResult);
 
     const deleteButton = renderResult.container.querySelector("#delete-1");

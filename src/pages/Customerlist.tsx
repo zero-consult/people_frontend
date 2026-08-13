@@ -18,6 +18,7 @@ import moment from "moment/moment";
 import {handleError} from "../redux/error.slice.ts";
 import {useTranslation} from "react-i18next";
 import SortIcon from "../components/SortIcon.tsx";
+import {selectToken} from "../redux/account.slice.ts";
 
 const CUST_STATUS_COLORS: Record<CustomerStatus, string> = {
     Active: "bg-emerald-500/15 text-emerald-400",
@@ -51,6 +52,7 @@ function getAvatarColor(name: string) {
 function Customerlist() {
     const {t} = useTranslation();
     const dispatch = useDispatch();
+    const token = useSelector(selectToken);
     const customers = useSelector(selectCustomers);
     const [search, setSearch] = useState("");
     const [sectorFilter, setSectorFilter] = useState<Sector | "All">("All");
@@ -59,7 +61,7 @@ function Customerlist() {
     const [currentPage, setCurrentPage] = useState(1);
 
     async function fetchCustomers() {
-        const customerList = await CustomerApiFp(new Configuration({basePath: PEOPLE_BACKEND_HOST})).customersList();
+        const customerList = await CustomerApiFp(new Configuration({accessToken: token, basePath: PEOPLE_BACKEND_HOST})).customersList();
         try {
             const customerListResponse = await customerList(axios);
             dispatch(loadCustomers(customerListResponse.data));
@@ -107,7 +109,7 @@ function Customerlist() {
 
     async function deleteCustomer(emp: Customer) {
         if (typeof emp.id != "undefined") {
-            const deleteCustomer = await CustomerApiFp(new Configuration({basePath: PEOPLE_BACKEND_HOST})).deleteCustomer(emp.id);
+            const deleteCustomer = await CustomerApiFp(new Configuration({accessToken: token, basePath: PEOPLE_BACKEND_HOST})).deleteCustomer(emp.id);
             try {
                 await deleteCustomer(axios);
                 fetchCustomers();

@@ -72,41 +72,41 @@ vi.mock('react-router', async (importOriginal) => {
 });
 
 test('render single customer page', async () => {
-    const renderResult = render(<Provider store={store}><BrowserRouter><SingleCustomer/></BrowserRouter></Provider>);
+    const renderResult = render(<Provider store={store.store}><BrowserRouter><SingleCustomer/></BrowserRouter></Provider>);
     expect(renderResult).toMatchSnapshot();
 })
 
 test('change form values', async () => {
-    const renderResult = render(<Provider store={store}><BrowserRouter><SingleCustomer/></BrowserRouter></Provider>);
+    const renderResult = render(<Provider store={store.store}><BrowserRouter><SingleCustomer/></BrowserRouter></Provider>);
     await changeInputValue(renderResult, 'single_customer.labels.company_name *', 'Company X');
-    let selectedCustomer = selectSelectedCustomer(store.getState());
+    let selectedCustomer = selectSelectedCustomer(store.store.getState());
     expect(selectedCustomer.companyName).toBe('Company X')
     await changeInputValue(renderResult, 'single_customer.labels.contact_person_first_name *', 'Jane');
-    selectedCustomer = selectSelectedCustomer(store.getState());
+    selectedCustomer = selectSelectedCustomer(store.store.getState());
     expect(selectedCustomer.contactPersonFirstName).toBe('Jane')
     await changeInputValue(renderResult, 'single_customer.labels.contact_person_last_name *', 'Roe');
-    selectedCustomer = selectSelectedCustomer(store.getState());
+    selectedCustomer = selectSelectedCustomer(store.store.getState());
     expect(selectedCustomer.contactPersonLastName).toBe('Roe')
     await changeSelectValue(renderResult, 'single_customer.labels.sector', "Government");
-    selectedCustomer = selectSelectedCustomer(store.getState());
+    selectedCustomer = selectSelectedCustomer(store.store.getState());
     expect(selectedCustomer.sector).toBe(Sector.Government)
     await changeSelectValue(renderResult, 'single_customer.labels.status', "Inactive");
-    selectedCustomer = selectSelectedCustomer(store.getState());
+    selectedCustomer = selectSelectedCustomer(store.store.getState());
     expect(selectedCustomer.status).toBe(CustomerStatus.Inactive)
     await changeInputValue(renderResult, 'single_customer.labels.email *', 'jane@doe.com');
-    selectedCustomer = selectSelectedCustomer(store.getState());
+    selectedCustomer = selectSelectedCustomer(store.store.getState());
     expect(selectedCustomer.email).toBe('jane@doe.com')
     await changeInputValue(renderResult, 'single_customer.labels.phone', '+32 477 77 77 77');
-    selectedCustomer = selectSelectedCustomer(store.getState());
+    selectedCustomer = selectSelectedCustomer(store.store.getState());
     expect(selectedCustomer.phone).toBe('+32 477 77 77 77')
     await changeInputValue(renderResult, 'single_customer.labels.customer_since *', '2026-07-19');
-    selectedCustomer = selectSelectedCustomer(store.getState());
+    selectedCustomer = selectSelectedCustomer(store.store.getState());
     expect(moment(selectedCustomer.startDate).format("YYYY-MM-DD")).toBe("2026-07-19")
     await changeInputValue(renderResult, 'single_customer.labels.city', 'Amsterdam');
-    selectedCustomer = selectSelectedCustomer(store.getState());
+    selectedCustomer = selectSelectedCustomer(store.store.getState());
     expect(selectedCustomer.city).toBe("Amsterdam")
     await changeInputValue(renderResult, 'single_customer.labels.website', 'www.companyx.com');
-    selectedCustomer = selectSelectedCustomer(store.getState());
+    selectedCustomer = selectSelectedCustomer(store.store.getState());
     expect(selectedCustomer.website).toBe("www.companyx.com")
 
 }, 50000)
@@ -115,7 +115,7 @@ test('Save customer', async () => {
     const axiosCalls = axios.request as MockedFunction<typeof axios.request>;
 
     const renderResult = render(<Provider
-        store={store}><BrowserRouter><ErrorMessagePopup/><SingleCustomer/></BrowserRouter></Provider>);
+        store={store.store}><BrowserRouter><ErrorMessagePopup/><SingleCustomer/></BrowserRouter></Provider>);
     const saveButton = await renderResult.findByText('single_customer.save');
     fireEvent.click(saveButton);
     await waitFor(async () => await renderResult.findByText('single_customer.input.error.company_name_required'))
@@ -141,7 +141,7 @@ test('Save customer', async () => {
     await waitFor(async () => await renderResult.findByText('single_customer.input.error.startDate'))
     await changeInputValue(renderResult, 'single_customer.labels.customer_since *', '2026-07-19');
 
-    const selectedCustomer = selectSelectedCustomer(store.getState());
+    const selectedCustomer = selectSelectedCustomer(store.store.getState());
     axiosCalls.mockResolvedValueOnce(({
         data: selectedCustomer
     }))
@@ -156,7 +156,7 @@ test('Edit customer', async () => {
     const useParamsCalls = useParams as MockedFunction<typeof useParams>;
     useParamsCalls.mockReturnValue({customerId: '2'})
     const renderResult = render(<Provider
-        store={store}><BrowserRouter><ErrorMessagePopup/><SingleCustomer/></BrowserRouter></Provider>);
+        store={store.store}><BrowserRouter><ErrorMessagePopup/><SingleCustomer/></BrowserRouter></Provider>);
     const saveButton = await renderResult.findByText('single_customer.save');
     await changeInputValue(renderResult, 'single_customer.labels.company_name *', 'Company X');
     await changeInputValue(renderResult, 'single_customer.labels.contact_person_first_name *', 'Jane');
@@ -165,7 +165,7 @@ test('Edit customer', async () => {
     await changeInputValue(renderResult, 'single_customer.labels.phone', '+32 477 77 77 77');
     await changeInputValue(renderResult, 'single_customer.labels.customer_since *', '2026-07-19');
 
-    const selectedCustomer = selectSelectedCustomer(store.getState());
+    const selectedCustomer = selectSelectedCustomer(store.store.getState());
     axiosCalls.mockResolvedValueOnce(({
         data: selectedCustomer
     }))
