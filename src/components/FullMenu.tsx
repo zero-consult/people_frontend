@@ -44,10 +44,11 @@ function FullMenu(props: FullMenuProps) {
             <nav className="flex-1 px-2 py-4 space-y-0.5">
                 <Routes>
                     <Route path="/" element={<NavigationList compact={false} active="employees"/>}/>
-                    <Route path="/employees/*" element={<NavigationList compact={false} active="employees"/>}/>
-                    <Route path="/employees" element={<NavigationList compact={false} active="employees"/>}/>
-                    <Route path="/customers/*" element={<NavigationList compact={false} active="customers"/>}/>
-                    <Route path="/customers" element={<NavigationList compact={false} active="customers"/>}/>
+                    <Route path="/people" element={<NavigationList compact={false} active="employees"/>}/>
+                    <Route path="/people/employees/*" element={<NavigationList compact={false} active="employees"/>}/>
+                    <Route path="/people/employees" element={<NavigationList compact={false} active="employees"/>}/>
+                    <Route path="/people/customers/*" element={<NavigationList compact={false} active="customers"/>}/>
+                    <Route path="/people/customers" element={<NavigationList compact={false} active="customers"/>}/>
                 </Routes>
             </nav>
 

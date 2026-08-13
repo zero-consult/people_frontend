@@ -28,7 +28,7 @@ exports[`delete employee 1`] = `
         <a
           class="flex items-center gap-2 px-4 py-2.5 rounded-md bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/90 transition-colors"
           data-discover="true"
-          href="/employees/add"
+          href="/people/employees/add"
         >
           <svg
             aria-hidden="true"
@@ -446,7 +446,7 @@ exports[`delete employee 1`] = `
                     <a
                       class="p-1.5 rounded-md hover:bg-primary/15 hover:text-primary text-muted-foreground transition-colors"
                       data-discover="true"
-                      href="/employees/2/edit"
+                      href="/people/employees/2/edit"
                     >
                       <svg
                         aria-hidden="true"
@@ -575,7 +575,7 @@ exports[`delete employee 1`] = `
                     <a
                       class="p-1.5 rounded-md hover:bg-primary/15 hover:text-primary text-muted-foreground transition-colors"
                       data-discover="true"
-                      href="/employees/1/edit"
+                      href="/people/employees/1/edit"
                     >
                       <svg
                         aria-hidden="true"
@@ -665,7 +665,7 @@ exports[`delete employee 1`] = `
       <a
         class="flex items-center gap-2 px-4 py-2.5 rounded-md bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/90 transition-colors"
         data-discover="true"
-        href="/employees/add"
+        href="/people/employees/add"
       >
         <svg
           aria-hidden="true"
@@ -1083,7 +1083,7 @@ exports[`delete employee 1`] = `
                   <a
                     class="p-1.5 rounded-md hover:bg-primary/15 hover:text-primary text-muted-foreground transition-colors"
                     data-discover="true"
-                    href="/employees/2/edit"
+                    href="/people/employees/2/edit"
                   >
                     <svg
                       aria-hidden="true"
@@ -1212,7 +1212,7 @@ exports[`delete employee 1`] = `
                   <a
                     class="p-1.5 rounded-md hover:bg-primary/15 hover:text-primary text-muted-foreground transition-colors"
                     data-discover="true"
-                    href="/employees/1/edit"
+                    href="/people/employees/1/edit"
                   >
                     <svg
                       aria-hidden="true"
@@ -1359,7 +1359,7 @@ exports[`renders employee list 1`] = `
         <a
           class="flex items-center gap-2 px-4 py-2.5 rounded-md bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/90 transition-colors"
           data-discover="true"
-          href="/employees/add"
+          href="/people/employees/add"
         >
           <svg
             aria-hidden="true"
@@ -1777,7 +1777,7 @@ exports[`renders employee list 1`] = `
                     <a
                       class="p-1.5 rounded-md hover:bg-primary/15 hover:text-primary text-muted-foreground transition-colors"
                       data-discover="true"
-                      href="/employees/1/edit"
+                      href="/people/employees/1/edit"
                     >
                       <svg
                         aria-hidden="true"
@@ -1867,7 +1867,7 @@ exports[`renders employee list 1`] = `
       <a
         class="flex items-center gap-2 px-4 py-2.5 rounded-md bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/90 transition-colors"
         data-discover="true"
-        href="/employees/add"
+        href="/people/employees/add"
       >
         <svg
           aria-hidden="true"
@@ -2285,7 +2285,7 @@ exports[`renders employee list 1`] = `
                   <a
                     class="p-1.5 rounded-md hover:bg-primary/15 hover:text-primary text-muted-foreground transition-colors"
                     data-discover="true"
-                    href="/employees/1/edit"
+                    href="/people/employees/1/edit"
                   >
                     <svg
                       aria-hidden="true"
@@ -2432,7 +2432,7 @@ exports[`renders empty employee list 1`] = `
         <a
           class="flex items-center gap-2 px-4 py-2.5 rounded-md bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/90 transition-colors"
           data-discover="true"
-          href="/employees/add"
+          href="/people/employees/add"
         >
           <svg
             aria-hidden="true"
@@ -2819,7 +2819,7 @@ exports[`renders empty employee list 1`] = `
       <a
         class="flex items-center gap-2 px-4 py-2.5 rounded-md bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/90 transition-colors"
         data-discover="true"
-        href="/employees/add"
+        href="/people/employees/add"
       >
         <svg
           aria-hidden="true"
@@ -3263,7 +3263,7 @@ exports[`sort on department 1`] = `
         <a
           class="flex items-center gap-2 px-4 py-2.5 rounded-md bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/90 transition-colors"
           data-discover="true"
-          href="/employees/add"
+          href="/people/employees/add"
         >
           <svg
             aria-hidden="true"
@@ -3681,7 +3681,7 @@ exports[`sort on department 1`] = `
                     <a
                       class="p-1.5 rounded-md hover:bg-primary/15 hover:text-primary text-muted-foreground transition-colors"
                       data-discover="true"
-                      href="/employees/1/edit"
+                      href="/people/employees/1/edit"
                     >
                       <svg
                         aria-hidden="true"
@@ -3810,7 +3810,7 @@ exports[`sort on department 1`] = `
                     <a
                       class="p-1.5 rounded-md hover:bg-primary/15 hover:text-primary text-muted-foreground transition-colors"
                       data-discover="true"
-                      href="/employees/2/edit"
+                      href="/people/employees/2/edit"
                     >
                       <svg
                         aria-hidden="true"
@@ -3900,7 +3900,7 @@ exports[`sort on department 1`] = `
       <a
         class="flex items-center gap-2 px-4 py-2.5 rounded-md bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/90 transition-colors"
         data-discover="true"
-        href="/employees/add"
+        href="/people/employees/add"
       >
         <svg
           aria-hidden="true"
@@ -4318,7 +4318,7 @@ exports[`sort on department 1`] = `
                   <a
                     class="p-1.5 rounded-md hover:bg-primary/15 hover:text-primary text-muted-foreground transition-colors"
                     data-discover="true"
-                    href="/employees/1/edit"
+                    href="/people/employees/1/edit"
                   >
                     <svg
                       aria-hidden="true"
@@ -4447,7 +4447,7 @@ exports[`sort on department 1`] = `
                   <a
                     class="p-1.5 rounded-md hover:bg-primary/15 hover:text-primary text-muted-foreground transition-colors"
                     data-discover="true"
-                    href="/employees/2/edit"
+                    href="/people/employees/2/edit"
                   >
                     <svg
                       aria-hidden="true"
@@ -4594,7 +4594,7 @@ exports[`sort on department 2`] = `
         <a
           class="flex items-center gap-2 px-4 py-2.5 rounded-md bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/90 transition-colors"
           data-discover="true"
-          href="/employees/add"
+          href="/people/employees/add"
         >
           <svg
             aria-hidden="true"
@@ -5012,7 +5012,7 @@ exports[`sort on department 2`] = `
                     <a
                       class="p-1.5 rounded-md hover:bg-primary/15 hover:text-primary text-muted-foreground transition-colors"
                       data-discover="true"
-                      href="/employees/2/edit"
+                      href="/people/employees/2/edit"
                     >
                       <svg
                         aria-hidden="true"
@@ -5141,7 +5141,7 @@ exports[`sort on department 2`] = `
                     <a
                       class="p-1.5 rounded-md hover:bg-primary/15 hover:text-primary text-muted-foreground transition-colors"
                       data-discover="true"
-                      href="/employees/1/edit"
+                      href="/people/employees/1/edit"
                     >
                       <svg
                         aria-hidden="true"
@@ -5231,7 +5231,7 @@ exports[`sort on department 2`] = `
       <a
         class="flex items-center gap-2 px-4 py-2.5 rounded-md bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/90 transition-colors"
         data-discover="true"
-        href="/employees/add"
+        href="/people/employees/add"
       >
         <svg
           aria-hidden="true"
@@ -5649,7 +5649,7 @@ exports[`sort on department 2`] = `
                   <a
                     class="p-1.5 rounded-md hover:bg-primary/15 hover:text-primary text-muted-foreground transition-colors"
                     data-discover="true"
-                    href="/employees/2/edit"
+                    href="/people/employees/2/edit"
                   >
                     <svg
                       aria-hidden="true"
@@ -5778,7 +5778,7 @@ exports[`sort on department 2`] = `
                   <a
                     class="p-1.5 rounded-md hover:bg-primary/15 hover:text-primary text-muted-foreground transition-colors"
                     data-discover="true"
-                    href="/employees/1/edit"
+                    href="/people/employees/1/edit"
                   >
                     <svg
                       aria-hidden="true"

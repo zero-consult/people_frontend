@@ -10,7 +10,7 @@ export type NavigationListProps = {
 const PERSONNEL_NAV: LinkProps[] = [
     {
         name: "employees",
-        url: "/employees",
+        url: "/people/employees",
         icon: Users,
         label: "menu.employees",
     },
@@ -31,7 +31,7 @@ const PERSONNEL_NAV: LinkProps[] = [
 const FINANCIAL_NAV: LinkProps[] = [
     {
         name: "customers",
-        url: "/customers",
+        url: "/people/customers",
         icon: Briefcase,
         label: "menu.customers",
     },

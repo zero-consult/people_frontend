@@ -83,7 +83,7 @@ function SingleCustomer() {
             try {
                 const customerAddResponse = await customerAdd(axios);
                 dispatch(loadSingleCustomer(customerAddResponse.data));
-                window.location.href = "/customers";
+                window.location.href = "/people/customers";
             } catch (error) {
                 dispatch(handleError(error))
             }
@@ -92,7 +92,7 @@ function SingleCustomer() {
             try {
                 const customerUpdateResponse = await customerUpdate(axios);
                 dispatch(loadSingleCustomer(customerUpdateResponse.data));
-                window.location.href = "/customers";
+                window.location.href = "/people/customers";
             } catch (error) {
                 dispatch(handleError(error))
             }

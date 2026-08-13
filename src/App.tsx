@@ -37,13 +37,13 @@ function App() {
                             className={"flex-1 flex flex-col min-w-0 bg-background overflow-y-auto" + (collapsed ? " pl-15" : " pl-60")}>
                             {/* Routes */}
                             <Routes>
-                                <Route path="/" element={<Employeelist/>}/>
-                                <Route path="/employees" element={<Employeelist/>}/>
-                                <Route path="/employees/add" element={<SingleEmployee/>}/>
-                                <Route path="/employees/:employeeId/edit" element={<SingleEmployee/>}/>
-                                <Route path="/customers" element={<Customerlist/>}/>
-                                <Route path="/customers/add" element={<SingleCustomer/>}/>
-                                <Route path="/customers/:customerId/edit" element={<SingleCustomer/>}/>
+                                <Route path="/people" element={<Employeelist/>}/>
+                                <Route path="/people/employees" element={<Employeelist/>}/>
+                                <Route path="/people/employees/add" element={<SingleEmployee/>}/>
+                                <Route path="/people/employees/:employeeId/edit" element={<SingleEmployee/>}/>
+                                <Route path="/people/customers" element={<Customerlist/>}/>
+                                <Route path="/people/customers/add" element={<SingleCustomer/>}/>
+                                <Route path="/people/customers/:customerId/edit" element={<SingleCustomer/>}/>
                             </Routes>
                         </main>
                     </div>

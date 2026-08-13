@@ -131,7 +131,7 @@ function Customerlist() {
                         {t('customerlist.number_of_customers', {count: customers.length})} — {t('customerlist.active_customers', {count: activeCount})}, {t('customerlist.prospects', {count: prospectCount})}
                     </p>
                 </div>
-                <Link to={"/customers/add"}
+                <Link to={"/people/customers/add"}
                       className="flex items-center gap-2 px-4 py-2.5 rounded-md bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/90 transition-colors">
                     <Plus className="w-4 h-4"/> {t('customerlist.add_customer')}
                 </Link>
@@ -259,7 +259,7 @@ function Customerlist() {
                             <td className="py-3.5 px-3 text-right">
                                 <div
                                     className="flex items-center justify-end gap-1.5 opacity-0 group-hover:opacity-100 transition-opacity">
-                                    <Link to={"/customers/" + customer.id + "/edit"}
+                                    <Link to={"/people/customers/" + customer.id + "/edit"}
                                           className="p-1.5 rounded-md hover:bg-primary/15 hover:text-primary text-muted-foreground transition-colors"><Pencil
                                         className="w-3.5 h-3.5"/></Link>
                                     {!customer.hasTimesheetEntries ?

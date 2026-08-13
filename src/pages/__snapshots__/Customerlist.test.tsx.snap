@@ -28,7 +28,7 @@ exports[`delete customer 1`] = `
         <a
           class="flex items-center gap-2 px-4 py-2.5 rounded-md bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/90 transition-colors"
           data-discover="true"
-          href="/customers/add"
+          href="/people/customers/add"
         >
           <svg
             aria-hidden="true"
@@ -507,7 +507,7 @@ exports[`delete customer 1`] = `
                   <a
                     class="p-1.5 rounded-md hover:bg-primary/15 hover:text-primary text-muted-foreground transition-colors"
                     data-discover="true"
-                    href="/customers/1/edit"
+                    href="/people/customers/1/edit"
                   >
                     <svg
                       aria-hidden="true"
@@ -692,7 +692,7 @@ exports[`delete customer 1`] = `
                   <a
                     class="p-1.5 rounded-md hover:bg-primary/15 hover:text-primary text-muted-foreground transition-colors"
                     data-discover="true"
-                    href="/customers/2/edit"
+                    href="/people/customers/2/edit"
                   >
                     <svg
                       aria-hidden="true"
@@ -781,7 +781,7 @@ exports[`delete customer 1`] = `
       <a
         class="flex items-center gap-2 px-4 py-2.5 rounded-md bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/90 transition-colors"
         data-discover="true"
-        href="/customers/add"
+        href="/people/customers/add"
       >
         <svg
           aria-hidden="true"
@@ -1260,7 +1260,7 @@ exports[`delete customer 1`] = `
                 <a
                   class="p-1.5 rounded-md hover:bg-primary/15 hover:text-primary text-muted-foreground transition-colors"
                   data-discover="true"
-                  href="/customers/1/edit"
+                  href="/people/customers/1/edit"
                 >
                   <svg
                     aria-hidden="true"
@@ -1445,7 +1445,7 @@ exports[`delete customer 1`] = `
                 <a
                   class="p-1.5 rounded-md hover:bg-primary/15 hover:text-primary text-muted-foreground transition-colors"
                   data-discover="true"
-                  href="/customers/2/edit"
+                  href="/people/customers/2/edit"
                 >
                   <svg
                     aria-hidden="true"
@@ -1591,7 +1591,7 @@ exports[`renders customer list 1`] = `
         <a
           class="flex items-center gap-2 px-4 py-2.5 rounded-md bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/90 transition-colors"
           data-discover="true"
-          href="/customers/add"
+          href="/people/customers/add"
         >
           <svg
             aria-hidden="true"
@@ -2070,7 +2070,7 @@ exports[`renders customer list 1`] = `
                   <a
                     class="p-1.5 rounded-md hover:bg-primary/15 hover:text-primary text-muted-foreground transition-colors"
                     data-discover="true"
-                    href="/customers/1/edit"
+                    href="/people/customers/1/edit"
                   >
                     <svg
                       aria-hidden="true"
@@ -2159,7 +2159,7 @@ exports[`renders customer list 1`] = `
       <a
         class="flex items-center gap-2 px-4 py-2.5 rounded-md bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/90 transition-colors"
         data-discover="true"
-        href="/customers/add"
+        href="/people/customers/add"
       >
         <svg
           aria-hidden="true"
@@ -2638,7 +2638,7 @@ exports[`renders customer list 1`] = `
                 <a
                   class="p-1.5 rounded-md hover:bg-primary/15 hover:text-primary text-muted-foreground transition-colors"
                   data-discover="true"
-                  href="/customers/1/edit"
+                  href="/people/customers/1/edit"
                 >
                   <svg
                     aria-hidden="true"
@@ -2784,7 +2784,7 @@ exports[`renders empty customer list 1`] = `
         <a
           class="flex items-center gap-2 px-4 py-2.5 rounded-md bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/90 transition-colors"
           data-discover="true"
-          href="/customers/add"
+          href="/people/customers/add"
         >
           <svg
             aria-hidden="true"
@@ -3175,7 +3175,7 @@ exports[`renders empty customer list 1`] = `
       <a
         class="flex items-center gap-2 px-4 py-2.5 rounded-md bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/90 transition-colors"
         data-discover="true"
-        href="/customers/add"
+        href="/people/customers/add"
       >
         <svg
           aria-hidden="true"
@@ -3623,7 +3623,7 @@ exports[`sort on sector 1`] = `
         <a
           class="flex items-center gap-2 px-4 py-2.5 rounded-md bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/90 transition-colors"
           data-discover="true"
-          href="/customers/add"
+          href="/people/customers/add"
         >
           <svg
             aria-hidden="true"
@@ -4102,7 +4102,7 @@ exports[`sort on sector 1`] = `
                   <a
                     class="p-1.5 rounded-md hover:bg-primary/15 hover:text-primary text-muted-foreground transition-colors"
                     data-discover="true"
-                    href="/customers/2/edit"
+                    href="/people/customers/2/edit"
                   >
                     <svg
                       aria-hidden="true"
@@ -4287,7 +4287,7 @@ exports[`sort on sector 1`] = `
                   <a
                     class="p-1.5 rounded-md hover:bg-primary/15 hover:text-primary text-muted-foreground transition-colors"
                     data-discover="true"
-                    href="/customers/1/edit"
+                    href="/people/customers/1/edit"
                   >
                     <svg
                       aria-hidden="true"
@@ -4376,7 +4376,7 @@ exports[`sort on sector 1`] = `
       <a
         class="flex items-center gap-2 px-4 py-2.5 rounded-md bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/90 transition-colors"
         data-discover="true"
-        href="/customers/add"
+        href="/people/customers/add"
       >
         <svg
           aria-hidden="true"
@@ -4855,7 +4855,7 @@ exports[`sort on sector 1`] = `
                 <a
                   class="p-1.5 rounded-md hover:bg-primary/15 hover:text-primary text-muted-foreground transition-colors"
                   data-discover="true"
-                  href="/customers/2/edit"
+                  href="/people/customers/2/edit"
                 >
                   <svg
                     aria-hidden="true"
@@ -5040,7 +5040,7 @@ exports[`sort on sector 1`] = `
                 <a
                   class="p-1.5 rounded-md hover:bg-primary/15 hover:text-primary text-muted-foreground transition-colors"
                   data-discover="true"
-                  href="/customers/1/edit"
+                  href="/people/customers/1/edit"
                 >
                   <svg
                     aria-hidden="true"
@@ -5186,7 +5186,7 @@ exports[`sort on sector 2`] = `
         <a
           class="flex items-center gap-2 px-4 py-2.5 rounded-md bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/90 transition-colors"
           data-discover="true"
-          href="/customers/add"
+          href="/people/customers/add"
         >
           <svg
             aria-hidden="true"
@@ -5665,7 +5665,7 @@ exports[`sort on sector 2`] = `
                   <a
                     class="p-1.5 rounded-md hover:bg-primary/15 hover:text-primary text-muted-foreground transition-colors"
                     data-discover="true"
-                    href="/customers/1/edit"
+                    href="/people/customers/1/edit"
                   >
                     <svg
                       aria-hidden="true"
@@ -5850,7 +5850,7 @@ exports[`sort on sector 2`] = `
                   <a
                     class="p-1.5 rounded-md hover:bg-primary/15 hover:text-primary text-muted-foreground transition-colors"
                     data-discover="true"
-                    href="/customers/2/edit"
+                    href="/people/customers/2/edit"
                   >
                     <svg
                       aria-hidden="true"
@@ -5939,7 +5939,7 @@ exports[`sort on sector 2`] = `
       <a
         class="flex items-center gap-2 px-4 py-2.5 rounded-md bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/90 transition-colors"
         data-discover="true"
-        href="/customers/add"
+        href="/people/customers/add"
       >
         <svg
           aria-hidden="true"
@@ -6418,7 +6418,7 @@ exports[`sort on sector 2`] = `
                 <a
                   class="p-1.5 rounded-md hover:bg-primary/15 hover:text-primary text-muted-foreground transition-colors"
                   data-discover="true"
-                  href="/customers/1/edit"
+                  href="/people/customers/1/edit"
                 >
                   <svg
                     aria-hidden="true"
@@ -6603,7 +6603,7 @@ exports[`sort on sector 2`] = `
                 <a
                   class="p-1.5 rounded-md hover:bg-primary/15 hover:text-primary text-muted-foreground transition-colors"
                   data-discover="true"
-                  href="/customers/2/edit"
+                  href="/people/customers/2/edit"
                 >
                   <svg
                     aria-hidden="true"

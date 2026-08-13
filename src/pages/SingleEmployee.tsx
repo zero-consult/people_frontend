@@ -98,7 +98,7 @@ function SingleEmployee() {
             try {
                 const employeeAddResponse = await employeeAdd(axios);
                 dispatch(loadSingleEmployee(employeeAddResponse.data));
-                window.location.href = "/employees";
+                window.location.href = "/people/employees";
             } catch (error) {
                 dispatch(handleError(error))
             }
@@ -107,7 +107,7 @@ function SingleEmployee() {
             try {
                 const employeeUpdateResponse = await employeeUpdate(axios);
                 dispatch(loadSingleEmployee(employeeUpdateResponse.data));
-                window.location.href = "/employees";
+                window.location.href = "/people/employees";
             } catch (error) {
                 dispatch(handleError(error))
             }

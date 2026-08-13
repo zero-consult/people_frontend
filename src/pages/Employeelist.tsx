@@ -129,7 +129,7 @@ function Employeelist() {
                     {t('employeelist.number_of_employees', {count: employees.length})} — {t('employeelist.active_employees', {count: activeCount})}, {t('employeelist.on_leave_employees', {count: leaveCount})}
                 </p>
             </div>
-            <Link to={"/employees/add"}
+            <Link to={"/people/employees/add"}
                   className="flex items-center gap-2 px-4 py-2.5 rounded-md bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/90 transition-colors">
                 <Plus className="w-4 h-4"/> {t('employeelist.add_employee')}
             </Link>
@@ -229,7 +229,7 @@ function Employeelist() {
                             <div
                                 className="flex items-center justify-end gap-1.5 opacity-0 group-hover:opacity-100 transition-opacity">
                                 <nav className="flex">
-                                    <Link to={"/employees/" + emp.id + "/edit"}
+                                    <Link to={"/people/employees/" + emp.id + "/edit"}
                                           className="p-1.5 rounded-md hover:bg-primary/15 hover:text-primary text-muted-foreground transition-colors"><Pencil
                                         className="w-3.5 h-3.5"/></Link>
                                     {!emp.hasTimesheetEntries ?
