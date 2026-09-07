@@ -13,6 +13,7 @@ import CollapsedMenu from "./components/CollapsedMenu.tsx";
 import FullMenu from "./components/FullMenu.tsx";
 import {selectUser} from "./redux/account.slice.ts";
 import Login from "./pages/Login.tsx";
+import NotFound from "./pages/NotFound.tsx";
 
 function App() {
     const [collapsed, setCollapsed] = useState(false);
@@ -37,6 +38,7 @@ function App() {
                             className={"flex-1 flex flex-col min-w-0 bg-background overflow-y-auto" + (collapsed ? " pl-15" : " pl-60")}>
                             {/* Routes */}
                             <Routes>
+                                <Route path="*" element={<NotFound/>}/>
                                 <Route path="/people" element={<Employeelist/>}/>
                                 <Route path="/people/employees" element={<Employeelist/>}/>
                                 <Route path="/people/employees/add" element={<SingleEmployee/>}/>
